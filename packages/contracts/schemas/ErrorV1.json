@@ -1,0 +1,51 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "code": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Code",
+      "type": "string"
+    },
+    "message": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Message",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "details": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
+      "title": "Details",
+      "type": "object"
+    }
+  },
+  "required": [
+    "code",
+    "message",
+    "request_id"
+  ],
+  "title": "ErrorV1",
+  "type": "object"
+}

@@ -1,0 +1,27 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "subscription_id": {
+      "format": "uuid",
+      "title": "Subscription Id",
+      "type": "string"
+    },
+    "explicit_periodic_consent": {
+      "const": true,
+      "title": "Explicit Periodic Consent",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "subscription_id",
+    "explicit_periodic_consent"
+  ],
+  "title": "PeriodicResearchRequestV1",
+  "type": "object"
+}

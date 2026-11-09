@@ -1,0 +1,49 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "added",
+        "already_exists"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Industry Id"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "status"
+  ],
+  "title": "ConversationIndustryProposalV1",
+  "type": "object"
+}

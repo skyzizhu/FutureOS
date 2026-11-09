@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "plan_code": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Plan Code",
+      "type": "string"
+    },
+    "explicit_sandbox_consent": {
+      "const": true,
+      "title": "Explicit Sandbox Consent",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "plan_code",
+    "explicit_sandbox_consent"
+  ],
+  "title": "CheckoutRequestV1",
+  "type": "object"
+}

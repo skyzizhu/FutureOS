@@ -1,0 +1,113 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "resolution_id": {
+      "format": "uuid",
+      "title": "Resolution Id",
+      "type": "string"
+    },
+    "protocol_id": {
+      "format": "uuid",
+      "title": "Protocol Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "not_due",
+        "confirmed",
+        "disconfirmed",
+        "inconclusive",
+        "unresolved_due_to_data"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "checked_at": {
+      "format": "date-time",
+      "title": "Checked At",
+      "type": "string"
+    },
+    "observation_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Observation Id"
+    },
+    "observed_value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Observed Value"
+    },
+    "forecast_absolute_error_a": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Forecast Absolute Error A"
+    },
+    "forecast_absolute_error_b": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Forecast Absolute Error B"
+    },
+    "baseline_absolute_error": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Baseline Absolute Error"
+    },
+    "reason": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "resolution_id",
+    "protocol_id",
+    "status",
+    "checked_at",
+    "reason"
+  ],
+  "title": "ForecastResolutionV1",
+  "type": "object"
+}

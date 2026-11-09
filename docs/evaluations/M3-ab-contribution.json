@@ -1,0 +1,27 @@
+{
+  "label": "DEMO",
+  "mode": "synthetic",
+  "run_id": "abbf0c50-4daa-4f1d-b7e8-9aa6c300833e",
+  "a_draft_id": "5649b8ef-42a4-5f35-8b1f-fef18bc26ee7",
+  "a_hash": "8b9d6246609e6e4e2f06b344c08080c505c33b737169050e7e9f64b6a568a204",
+  "a_decision": "targeted_research",
+  "a_substantive_findings": 1,
+  "b_draft_id": "305e25bd-4e0a-5cc4-9b95-5a449ff2e9ad",
+  "b_hash": "7575e7bde045878b4504e47416883ce33de116e37cd5f0fd1f770ee26179f124",
+  "b_decision": "annotate",
+  "b_substantive_findings": 0,
+  "changed_fields": [
+    "contradiction_claim_ids",
+    "draft_id",
+    "draft_sequence",
+    "input_hash",
+    "mechanism_chain",
+    "prompt_hash",
+    "raw_narrative"
+  ],
+  "critic_ms_a": 0.576334074139595,
+  "critic_ms_b": 0.5675838328897953,
+  "external_model_calls_added": 0,
+  "prediction_accuracy_delta": null,
+  "limitation": "A/B demonstrates correction of omitted synthetic counterevidence only; no forecast accuracy improvement has been established"
+}

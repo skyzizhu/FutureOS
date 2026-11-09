@@ -1,0 +1,23 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "theme": {
+      "default": "system",
+      "enum": [
+        "system",
+        "light",
+        "dark"
+      ],
+      "title": "Theme",
+      "type": "string"
+    }
+  },
+  "title": "ConsumerPreferenceV1",
+  "type": "object"
+}

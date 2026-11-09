@@ -1,0 +1,41 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "review_id": {
+      "format": "uuid",
+      "title": "Review Id",
+      "type": "string"
+    },
+    "confirmed_finding_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Confirmed Finding Ids",
+      "type": "array"
+    },
+    "additional_case_ids": {
+      "default": [],
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Additional Case Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "review_id",
+    "confirmed_finding_ids"
+  ],
+  "title": "RevisionRequestV1",
+  "type": "object"
+}

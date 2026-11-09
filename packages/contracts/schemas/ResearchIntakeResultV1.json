@@ -1,0 +1,50 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scope": {
+      "title": "Scope",
+      "type": "string"
+    },
+    "matched_version_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Matched Version Ids",
+      "type": "array"
+    },
+    "available_free_reports": {
+      "title": "Available Free Reports",
+      "type": "integer"
+    },
+    "additional_questions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Additional Questions",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "scope",
+    "matched_version_ids",
+    "available_free_reports",
+    "additional_questions",
+    "limitations"
+  ],
+  "title": "ResearchIntakeResultV1",
+  "type": "object"
+}

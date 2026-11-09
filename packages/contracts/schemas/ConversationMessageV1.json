@@ -1,0 +1,38 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "text": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    },
+    "client_id": {
+      "format": "uuid",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "use_model": {
+      "default": false,
+      "title": "Use Model",
+      "type": "boolean"
+    },
+    "include_memory": {
+      "default": false,
+      "title": "Include Memory",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "text",
+    "client_id"
+  ],
+  "title": "ConversationMessageV1",
+  "type": "object"
+}

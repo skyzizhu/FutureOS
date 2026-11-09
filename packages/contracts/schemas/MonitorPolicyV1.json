@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "enabled": {
+      "default": true,
+      "title": "Enabled",
+      "type": "boolean"
+    },
+    "interval_seconds": {
+      "default": 300,
+      "maximum": 86400,
+      "minimum": 30,
+      "title": "Interval Seconds",
+      "type": "integer"
+    },
+    "cooldown_seconds": {
+      "default": 21600,
+      "maximum": 604800,
+      "minimum": 0,
+      "title": "Cooldown Seconds",
+      "type": "integer"
+    },
+    "max_daily_jobs": {
+      "default": 12,
+      "maximum": 100,
+      "minimum": 1,
+      "title": "Max Daily Jobs",
+      "type": "integer"
+    },
+    "independent_groups_required": {
+      "default": 2,
+      "maximum": 5,
+      "minimum": 2,
+      "title": "Independent Groups Required",
+      "type": "integer"
+    },
+    "indicator_absolute_delta": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Indicator Absolute Delta"
+    },
+    "consecutive_periods": {
+      "default": 2,
+      "maximum": 6,
+      "minimum": 2,
+      "title": "Consecutive Periods",
+      "type": "integer"
+    }
+  },
+  "title": "MonitorPolicyV1",
+  "type": "object"
+}

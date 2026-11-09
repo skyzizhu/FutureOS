@@ -1,0 +1,217 @@
+{
+  "testset_version": "m3-synthetic-v1",
+  "review_status": "author_curated_pending_independent_human_review",
+  "as_of": "2020-06-01T00:00:00Z",
+  "cases": [
+    {
+      "id": "clean",
+      "code": "REASONABLE_ALTERNATIVE",
+      "severity": "L1",
+      "decision": "annotate"
+    },
+    {
+      "id": "reasonable_alternative",
+      "code": "REASONABLE_ALTERNATIVE",
+      "severity": "L1",
+      "decision": "annotate"
+    },
+    {
+      "id": "future_source",
+      "code": "FUTURE_INFORMATION_LEAK",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "unknown_source_time",
+      "code": "FUTURE_INFORMATION_LEAK",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "future_claim",
+      "code": "FUTURE_INFORMATION_LEAK",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "future_vintage",
+      "code": "FUTURE_INFORMATION_LEAK",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "future_period",
+      "code": "FUTURE_INFORMATION_LEAK",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "publication_after_cutoff",
+      "code": "FUTURE_INFORMATION_LEAK",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "future_case_outcome",
+      "code": "FUTURE_INFORMATION_LEAK",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "unverified_fact",
+      "code": "INVALID_FACT_OR_QUOTE",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "opinion_as_fact",
+      "code": "INVALID_FACT_OR_QUOTE",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "bad_quote",
+      "code": "INVALID_FACT_OR_QUOTE",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "wrong_claim_group",
+      "code": "INVALID_FACT_OR_QUOTE",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "mixed_source_label",
+      "code": "INVALID_FACT_OR_QUOTE",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "mixed_claim_label",
+      "code": "INVALID_FACT_OR_QUOTE",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "duplicate_sources",
+      "code": "DUPLICATE_OR_INSUFFICIENT_SOURCES",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "missing_citation",
+      "code": "MISSING_CITATION",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "no_evidence",
+      "code": "MISSING_CITATION",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "omitted_counter",
+      "code": "NEW_OR_OMITTED_COUNTEREVIDENCE",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "counter_as_support",
+      "code": "COUNTEREVIDENCE_AS_SUPPORT",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "no_failure_case",
+      "code": "NO_FAILURE_CASE",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "no_analogy",
+      "code": "NO_FAILURE_CASE",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "unsupported_analogy",
+      "code": "UNSUPPORTED_ANALOGY",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "transfer_gap",
+      "code": "ANALOGY_TRANSFER_GAP",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "causal_gap",
+      "code": "CAUSAL_EVIDENCE_GAP",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "no_reverse_path",
+      "code": "NO_COUNTERACTING_PATH",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "causal_leap",
+      "code": "UNCONDITIONAL_CAUSAL_LEAP",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "missing_path",
+      "code": "MISSING_COMPETING_PATH",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "no_falsifier",
+      "code": "NO_FALSIFIER",
+      "severity": "L2",
+      "decision": "targeted_research"
+    },
+    {
+      "id": "baseline_wrong",
+      "code": "BASELINE_OR_VINTAGE_ERROR",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "baseline_unit",
+      "code": "BASELINE_OR_VINTAGE_ERROR",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "wrong_geography",
+      "code": "INDICATOR_SCOPE_MISMATCH",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "no_target",
+      "code": "UNRESOLVABLE_TARGET",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "expired_target",
+      "code": "UNRESOLVABLE_TARGET",
+      "severity": "L3",
+      "decision": "block"
+    },
+    {
+      "id": "wrong_cutoff",
+      "code": "CUTOFF_OR_LABEL_MISMATCH",
+      "severity": "L3",
+      "decision": "block"
+    }
+  ]
+}

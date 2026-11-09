@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "explicit_consent": {
+      "const": true,
+      "title": "Explicit Consent",
+      "type": "boolean"
+    },
+    "recipient": {
+      "maxLength": 254,
+      "minLength": 3,
+      "title": "Recipient",
+      "type": "string"
+    }
+  },
+  "required": [
+    "explicit_consent",
+    "recipient"
+  ],
+  "title": "EmailAuthorizationV1",
+  "type": "object"
+}

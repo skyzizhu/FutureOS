@@ -1,0 +1,47 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "identical": {
+      "title": "Identical",
+      "type": "boolean"
+    },
+    "input_hash": {
+      "title": "Input Hash",
+      "type": "string"
+    },
+    "original_draft_hash": {
+      "title": "Original Draft Hash",
+      "type": "string"
+    },
+    "replay_draft_hash": {
+      "title": "Replay Draft Hash",
+      "type": "string"
+    },
+    "network_calls": {
+      "const": 0,
+      "default": 0,
+      "title": "Network Calls",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "run_id",
+    "identical",
+    "input_hash",
+    "original_draft_hash",
+    "replay_draft_hash"
+  ],
+  "title": "ReplayResultV1",
+  "type": "object"
+}

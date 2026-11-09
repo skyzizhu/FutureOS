@@ -1,0 +1,92 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "finding_id": {
+      "format": "uuid",
+      "title": "Finding Id",
+      "type": "string"
+    },
+    "checker": {
+      "enum": [
+        "evidence",
+        "historical",
+        "causal",
+        "scenario",
+        "temporal_resolution"
+      ],
+      "title": "Checker",
+      "type": "string"
+    },
+    "code": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Code",
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "L0",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "verification_status": {
+      "enum": [
+        "verified",
+        "pending",
+        "refuted"
+      ],
+      "title": "Verification Status",
+      "type": "string"
+    },
+    "source_refs": {
+      "default": [],
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Source Refs",
+      "type": "array"
+    },
+    "affected_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Affected Fields",
+      "type": "array"
+    },
+    "recommended_action": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Recommended Action",
+      "type": "string"
+    }
+  },
+  "required": [
+    "finding_id",
+    "checker",
+    "code",
+    "severity",
+    "statement",
+    "verification_status",
+    "affected_fields",
+    "recommended_action"
+  ],
+  "title": "ReviewFindingV1",
+  "type": "object"
+}

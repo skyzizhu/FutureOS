@@ -1,0 +1,40 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "role": {
+      "enum": [
+        "user",
+        "admin"
+      ],
+      "title": "Role",
+      "type": "string"
+    },
+    "email_masked": {
+      "title": "Email Masked",
+      "type": "string"
+    },
+    "email_verified": {
+      "default": false,
+      "title": "Email Verified",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "user_id",
+    "role",
+    "email_masked"
+  ],
+  "title": "AccountIdentityV1",
+  "type": "object"
+}

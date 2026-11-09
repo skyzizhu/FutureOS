@@ -1,0 +1,114 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "claim_id": {
+      "format": "uuid",
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "source_version_id": {
+      "format": "uuid",
+      "title": "Source Version Id",
+      "type": "string"
+    },
+    "source_group_id": {
+      "format": "uuid",
+      "title": "Source Group Id",
+      "type": "string"
+    },
+    "claim_text": {
+      "title": "Claim Text",
+      "type": "string"
+    },
+    "quote": {
+      "title": "Quote",
+      "type": "string"
+    },
+    "source_locator": {
+      "title": "Source Locator",
+      "type": "string"
+    },
+    "relation": {
+      "enum": [
+        "supports",
+        "contradicts",
+        "context"
+      ],
+      "title": "Relation",
+      "type": "string"
+    },
+    "claim_kind": {
+      "enum": [
+        "fact",
+        "opinion",
+        "hypothesis"
+      ],
+      "title": "Claim Kind",
+      "type": "string"
+    },
+    "known_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Known At"
+    },
+    "verification_status": {
+      "enum": [
+        "unverified",
+        "verified"
+      ],
+      "title": "Verification Status",
+      "type": "string"
+    },
+    "verification_note": {
+      "title": "Verification Note",
+      "type": "string"
+    },
+    "scope": {
+      "title": "Scope",
+      "type": "string"
+    },
+    "caveat": {
+      "title": "Caveat",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "source_version_id",
+    "source_group_id",
+    "claim_text",
+    "quote",
+    "source_locator",
+    "relation",
+    "claim_kind",
+    "known_at",
+    "verification_status",
+    "verification_note",
+    "scope",
+    "caveat",
+    "label"
+  ],
+  "title": "EvidenceClaimV1",
+  "type": "object"
+}

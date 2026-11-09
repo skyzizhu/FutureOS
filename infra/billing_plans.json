@@ -1,0 +1,4 @@
+[
+ {"code":"demo_pack","name":"沙盒研究包","amount_minor":1000,"currency":"CNY","units":3,"valid_days":30,"recurring":false,"cadence_days":null,"label":"DEMO"},
+ {"code":"demo_monthly","name":"沙盒月度订阅","amount_minor":2900,"currency":"CNY","units":10,"valid_days":30,"recurring":true,"cadence_days":7,"label":"DEMO"}
+]

@@ -1,0 +1,129 @@
+{
+  "$defs": {
+    "DomainTag": {
+      "enum": [
+        "macro_finance",
+        "technology",
+        "industry",
+        "workforce",
+        "policy",
+        "consumption",
+        "housing",
+        "education",
+        "health",
+        "energy",
+        "supply_chain",
+        "society"
+      ],
+      "title": "DomainTag",
+      "type": "string"
+    },
+    "LifecycleStage": {
+      "enum": [
+        "emergence",
+        "growth",
+        "maturity",
+        "inflection",
+        "decline",
+        "unknown"
+      ],
+      "title": "LifecycleStage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "signal_id": {
+      "format": "uuid",
+      "title": "Signal Id",
+      "type": "string"
+    },
+    "kind": {
+      "const": "signal",
+      "default": "signal",
+      "title": "Kind",
+      "type": "string"
+    },
+    "status": {
+      "const": "candidate",
+      "default": "candidate",
+      "title": "Status",
+      "type": "string"
+    },
+    "headline": {
+      "title": "Headline",
+      "type": "string"
+    },
+    "lifecycle_stage": {
+      "$ref": "#/$defs/LifecycleStage"
+    },
+    "claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Claim Ids",
+      "type": "array"
+    },
+    "source_group_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Source Group Ids",
+      "type": "array"
+    },
+    "independent_source_count": {
+      "minimum": 1,
+      "title": "Independent Source Count",
+      "type": "integer"
+    },
+    "mechanism_tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Mechanism Tags",
+      "type": "array"
+    },
+    "domain_tags": {
+      "items": {
+        "$ref": "#/$defs/DomainTag"
+      },
+      "title": "Domain Tags",
+      "type": "array"
+    },
+    "detected_at": {
+      "format": "date-time",
+      "title": "Detected At",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "signal_id",
+    "headline",
+    "lifecycle_stage",
+    "claim_ids",
+    "source_group_ids",
+    "independent_source_count",
+    "mechanism_tags",
+    "domain_tags",
+    "detected_at",
+    "label"
+  ],
+  "title": "SignalV1",
+  "type": "object"
+}

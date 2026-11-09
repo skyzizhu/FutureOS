@@ -1,0 +1,254 @@
+{
+  "$defs": {
+    "ForecastTargetV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "target_type": {
+          "enum": [
+            "binary",
+            "numeric",
+            "ordinal",
+            "milestone"
+          ],
+          "title": "Target Type",
+          "type": "string"
+        },
+        "population_scope": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Population Scope",
+          "type": "string"
+        },
+        "geography": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Geography",
+          "type": "string"
+        },
+        "metric_definition": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Metric Definition",
+          "type": "string"
+        },
+        "direction_or_threshold": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Direction Or Threshold",
+          "type": "string"
+        },
+        "baseline": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Baseline",
+          "type": "string"
+        },
+        "target_start_at": {
+          "format": "date-time",
+          "title": "Target Start At",
+          "type": "string"
+        },
+        "target_end_at": {
+          "format": "date-time",
+          "title": "Target End At",
+          "type": "string"
+        },
+        "resolution_source": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Source",
+          "type": "string"
+        },
+        "resolution_rule": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Rule",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_type",
+        "population_scope",
+        "geography",
+        "metric_definition",
+        "direction_or_threshold",
+        "baseline",
+        "target_start_at",
+        "target_end_at",
+        "resolution_source",
+        "resolution_rule"
+      ],
+      "title": "ForecastTargetV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "forecast_version_id": {
+      "format": "uuid",
+      "title": "Forecast Version Id",
+      "type": "string"
+    },
+    "forecast_id": {
+      "format": "uuid",
+      "title": "Forecast Id",
+      "type": "string"
+    },
+    "research_run_id": {
+      "format": "uuid",
+      "title": "Research Run Id",
+      "type": "string"
+    },
+    "version_num": {
+      "minimum": 1,
+      "title": "Version Num",
+      "type": "integer"
+    },
+    "kind": {
+      "const": "forecast",
+      "default": "forecast",
+      "title": "Kind",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "target": {
+      "$ref": "#/$defs/ForecastTargetV1"
+    },
+    "research_as_of": {
+      "format": "date-time",
+      "title": "Research As Of",
+      "type": "string"
+    },
+    "forecast_published_at": {
+      "format": "date-time",
+      "title": "Forecast Published At",
+      "type": "string"
+    },
+    "evidence_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Evidence Claim Ids",
+      "type": "array"
+    },
+    "contradiction_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Contradiction Claim Ids",
+      "type": "array"
+    },
+    "mechanism_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Mechanism Ids",
+      "type": "array"
+    },
+    "historical_case_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Historical Case Ids",
+      "type": "array"
+    },
+    "assumptions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "falsification_conditions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Falsification Conditions",
+      "type": "array"
+    },
+    "scenario_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Scenario Ids",
+      "type": "array"
+    },
+    "uncertainty_state": {
+      "default": "uncalibrated",
+      "enum": [
+        "uncalibrated",
+        "qualitative_assessment"
+      ],
+      "title": "Uncertainty State",
+      "type": "string"
+    },
+    "next_review_at": {
+      "format": "date-time",
+      "title": "Next Review At",
+      "type": "string"
+    },
+    "evidence_snapshot_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Evidence Snapshot Hash",
+      "type": "string"
+    },
+    "change_reason": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Change Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "forecast_version_id",
+    "forecast_id",
+    "research_run_id",
+    "version_num",
+    "statement",
+    "target",
+    "research_as_of",
+    "forecast_published_at",
+    "evidence_claim_ids",
+    "contradiction_claim_ids",
+    "mechanism_ids",
+    "historical_case_ids",
+    "assumptions",
+    "falsification_conditions",
+    "scenario_ids",
+    "next_review_at",
+    "evidence_snapshot_hash",
+    "change_reason"
+  ],
+  "title": "ForecastVersionV1",
+  "type": "object"
+}

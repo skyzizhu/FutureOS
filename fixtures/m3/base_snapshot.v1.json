@@ -1,0 +1,649 @@
+{
+  "schema_version": "1.0",
+  "request": {
+    "schema_version": "1.0",
+    "title": "DEMO AI 工具与软件开发任务",
+    "scope": "DEMO-lab 受控试验；不外推就业或个人行动",
+    "domain_tags": [
+      "technology",
+      "workforce"
+    ],
+    "research_as_of": "2020-06-01T00:00:00Z",
+    "signal_ids": [
+      "97b9fc41-37d4-5a1a-a333-7c5f72b40473",
+      "be4a2beb-0ab5-5948-be22-bcd036f11368",
+      "7b1be573-a723-5eb6-9240-f69821d6a36e",
+      "44cdc885-7e19-519b-890e-bb59aa971676"
+    ],
+    "historical_case_ids": [
+      "9d391084-99e4-52a6-a766-f103c007acb2",
+      "8a45414d-2659-55fc-9f6f-179105bbb515"
+    ],
+    "indicator_id": "7ddeaa15-ab50-5554-b6c4-d6373d1b9757",
+    "target": {
+      "schema_version": "1.0",
+      "target_type": "numeric",
+      "population_scope": "DEMO fixed trial protocol",
+      "geography": "DEMO-lab",
+      "metric_definition": "demo_task_reliability",
+      "direction_or_threshold": ">=70 tasks/100",
+      "baseline": "2020-03: 60 completed tasks per 100 trials",
+      "target_start_at": "2020-06-02T00:00:00Z",
+      "target_end_at": "2020-12-31T00:00:00Z",
+      "resolution_source": "https://example.invalid/m2/reliability",
+      "resolution_rule": "预登记固定100次任务试验，按相同口径核对完成数；数据缺失则不可判定"
+    },
+    "lifecycle_stage": "unknown",
+    "recipe_id": "verifiable_agent",
+    "provider": "mock",
+    "label": "DEMO"
+  },
+  "signals": [
+    {
+      "schema_version": "1.0",
+      "signal_id": "44cdc885-7e19-519b-890e-bb59aa971676",
+      "kind": "signal",
+      "status": "candidate",
+      "headline": "DEMO反证：复杂任务可靠性仍不足，治理与验证成本尚未下降。",
+      "lifecycle_stage": "unknown",
+      "claim_ids": [
+        "c8a65416-0a9c-5b4e-9bd9-b15bd91155ad"
+      ],
+      "source_group_ids": [
+        "5266773c-bdf8-55df-af2d-22e829d5e793"
+      ],
+      "independent_source_count": 1,
+      "mechanism_tags": [
+        "reliability_risk"
+      ],
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "detected_at": "2026-11-01T13:55:10.542355Z",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "signal_id": "7b1be573-a723-5eb6-9240-f69821d6a36e",
+      "kind": "signal",
+      "status": "candidate",
+      "headline": "DEMO：第三个反馈校验组件能检查任务输出并发现部分错误。",
+      "lifecycle_stage": "unknown",
+      "claim_ids": [
+        "502d3121-34af-5253-9b4a-bb803f609589"
+      ],
+      "source_group_ids": [
+        "270a7120-c32d-5937-a5ce-81d94ccb5cd2"
+      ],
+      "independent_source_count": 1,
+      "mechanism_tags": [
+        "feedback_validation"
+      ],
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "detected_at": "2026-11-01T13:55:10.537304Z",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "signal_id": "97b9fc41-37d4-5a1a-a333-7c5f72b40473",
+      "kind": "signal",
+      "status": "candidate",
+      "headline": "DEMO：在预登记的独立试验中，上下文理解组件能读取任务约束。",
+      "lifecycle_stage": "unknown",
+      "claim_ids": [
+        "d5f3b374-bf18-5cf4-813a-5bcc4e6ba892"
+      ],
+      "source_group_ids": [
+        "cbe47f79-5edc-5eca-a6db-4e2eb722ceb2"
+      ],
+      "independent_source_count": 1,
+      "mechanism_tags": [
+        "context_understanding"
+      ],
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "detected_at": "2026-11-01T13:55:10.524975Z",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "signal_id": "be4a2beb-0ab5-5948-be22-bcd036f11368",
+      "kind": "signal",
+      "status": "candidate",
+      "headline": "DEMO：另一个工具执行组件能在隔离环境中运行指定操作。",
+      "lifecycle_stage": "unknown",
+      "claim_ids": [
+        "d3e50c65-061f-5006-8bcc-8232ff41bc41"
+      ],
+      "source_group_ids": [
+        "9fb63ba2-23da-522b-ae0a-faaebce3b6b2"
+      ],
+      "independent_source_count": 1,
+      "mechanism_tags": [
+        "tool_execution"
+      ],
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "detected_at": "2026-11-01T13:55:10.532253Z",
+      "label": "DEMO"
+    }
+  ],
+  "claims": [
+    {
+      "schema_version": "1.0",
+      "claim_id": "502d3121-34af-5253-9b4a-bb803f609589",
+      "source_version_id": "d53ce9a3-8faa-5f54-85c9-6a00eee0223f",
+      "source_group_id": "270a7120-c32d-5937-a5ce-81d94ccb5cd2",
+      "claim_text": "DEMO：第三个反馈校验组件能检查任务输出并发现部分错误。",
+      "quote": "DEMO：第三个反馈校验组件能检查任务输出并发现部分错误。",
+      "source_locator": "fixture paragraph 1",
+      "relation": "supports",
+      "claim_kind": "fact",
+      "known_at": "2020-05-03T00:00:00Z",
+      "verification_status": "verified",
+      "verification_note": "Checked against owned synthetic fixture",
+      "scope": "DEMO-lab",
+      "caveat": "",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "claim_id": "c8a65416-0a9c-5b4e-9bd9-b15bd91155ad",
+      "source_version_id": "d8429391-49f3-522c-9d86-6afffc76394e",
+      "source_group_id": "5266773c-bdf8-55df-af2d-22e829d5e793",
+      "claim_text": "DEMO反证：复杂任务可靠性仍不足，治理与验证成本尚未下降。",
+      "quote": "DEMO反证：复杂任务可靠性仍不足，治理与验证成本尚未下降。",
+      "source_locator": "fixture paragraph 1",
+      "relation": "contradicts",
+      "claim_kind": "fact",
+      "known_at": "2020-05-04T00:00:00Z",
+      "verification_status": "verified",
+      "verification_note": "Checked against owned synthetic fixture",
+      "scope": "DEMO-lab",
+      "caveat": "",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "claim_id": "d3e50c65-061f-5006-8bcc-8232ff41bc41",
+      "source_version_id": "d21fdbfc-ce4a-50e7-9eff-c8e23f66c84e",
+      "source_group_id": "9fb63ba2-23da-522b-ae0a-faaebce3b6b2",
+      "claim_text": "DEMO：另一个工具执行组件能在隔离环境中运行指定操作。",
+      "quote": "DEMO：另一个工具执行组件能在隔离环境中运行指定操作。",
+      "source_locator": "fixture paragraph 1",
+      "relation": "supports",
+      "claim_kind": "fact",
+      "known_at": "2020-05-02T00:00:00Z",
+      "verification_status": "verified",
+      "verification_note": "Checked against owned synthetic fixture",
+      "scope": "DEMO-lab",
+      "caveat": "",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "claim_id": "d5f3b374-bf18-5cf4-813a-5bcc4e6ba892",
+      "source_version_id": "1b5f85fd-8f11-52f9-93d3-d55d70382804",
+      "source_group_id": "cbe47f79-5edc-5eca-a6db-4e2eb722ceb2",
+      "claim_text": "DEMO：在预登记的独立试验中，上下文理解组件能读取任务约束。",
+      "quote": "DEMO：在预登记的独立试验中，上下文理解组件能读取任务约束。",
+      "source_locator": "fixture paragraph 1",
+      "relation": "supports",
+      "claim_kind": "fact",
+      "known_at": "2020-05-01T00:00:00Z",
+      "verification_status": "verified",
+      "verification_note": "Checked against owned synthetic fixture",
+      "scope": "DEMO-lab",
+      "caveat": "",
+      "label": "DEMO"
+    }
+  ],
+  "sources": [
+    {
+      "schema_version": "1.0",
+      "source_version_id": "1380c9df-19ab-5e49-88c7-be00e5ae62e4",
+      "source_id": "036f1573-bf5f-551a-9be3-66812eca85b4",
+      "source_group_id": "4a7b5b52-1330-595b-8267-de4c64da4ccb",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:5b870f68fb34024b",
+      "url": "https://example.invalid/m2/outcome-A",
+      "title": "DEMO outcome-A",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2012-01-01T00:00:00Z",
+      "event_at": null,
+      "available_at": "2012-01-01T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.555999Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "d22584fcaa876811abc48a43f2da5e4841dac153089e4c928a55d43428c76229",
+      "content": "DEMO 历史结果 A: success",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "1b5f85fd-8f11-52f9-93d3-d55d70382804",
+      "source_id": "0e951941-5e40-573a-945c-9f59df00cd0e",
+      "source_group_id": "cbe47f79-5edc-5eca-a6db-4e2eb722ceb2",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:fcf215811c70e386",
+      "url": "https://example.invalid/m2/context_understanding",
+      "title": "DEMO context_understanding",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2020-05-01T00:00:00Z",
+      "event_at": null,
+      "available_at": "2020-05-01T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.517667Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "e834fde853af1c7347229fb93a45c7dcc689327c7c31b05af7c5f325e783d9c2",
+      "content": "DEMO：在预登记的独立试验中，上下文理解组件能读取任务约束。",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "2df3ce55-9129-57da-a00f-0c78e9f8d3bc",
+      "source_id": "0d57be46-9e9a-5d68-9368-73811b117144",
+      "source_group_id": "e0ac2440-0d1f-57f5-bd6f-1b20496420ad",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:89c2ebbf53436ae2",
+      "url": "https://example.invalid/m2/case-A",
+      "title": "DEMO case-A",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2010-01-01T00:00:00Z",
+      "event_at": null,
+      "available_at": "2010-01-01T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.553804Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "9930f774dcb76213ceb31f877172b95ac2d9e45026c480b42ce4c283bd954152",
+      "content": "DEMO 跨领域案例 A：互补组件进入早期试点。",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "835e23af-4e9e-50d3-b199-c29d1b80fc9d",
+      "source_id": "f32b4211-e54d-522c-bce3-5a79f7b92f3c",
+      "source_group_id": "c219991a-98d8-5e2f-9e4a-57cb280b2cd4",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:34e2b9a6ed01cd45",
+      "url": "https://example.invalid/m2/outcome-B",
+      "title": "DEMO outcome-B",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2012-01-01T00:00:00Z",
+      "event_at": null,
+      "available_at": "2012-01-01T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.561837Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "de58ff3214943064c767eff3f9601200163ba6807e1b63c764b9a84188510a50",
+      "content": "DEMO 历史结果 B: failure",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "d133e5bc-33b1-5872-a79e-c08706ba85c3",
+      "source_id": "35142a66-0630-5880-86ab-2d5f4d695bcc",
+      "source_group_id": "c0c88a2f-2d92-523a-bd2b-ca534fb812e9",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:8011decd6c41f553",
+      "url": "https://example.invalid/m2/reliability",
+      "title": "DEMO reliability",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2020-05-05T00:00:00Z",
+      "event_at": null,
+      "available_at": "2020-05-05T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.543507Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "7b54354dfd1e11ab17edfc74dff9b678467c448a00230ab2757a865aca2454f6",
+      "content": "DEMO：受控任务完成数按每100次试验计，1月40、2月50、3月60。",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "d21fdbfc-ce4a-50e7-9eff-c8e23f66c84e",
+      "source_id": "63bfd34b-3234-5654-80aa-68ad8cea73c9",
+      "source_group_id": "9fb63ba2-23da-522b-ae0a-faaebce3b6b2",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:7f639122ad67c5a9",
+      "url": "https://example.invalid/m2/tool_execution",
+      "title": "DEMO tool_execution",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2020-05-02T00:00:00Z",
+      "event_at": null,
+      "available_at": "2020-05-02T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.528581Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "8bca67cf6b19066914aba19ab88fb9663464b7d9eddf080124ad9fbebd9a12ea",
+      "content": "DEMO：另一个工具执行组件能在隔离环境中运行指定操作。",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "d53ce9a3-8faa-5f54-85c9-6a00eee0223f",
+      "source_id": "d62759ba-83c5-50fc-ad58-4019ee994e6b",
+      "source_group_id": "270a7120-c32d-5937-a5ce-81d94ccb5cd2",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:4c6615ba3cbb4905",
+      "url": "https://example.invalid/m2/feedback_validation",
+      "title": "DEMO feedback_validation",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2020-05-03T00:00:00Z",
+      "event_at": null,
+      "available_at": "2020-05-03T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.533952Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "9a0d09e715a6b01b925b230b57fe9f0b2003860c093e310c51d45ccab12c7030",
+      "content": "DEMO：第三个反馈校验组件能检查任务输出并发现部分错误。",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "d8429391-49f3-522c-9d86-6afffc76394e",
+      "source_id": "b5ec536d-42e6-53af-a184-4f5aea7b27e0",
+      "source_group_id": "5266773c-bdf8-55df-af2d-22e829d5e793",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:9e201426e93f364a",
+      "url": "https://example.invalid/m2/reliability_risk",
+      "title": "DEMO reliability_risk",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2020-05-04T00:00:00Z",
+      "event_at": null,
+      "available_at": "2020-05-04T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.538617Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "9385d6cb821e8759c1a896f4a94b7b98acca7deafc2481d74fe235e047e0dcbe",
+      "content": "DEMO反证：复杂任务可靠性仍不足，治理与验证成本尚未下降。",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "ebedeb29-f975-5870-a124-db5f1ce1b7c6",
+      "source_id": "9050222e-5ad5-5a20-a7fc-09786dc576fa",
+      "source_group_id": "1e616636-bd9f-5a53-99bf-e90a51e741db",
+      "source_type": "manual",
+      "original_language": "zh",
+      "region": "unspecified",
+      "dedup_method": "canonical_url",
+      "original_source_url": null,
+      "version_label": "sha256:fab8f25bf22b6c0f",
+      "url": "https://example.invalid/m2/case-B",
+      "title": "DEMO case-B",
+      "publisher": "FutureOS synthetic fixture",
+      "published_at": "2010-01-01T00:00:00Z",
+      "event_at": null,
+      "available_at": "2010-01-01T00:00:00Z",
+      "ingested_at": "2026-11-01T13:55:10.559719Z",
+      "revised_at": null,
+      "availability_basis": "verified_archive",
+      "availability_note": "Synthetic archived fixture",
+      "content_hash": "c94e0a9b338a6295edcdd3c25cb033d9adb65b89529127105a1d90361760d47b",
+      "content": "DEMO 跨领域案例 B：互补组件进入早期试点。",
+      "usage_permission": "authorized_full",
+      "license_note": "Own synthetic fixture for software testing",
+      "access_method": "manual",
+      "reliability_note": "DEMO only; not real-world facts",
+      "domain_tags": [
+        "technology",
+        "workforce"
+      ],
+      "label": "DEMO"
+    }
+  ],
+  "cases": [
+    {
+      "schema_version": "1.0",
+      "case_id": "8a45414d-2659-55fc-9f6f-179105bbb515",
+      "title": "DEMO cross-domain case B",
+      "cutoff_at": "2010-06-01T00:00:00Z",
+      "as_of": "2020-06-01T00:00:00Z",
+      "domain_tags": [
+        "education"
+      ],
+      "mechanism_tags": [
+        "complementarity",
+        "adoption"
+      ],
+      "initial_conditions": "DEMO pilot in distinct institutions",
+      "limitations": [
+        "Synthetic analogy; no real-world forecasting accuracy implication"
+      ],
+      "contemporaneous": [
+        {
+          "schema_version": "1.0",
+          "text": "Complementary components entered pilot",
+          "known_at": "2010-01-01T00:00:00Z",
+          "source_version_id": "ebedeb29-f975-5870-a124-db5f1ce1b7c6",
+          "data_role": "contemporaneous",
+          "outcome_category": null
+        }
+      ],
+      "outcomes": [
+        {
+          "schema_version": "1.0",
+          "text": "DEMO retrospective failure",
+          "known_at": "2012-01-01T00:00:00Z",
+          "source_version_id": "835e23af-4e9e-50d3-b199-c29d1b80fc9d",
+          "data_role": "outcome",
+          "outcome_category": "failure"
+        }
+      ],
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "case_id": "9d391084-99e4-52a6-a766-f103c007acb2",
+      "title": "DEMO cross-domain case A",
+      "cutoff_at": "2010-06-01T00:00:00Z",
+      "as_of": "2020-06-01T00:00:00Z",
+      "domain_tags": [
+        "industry"
+      ],
+      "mechanism_tags": [
+        "complementarity",
+        "adoption"
+      ],
+      "initial_conditions": "DEMO pilot in distinct institutions",
+      "limitations": [
+        "Synthetic analogy; no real-world forecasting accuracy implication"
+      ],
+      "contemporaneous": [
+        {
+          "schema_version": "1.0",
+          "text": "Complementary components entered pilot",
+          "known_at": "2010-01-01T00:00:00Z",
+          "source_version_id": "2df3ce55-9129-57da-a00f-0c78e9f8d3bc",
+          "data_role": "contemporaneous",
+          "outcome_category": null
+        }
+      ],
+      "outcomes": [
+        {
+          "schema_version": "1.0",
+          "text": "DEMO retrospective success",
+          "known_at": "2012-01-01T00:00:00Z",
+          "source_version_id": "1380c9df-19ab-5e49-88c7-be00e5ae62e4",
+          "data_role": "outcome",
+          "outcome_category": "success"
+        }
+      ],
+      "label": "DEMO"
+    }
+  ],
+  "indicator": {
+    "schema_version": "1.0",
+    "code": "demo_task_reliability",
+    "name": "DEMO task reliability",
+    "provider": "synthetic",
+    "geo_scope": "DEMO-lab",
+    "unit": "completed_tasks_per_100_trials",
+    "frequency": "month",
+    "definition_version": "v1",
+    "label": "DEMO",
+    "indicator_id": "7ddeaa15-ab50-5554-b6c4-d6373d1b9757"
+  },
+  "observations": [
+    {
+      "schema_version": "1.0",
+      "source_version_id": "d133e5bc-33b1-5872-a79e-c08706ba85c3",
+      "period_start": "2020-01-01T00:00:00Z",
+      "period_end": "2020-01-28T00:00:00Z",
+      "value": 40.0,
+      "published_at": "2020-05-05T00:00:00Z",
+      "available_at": "2020-05-05T00:00:00Z",
+      "revision_number": 1,
+      "quality_flag": "DEMO_DATA",
+      "definition_note": "Synthetic fixed trial protocol",
+      "observation_id": "60828a63-c1d3-51a0-a0af-e2afe672d9e8",
+      "indicator_id": "7ddeaa15-ab50-5554-b6c4-d6373d1b9757",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "d133e5bc-33b1-5872-a79e-c08706ba85c3",
+      "period_start": "2020-02-01T00:00:00Z",
+      "period_end": "2020-02-28T00:00:00Z",
+      "value": 50.0,
+      "published_at": "2020-05-05T00:00:00Z",
+      "available_at": "2020-05-05T00:00:00Z",
+      "revision_number": 1,
+      "quality_flag": "DEMO_DATA",
+      "definition_note": "Synthetic fixed trial protocol",
+      "observation_id": "644be0cd-5267-50c4-9312-8e23e570daac",
+      "indicator_id": "7ddeaa15-ab50-5554-b6c4-d6373d1b9757",
+      "label": "DEMO"
+    },
+    {
+      "schema_version": "1.0",
+      "source_version_id": "d133e5bc-33b1-5872-a79e-c08706ba85c3",
+      "period_start": "2020-03-01T00:00:00Z",
+      "period_end": "2020-03-28T00:00:00Z",
+      "value": 60.0,
+      "published_at": "2020-05-05T00:00:00Z",
+      "available_at": "2020-05-05T00:00:00Z",
+      "revision_number": 1,
+      "quality_flag": "DEMO_DATA",
+      "definition_note": "Synthetic fixed trial protocol",
+      "observation_id": "5c6bf2b4-2cd1-5001-98b1-33e536dbb6c2",
+      "indicator_id": "7ddeaa15-ab50-5554-b6c4-d6373d1b9757",
+      "label": "DEMO"
+    }
+  ],
+  "engine_code_hash": "7bcefca4dd69df4bbab3eedbfafffdef9a2c1b13c797c4e2a5899858b22b40f3",
+  "rules_version": "m2-rules-v1"
+}

@@ -1,0 +1,32 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "label": {
+      "default": "DEMO",
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "forecast_version_ids": {
+      "default": [],
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 5,
+      "title": "Forecast Version Ids",
+      "type": "array"
+    }
+  },
+  "title": "FirstReportRequestV1",
+  "type": "object"
+}

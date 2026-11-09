@@ -1,0 +1,42 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "first_report_opt_in": {
+      "default": false,
+      "title": "First Report Opt In",
+      "type": "boolean"
+    },
+    "alert_opt_in": {
+      "default": false,
+      "title": "Alert Opt In",
+      "type": "boolean"
+    },
+    "digest_opt_in": {
+      "default": false,
+      "title": "Digest Opt In",
+      "type": "boolean"
+    },
+    "frequency": {
+      "default": "weekly",
+      "enum": [
+        "daily",
+        "weekly"
+      ],
+      "title": "Frequency",
+      "type": "string"
+    },
+    "explicit_consent": {
+      "default": false,
+      "title": "Explicit Consent",
+      "type": "boolean"
+    }
+  },
+  "title": "NotificationPreferencesV1",
+  "type": "object"
+}

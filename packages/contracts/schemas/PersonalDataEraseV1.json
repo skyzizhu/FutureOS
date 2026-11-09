@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "password": {
+      "maxLength": 128,
+      "minLength": 12,
+      "title": "Password",
+      "type": "string"
+    },
+    "confirmation": {
+      "const": "DELETE MY DATA",
+      "title": "Confirmation",
+      "type": "string"
+    }
+  },
+  "required": [
+    "password",
+    "confirmation"
+  ],
+  "title": "PersonalDataEraseV1",
+  "type": "object"
+}

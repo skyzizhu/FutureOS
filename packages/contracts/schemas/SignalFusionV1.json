@@ -1,0 +1,107 @@
+{
+  "$defs": {
+    "LifecycleStage": {
+      "enum": [
+        "emergence",
+        "growth",
+        "maturity",
+        "inflection",
+        "decline",
+        "unknown"
+      ],
+      "title": "LifecycleStage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "fusion_id": {
+      "format": "uuid",
+      "title": "Fusion Id",
+      "type": "string"
+    },
+    "signal_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Signal Ids",
+      "type": "array"
+    },
+    "independent_source_groups": {
+      "minimum": 0,
+      "title": "Independent Source Groups",
+      "type": "integer"
+    },
+    "mechanism": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Mechanism",
+      "type": "string"
+    },
+    "remaining_bottlenecks": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Remaining Bottlenecks",
+      "type": "array"
+    },
+    "emergent_hypotheses": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Emergent Hypotheses",
+      "type": "array"
+    },
+    "opposing_explanations": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Opposing Explanations",
+      "type": "array"
+    },
+    "next_observable_signals": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Next Observable Signals",
+      "type": "array"
+    },
+    "stage": {
+      "$ref": "#/$defs/LifecycleStage"
+    },
+    "status": {
+      "const": "hypothesis",
+      "default": "hypothesis",
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "fusion_id",
+    "signal_ids",
+    "independent_source_groups",
+    "mechanism",
+    "remaining_bottlenecks",
+    "emergent_hypotheses",
+    "opposing_explanations",
+    "next_observable_signals",
+    "stage"
+  ],
+  "title": "SignalFusionV1",
+  "type": "object"
+}

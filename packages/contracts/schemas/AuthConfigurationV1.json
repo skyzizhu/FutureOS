@@ -1,0 +1,46 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "email_code_length": {
+      "const": 4,
+      "default": 4,
+      "title": "Email Code Length",
+      "type": "integer"
+    },
+    "email_transport": {
+      "enum": [
+        "local_preview",
+        "smtp",
+        "disabled"
+      ],
+      "title": "Email Transport",
+      "type": "string"
+    },
+    "turnstile_enabled": {
+      "title": "Turnstile Enabled",
+      "type": "boolean"
+    },
+    "turnstile_site_key": {
+      "title": "Turnstile Site Key",
+      "type": "string"
+    },
+    "demo_admin_enabled": {
+      "title": "Demo Admin Enabled",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "email_transport",
+    "turnstile_enabled",
+    "turnstile_site_key",
+    "demo_admin_enabled"
+  ],
+  "title": "AuthConfigurationV1",
+  "type": "object"
+}

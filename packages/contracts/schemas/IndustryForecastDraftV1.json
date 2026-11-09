@@ -1,0 +1,103 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "mechanism": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Mechanism",
+      "type": "string"
+    },
+    "expected_signal": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Expected Signal",
+      "type": "string"
+    },
+    "falsifier": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Falsifier",
+      "type": "string"
+    },
+    "uncertainty": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Uncertainty",
+      "type": "string"
+    },
+    "alternatives": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "title": "Alternatives",
+      "type": "array"
+    },
+    "supporting_source_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 12,
+      "minItems": 1,
+      "title": "Supporting Source Ids",
+      "type": "array"
+    },
+    "counter_source_ids": {
+      "default": [],
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 12,
+      "title": "Counter Source Ids",
+      "type": "array"
+    },
+    "basis": {
+      "default": "direct",
+      "enum": [
+        "direct",
+        "analogy"
+      ],
+      "title": "Basis",
+      "type": "string"
+    },
+    "analogy_case_ids": {
+      "default": [],
+      "items": {
+        "maxLength": 200,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 4,
+      "title": "Analogy Case Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "statement",
+    "mechanism",
+    "expected_signal",
+    "falsifier",
+    "uncertainty",
+    "alternatives",
+    "supporting_source_ids"
+  ],
+  "title": "IndustryForecastDraftV1",
+  "type": "object"
+}

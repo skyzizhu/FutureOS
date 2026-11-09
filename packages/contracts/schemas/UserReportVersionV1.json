@@ -1,0 +1,84 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "report_id": {
+      "format": "uuid",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "report_version": {
+      "minimum": 1,
+      "title": "Report Version",
+      "type": "integer"
+    },
+    "profile_snapshot_id": {
+      "format": "uuid",
+      "title": "Profile Snapshot Id",
+      "type": "string"
+    },
+    "research_as_of": {
+      "format": "date-time",
+      "title": "Research As Of",
+      "type": "string"
+    },
+    "forecast_version_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Forecast Version Ids",
+      "type": "array"
+    },
+    "personal_impact_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Personal Impact Ids",
+      "type": "array"
+    },
+    "change_reason": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Change Reason",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "report_version_id",
+    "report_id",
+    "user_id",
+    "report_version",
+    "profile_snapshot_id",
+    "research_as_of",
+    "forecast_version_ids",
+    "personal_impact_ids",
+    "change_reason",
+    "created_at"
+  ],
+  "title": "UserReportVersionV1",
+  "type": "object"
+}

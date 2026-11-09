@@ -1,0 +1,21 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "industry_id": {
+      "format": "uuid",
+      "title": "Industry Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "industry_id"
+  ],
+  "title": "CommunitySaveReportV1",
+  "type": "object"
+}

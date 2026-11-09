@@ -1,0 +1,45 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "monitor_enabled": {
+      "default": true,
+      "title": "Monitor Enabled",
+      "type": "boolean"
+    },
+    "prediction_enabled": {
+      "default": true,
+      "title": "Prediction Enabled",
+      "type": "boolean"
+    },
+    "email_enabled": {
+      "default": false,
+      "title": "Email Enabled",
+      "type": "boolean"
+    },
+    "industry_id": {
+      "format": "uuid",
+      "title": "Industry Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "waiting_rules",
+        "paused"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "industry_id",
+    "status"
+  ],
+  "title": "IndustryTrackingViewV1",
+  "type": "object"
+}

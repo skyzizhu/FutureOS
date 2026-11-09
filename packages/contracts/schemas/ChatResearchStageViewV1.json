@@ -1,0 +1,31 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "search",
+        "analysis",
+        "report"
+      ],
+      "title": "Stage",
+      "type": "string"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "stage",
+    "started_at"
+  ],
+  "title": "ChatResearchStageViewV1",
+  "type": "object"
+}

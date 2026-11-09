@@ -1,0 +1,21 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "code": {
+      "pattern": "^[0-9]{6}$",
+      "title": "Code",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code"
+  ],
+  "title": "AdminStepUpV1",
+  "type": "object"
+}

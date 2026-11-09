@@ -1,0 +1,82 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "claim_text": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Claim Text",
+      "type": "string"
+    },
+    "quote": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Quote",
+      "type": "string"
+    },
+    "source_locator": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Source Locator",
+      "type": "string"
+    },
+    "relation": {
+      "enum": [
+        "supports",
+        "contradicts",
+        "context"
+      ],
+      "title": "Relation",
+      "type": "string"
+    },
+    "claim_kind": {
+      "enum": [
+        "fact",
+        "opinion",
+        "hypothesis"
+      ],
+      "title": "Claim Kind",
+      "type": "string"
+    },
+    "verification_status": {
+      "default": "unverified",
+      "enum": [
+        "unverified",
+        "verified"
+      ],
+      "title": "Verification Status",
+      "type": "string"
+    },
+    "verification_note": {
+      "default": "",
+      "title": "Verification Note",
+      "type": "string"
+    },
+    "scope": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Scope",
+      "type": "string"
+    },
+    "caveat": {
+      "default": "",
+      "title": "Caveat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_text",
+    "quote",
+    "source_locator",
+    "relation",
+    "claim_kind",
+    "scope"
+  ],
+  "title": "ClaimImportV1",
+  "type": "object"
+}

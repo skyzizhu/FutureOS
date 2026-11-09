@@ -1,0 +1,45 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "delivery_id": {
+      "format": "uuid",
+      "title": "Delivery Id",
+      "type": "string"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "status": {
+      "const": "saved_locally_not_sent",
+      "default": "saved_locally_not_sent",
+      "title": "Status",
+      "type": "string"
+    },
+    "external_delivery": {
+      "const": false,
+      "default": false,
+      "title": "External Delivery",
+      "type": "boolean"
+    },
+    "consented_at": {
+      "format": "date-time",
+      "title": "Consented At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "delivery_id",
+    "report_version_id",
+    "consented_at"
+  ],
+  "title": "LocalDeliveryV1",
+  "type": "object"
+}

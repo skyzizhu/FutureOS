@@ -1,0 +1,246 @@
+{
+  "$defs": {
+    "ConversationIndustryProposalV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "added",
+            "already_exists"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "industry_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Industry Id"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "status"
+      ],
+      "title": "ConversationIndustryProposalV1",
+      "type": "object"
+    },
+    "ConversationMessageViewV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "user",
+            "assistant"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "client_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Client Id"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "enum": [
+                "local",
+                "llm"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "proposal": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConversationIndustryProposalV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "role",
+        "text"
+      ],
+      "title": "ConversationMessageViewV1",
+      "type": "object"
+    },
+    "JobStatus": {
+      "enum": [
+        "queued",
+        "running",
+        "succeeded",
+        "failed_retryable",
+        "failed_terminal",
+        "cancelled"
+      ],
+      "title": "JobStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Industry Id"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "messages": {
+      "items": {
+        "$ref": "#/$defs/ConversationMessageViewV1"
+      },
+      "title": "Messages",
+      "type": "array"
+    },
+    "job_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Job Id"
+    },
+    "job_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/JobStatus"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Error Code"
+    },
+    "report_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Report Id"
+    },
+    "mode": {
+      "const": "demo_reuse",
+      "default": "demo_reuse",
+      "title": "Mode",
+      "type": "string"
+    },
+    "new_forecast_rules_pending": {
+      "const": true,
+      "default": true,
+      "title": "New Forecast Rules Pending",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "industry_id",
+    "title",
+    "created_at",
+    "messages",
+    "job_id",
+    "job_status",
+    "error_code",
+    "report_id"
+  ],
+  "title": "ConversationViewV1",
+  "type": "object"
+}

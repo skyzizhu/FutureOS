@@ -1,0 +1,181 @@
+{
+  "$defs": {
+    "ForecastTargetV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "target_type": {
+          "enum": [
+            "binary",
+            "numeric",
+            "ordinal",
+            "milestone"
+          ],
+          "title": "Target Type",
+          "type": "string"
+        },
+        "population_scope": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Population Scope",
+          "type": "string"
+        },
+        "geography": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Geography",
+          "type": "string"
+        },
+        "metric_definition": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Metric Definition",
+          "type": "string"
+        },
+        "direction_or_threshold": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Direction Or Threshold",
+          "type": "string"
+        },
+        "baseline": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Baseline",
+          "type": "string"
+        },
+        "target_start_at": {
+          "format": "date-time",
+          "title": "Target Start At",
+          "type": "string"
+        },
+        "target_end_at": {
+          "format": "date-time",
+          "title": "Target End At",
+          "type": "string"
+        },
+        "resolution_source": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Source",
+          "type": "string"
+        },
+        "resolution_rule": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Rule",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_type",
+        "population_scope",
+        "geography",
+        "metric_definition",
+        "direction_or_threshold",
+        "baseline",
+        "target_start_at",
+        "target_end_at",
+        "resolution_source",
+        "resolution_rule"
+      ],
+      "title": "ForecastTargetV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "draft_id": {
+      "format": "uuid",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "draft_sequence": {
+      "enum": [
+        "A",
+        "B1",
+        "B2"
+      ],
+      "title": "Draft Sequence",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "hypothesis",
+        "draft_forecast"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "research_as_of": {
+      "format": "date-time",
+      "title": "Research As Of",
+      "type": "string"
+    },
+    "target": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ForecastTargetV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "evidence_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Evidence Claim Ids",
+      "type": "array"
+    },
+    "inputs_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Inputs Hash",
+      "type": "string"
+    },
+    "model_version": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Model Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "draft_id",
+    "run_id",
+    "draft_sequence",
+    "kind",
+    "statement",
+    "research_as_of",
+    "evidence_claim_ids",
+    "inputs_hash",
+    "model_version"
+  ],
+  "title": "ForecastDraftV1",
+  "type": "object"
+}

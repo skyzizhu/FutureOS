@@ -1,0 +1,22 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "url": {
+      "maxLength": 8192,
+      "minLength": 1,
+      "title": "Url",
+      "type": "string"
+    }
+  },
+  "required": [
+    "url"
+  ],
+  "title": "WebFetchRequestV1",
+  "type": "object"
+}

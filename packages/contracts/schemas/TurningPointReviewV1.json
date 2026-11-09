@@ -1,0 +1,82 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "trigger_id": {
+      "format": "uuid",
+      "title": "Trigger Id",
+      "type": "string"
+    },
+    "forecast_id": {
+      "format": "uuid",
+      "title": "Forecast Id",
+      "type": "string"
+    },
+    "old_version_id": {
+      "format": "uuid",
+      "title": "Old Version Id",
+      "type": "string"
+    },
+    "new_version_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "New Version Id"
+    },
+    "final_level": {
+      "enum": [
+        "T0",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "title": "Final Level",
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "archive",
+        "observe",
+        "retain",
+        "reforecast",
+        "personal_impact_only"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "evidence_delta_hash": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Evidence Delta Hash",
+      "type": "string"
+    },
+    "reviewed_at": {
+      "format": "date-time",
+      "title": "Reviewed At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "trigger_id",
+    "forecast_id",
+    "old_version_id",
+    "final_level",
+    "decision",
+    "evidence_delta_hash",
+    "reviewed_at"
+  ],
+  "title": "TurningPointReviewV1",
+  "type": "object"
+}

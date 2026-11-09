@@ -1,0 +1,42 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "report_id": {
+      "format": "uuid",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "status": {
+      "const": "private_report_ready",
+      "default": "private_report_ready",
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "report_id",
+    "report_version_id",
+    "label"
+  ],
+  "title": "UserReportResultV1",
+  "type": "object"
+}

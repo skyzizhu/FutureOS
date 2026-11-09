@@ -1,0 +1,11 @@
+[project]
+name = "futureos-prediction-engine"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.12,<3"]
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools]
+package-dir = {"prediction_engine" = "."}
+packages = ["prediction_engine", "prediction_engine.adjudication", "prediction_engine.contracts", "prediction_engine.critic", "prediction_engine.decision_value", "prediction_engine.evaluation", "prediction_engine.evidence", "prediction_engine.forecasting", "prediction_engine.historical_analogies", "prediction_engine.ingestion", "prediction_engine.mechanisms", "prediction_engine.personalization", "prediction_engine.recommendations", "prediction_engine.reporting", "prediction_engine.signal_detection", "prediction_engine.signal_fusion", "prediction_engine.turning_points"]

@@ -1,0 +1,93 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "monitor_run_id": {
+      "format": "uuid",
+      "title": "Monitor Run Id",
+      "type": "string"
+    },
+    "forecast_id": {
+      "format": "uuid",
+      "title": "Forecast Id",
+      "type": "string"
+    },
+    "old_version_id": {
+      "format": "uuid",
+      "title": "Old Version Id",
+      "type": "string"
+    },
+    "new_version_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "New Version Id"
+    },
+    "level": {
+      "enum": [
+        "T0",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "outcome": {
+      "enum": [
+        "archived",
+        "observed",
+        "retained",
+        "published",
+        "review_blocked"
+      ],
+      "title": "Outcome",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    },
+    "changed_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Changed Fields",
+      "type": "array"
+    },
+    "refreshed_reports": {
+      "title": "Refreshed Reports",
+      "type": "integer"
+    },
+    "external_model_calls": {
+      "const": 0,
+      "default": 0,
+      "title": "External Model Calls",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "monitor_run_id",
+    "forecast_id",
+    "old_version_id",
+    "level",
+    "outcome",
+    "reason",
+    "changed_fields",
+    "refreshed_reports"
+  ],
+  "title": "MonitorResultV1",
+  "type": "object"
+}

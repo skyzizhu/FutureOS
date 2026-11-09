@@ -1,0 +1,79 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "forecast_index": {
+      "description": "Zero-based forecast position",
+      "maximum": 3,
+      "minimum": 0,
+      "title": "Forecast Index",
+      "type": "integer"
+    },
+    "domain": {
+      "enum": [
+        "career",
+        "work",
+        "learning",
+        "spending",
+        "finance",
+        "life",
+        "health"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "action": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Action",
+      "type": "string"
+    },
+    "trigger": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Trigger",
+      "type": "string"
+    },
+    "check_after_days": {
+      "maximum": 365,
+      "minimum": 1,
+      "title": "Check After Days",
+      "type": "integer"
+    },
+    "time_minutes": {
+      "maximum": 480,
+      "minimum": 1,
+      "title": "Time Minutes",
+      "type": "integer"
+    },
+    "success_check": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Success Check",
+      "type": "string"
+    },
+    "stop_condition": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Stop Condition",
+      "type": "string"
+    }
+  },
+  "required": [
+    "forecast_index",
+    "domain",
+    "action",
+    "trigger",
+    "check_after_days",
+    "time_minutes",
+    "success_check",
+    "stop_condition"
+  ],
+  "title": "IndustryActionDraftV1",
+  "type": "object"
+}

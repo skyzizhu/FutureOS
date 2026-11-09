@@ -1,0 +1,69 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "format": "uuid",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "topic_id": {
+      "format": "uuid",
+      "title": "Topic Id",
+      "type": "string"
+    },
+    "profile_snapshot_id": {
+      "format": "uuid",
+      "title": "Profile Snapshot Id",
+      "type": "string"
+    },
+    "entitlement_reservation_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Entitlement Reservation Id"
+    },
+    "request_kind": {
+      "enum": [
+        "first_report",
+        "new_topic",
+        "material_review"
+      ],
+      "title": "Request Kind",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Idempotency Key",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request_id",
+    "user_id",
+    "topic_id",
+    "profile_snapshot_id",
+    "request_kind",
+    "idempotency_key"
+  ],
+  "title": "PredictionRequestV1",
+  "type": "object"
+}

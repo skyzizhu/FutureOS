@@ -1,0 +1,57 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "publication_id": {
+      "format": "uuid",
+      "title": "Publication Id",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "like",
+        "bookmark"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "summary": {
+      "title": "Summary",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "read": {
+      "title": "Read",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "publication_id",
+    "kind",
+    "title",
+    "summary",
+    "created_at",
+    "read"
+  ],
+  "title": "CommunityActivityV1",
+  "type": "object"
+}

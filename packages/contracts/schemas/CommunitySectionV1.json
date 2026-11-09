@@ -1,0 +1,25 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "heading": {
+      "title": "Heading",
+      "type": "string"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    }
+  },
+  "required": [
+    "heading",
+    "text"
+  ],
+  "title": "CommunitySectionV1",
+  "type": "object"
+}

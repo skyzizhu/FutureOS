@@ -1,0 +1,37 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "event_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Event Id",
+      "type": "string"
+    },
+    "delivery_id": {
+      "format": "uuid",
+      "title": "Delivery Id",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "bounce",
+        "complaint"
+      ],
+      "title": "Kind",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "delivery_id",
+    "kind"
+  ],
+  "title": "BounceEventV1",
+  "type": "object"
+}

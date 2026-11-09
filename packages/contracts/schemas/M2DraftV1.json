@@ -1,0 +1,910 @@
+{
+  "$defs": {
+    "AnalogyAssessmentV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "case_id": {
+          "format": "uuid",
+          "title": "Case Id",
+          "type": "string"
+        },
+        "mechanism_overlap": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mechanism Overlap",
+          "type": "array"
+        },
+        "similarities": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Similarities",
+          "type": "array"
+        },
+        "key_differences": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Key Differences",
+          "type": "array"
+        },
+        "non_transferable": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Non Transferable",
+          "type": "array"
+        },
+        "known_outcomes": {
+          "items": {
+            "$ref": "#/$defs/HistoricalEventImportV1"
+          },
+          "title": "Known Outcomes",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "case_id",
+        "mechanism_overlap",
+        "similarities",
+        "key_differences",
+        "non_transferable",
+        "known_outcomes",
+        "limitations"
+      ],
+      "title": "AnalogyAssessmentV1",
+      "type": "object"
+    },
+    "BaselineV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "last_value",
+            "not_applicable"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "sample_count": {
+          "minimum": 0,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "observation_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Observation Ids",
+          "type": "array"
+        },
+        "last_observed_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Observed Value"
+        },
+        "projected_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Projected Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "method",
+        "sample_count",
+        "observation_ids",
+        "limitations"
+      ],
+      "title": "BaselineV1",
+      "type": "object"
+    },
+    "ForecastTargetV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "target_type": {
+          "enum": [
+            "binary",
+            "numeric",
+            "ordinal",
+            "milestone"
+          ],
+          "title": "Target Type",
+          "type": "string"
+        },
+        "population_scope": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Population Scope",
+          "type": "string"
+        },
+        "geography": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Geography",
+          "type": "string"
+        },
+        "metric_definition": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Metric Definition",
+          "type": "string"
+        },
+        "direction_or_threshold": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Direction Or Threshold",
+          "type": "string"
+        },
+        "baseline": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Baseline",
+          "type": "string"
+        },
+        "target_start_at": {
+          "format": "date-time",
+          "title": "Target Start At",
+          "type": "string"
+        },
+        "target_end_at": {
+          "format": "date-time",
+          "title": "Target End At",
+          "type": "string"
+        },
+        "resolution_source": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Source",
+          "type": "string"
+        },
+        "resolution_rule": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Rule",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_type",
+        "population_scope",
+        "geography",
+        "metric_definition",
+        "direction_or_threshold",
+        "baseline",
+        "target_start_at",
+        "target_end_at",
+        "resolution_source",
+        "resolution_rule"
+      ],
+      "title": "ForecastTargetV1",
+      "type": "object"
+    },
+    "HistoricalEventImportV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "data_role": {
+          "enum": [
+            "contemporaneous",
+            "outcome"
+          ],
+          "title": "Data Role",
+          "type": "string"
+        },
+        "outcome_category": {
+          "anyOf": [
+            {
+              "enum": [
+                "success",
+                "failure",
+                "inconclusive"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome Category"
+        }
+      },
+      "required": [
+        "text",
+        "known_at",
+        "source_version_id",
+        "data_role"
+      ],
+      "title": "HistoricalEventImportV1",
+      "type": "object"
+    },
+    "LifecycleStage": {
+      "enum": [
+        "emergence",
+        "growth",
+        "maturity",
+        "inflection",
+        "decline",
+        "unknown"
+      ],
+      "title": "LifecycleStage",
+      "type": "string"
+    },
+    "MechanismEdgeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "from_node": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "From Node",
+          "type": "string"
+        },
+        "to_node": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "To Node",
+          "type": "string"
+        },
+        "relationship": {
+          "enum": [
+            "enables",
+            "constrains",
+            "counteracts"
+          ],
+          "title": "Relationship",
+          "type": "string"
+        },
+        "sign": {
+          "enum": [
+            "positive",
+            "negative"
+          ],
+          "title": "Sign",
+          "type": "string"
+        },
+        "lag_range": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Lag Range",
+          "type": "string"
+        },
+        "conditions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Conditions",
+          "type": "array"
+        },
+        "evidence_claim_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Claim Ids",
+          "type": "array"
+        },
+        "uncertainty": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Uncertainty",
+          "type": "string"
+        }
+      },
+      "required": [
+        "from_node",
+        "to_node",
+        "relationship",
+        "sign",
+        "lag_range",
+        "conditions",
+        "evidence_claim_ids",
+        "uncertainty"
+      ],
+      "title": "MechanismEdgeV1",
+      "type": "object"
+    },
+    "ResearchNarrativeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "hypothesis": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Hypothesis",
+          "type": "string"
+        },
+        "enabling_conditions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Enabling Conditions",
+          "type": "array"
+        },
+        "bottlenecks": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Bottlenecks",
+          "type": "array"
+        },
+        "opposing_explanations": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Opposing Explanations",
+          "type": "array"
+        },
+        "next_observable_signals": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Next Observable Signals",
+          "type": "array"
+        },
+        "falsification_conditions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Falsification Conditions",
+          "type": "array"
+        },
+        "cited_claim_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Cited Claim Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "hypothesis",
+        "enabling_conditions",
+        "bottlenecks",
+        "opposing_explanations",
+        "next_observable_signals",
+        "falsification_conditions",
+        "cited_claim_ids"
+      ],
+      "title": "ResearchNarrativeV1",
+      "type": "object"
+    },
+    "ScenarioV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "scenario_id": {
+          "format": "uuid",
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "scenario",
+          "default": "scenario",
+          "title": "Kind",
+          "type": "string"
+        },
+        "path": {
+          "enum": [
+            "base",
+            "acceleration",
+            "friction"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        },
+        "conditions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Conditions",
+          "type": "array"
+        },
+        "observable_signals": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Observable Signals",
+          "type": "array"
+        },
+        "falsification_conditions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Falsification Conditions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "path",
+        "statement",
+        "conditions",
+        "observable_signals",
+        "falsification_conditions"
+      ],
+      "title": "ScenarioV1",
+      "type": "object"
+    },
+    "SignalFusionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "fusion_id": {
+          "format": "uuid",
+          "title": "Fusion Id",
+          "type": "string"
+        },
+        "signal_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Signal Ids",
+          "type": "array"
+        },
+        "independent_source_groups": {
+          "minimum": 0,
+          "title": "Independent Source Groups",
+          "type": "integer"
+        },
+        "mechanism": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Mechanism",
+          "type": "string"
+        },
+        "remaining_bottlenecks": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Remaining Bottlenecks",
+          "type": "array"
+        },
+        "emergent_hypotheses": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Emergent Hypotheses",
+          "type": "array"
+        },
+        "opposing_explanations": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Opposing Explanations",
+          "type": "array"
+        },
+        "next_observable_signals": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Next Observable Signals",
+          "type": "array"
+        },
+        "stage": {
+          "$ref": "#/$defs/LifecycleStage"
+        },
+        "status": {
+          "const": "hypothesis",
+          "default": "hypothesis",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fusion_id",
+        "signal_ids",
+        "independent_source_groups",
+        "mechanism",
+        "remaining_bottlenecks",
+        "emergent_hypotheses",
+        "opposing_explanations",
+        "next_observable_signals",
+        "stage"
+      ],
+      "title": "SignalFusionV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "parent_version_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Version Id"
+    },
+    "draft_id": {
+      "format": "uuid",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "draft_sequence": {
+      "default": "A",
+      "enum": [
+        "A",
+        "B1",
+        "B2"
+      ],
+      "title": "Draft Sequence",
+      "type": "string"
+    },
+    "status": {
+      "const": "internal_unreviewed",
+      "default": "internal_unreviewed",
+      "title": "Status",
+      "type": "string"
+    },
+    "publication_allowed": {
+      "const": false,
+      "default": false,
+      "title": "Publication Allowed",
+      "type": "boolean"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "hypothesis",
+        "draft_forecast"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "research_as_of": {
+      "format": "date-time",
+      "title": "Research As Of",
+      "type": "string"
+    },
+    "lifecycle_stage": {
+      "$ref": "#/$defs/LifecycleStage"
+    },
+    "target": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ForecastTargetV1"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Evidence Claim Ids",
+      "type": "array"
+    },
+    "contradiction_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Contradiction Claim Ids",
+      "type": "array"
+    },
+    "fusions": {
+      "items": {
+        "$ref": "#/$defs/SignalFusionV1"
+      },
+      "title": "Fusions",
+      "type": "array"
+    },
+    "mechanism_chain": {
+      "items": {
+        "$ref": "#/$defs/MechanismEdgeV1"
+      },
+      "title": "Mechanism Chain",
+      "type": "array"
+    },
+    "analogies": {
+      "items": {
+        "$ref": "#/$defs/AnalogyAssessmentV1"
+      },
+      "title": "Analogies",
+      "type": "array"
+    },
+    "scenarios": {
+      "items": {
+        "$ref": "#/$defs/ScenarioV1"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "title": "Scenarios",
+      "type": "array"
+    },
+    "baseline": {
+      "$ref": "#/$defs/BaselineV1"
+    },
+    "raw_narrative": {
+      "$ref": "#/$defs/ResearchNarrativeV1"
+    },
+    "assumptions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "falsification_conditions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Falsification Conditions",
+      "type": "array"
+    },
+    "uncertainty_state": {
+      "const": "uncalibrated",
+      "default": "uncalibrated",
+      "title": "Uncertainty State",
+      "type": "string"
+    },
+    "next_review_at": {
+      "format": "date-time",
+      "title": "Next Review At",
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    },
+    "downgrade_reasons": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Downgrade Reasons",
+      "type": "array"
+    },
+    "input_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Input Hash",
+      "type": "string"
+    },
+    "prompt_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Prompt Hash",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "rules_version": {
+      "const": "m2-rules-v1",
+      "default": "m2-rules-v1",
+      "title": "Rules Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "draft_id",
+    "run_id",
+    "label",
+    "kind",
+    "statement",
+    "research_as_of",
+    "lifecycle_stage",
+    "target",
+    "evidence_claim_ids",
+    "contradiction_claim_ids",
+    "fusions",
+    "mechanism_chain",
+    "analogies",
+    "scenarios",
+    "baseline",
+    "raw_narrative",
+    "assumptions",
+    "falsification_conditions",
+    "next_review_at",
+    "limitations",
+    "downgrade_reasons",
+    "input_hash",
+    "prompt_hash",
+    "model_id"
+  ],
+  "title": "M2DraftV1",
+  "type": "object"
+}

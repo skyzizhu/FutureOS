@@ -1,0 +1,38 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "email": {
+      "maxLength": 254,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9.!#$%&*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+      "title": "Email",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "register",
+        "password_reset"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "human_token": {
+      "default": "",
+      "maxLength": 2048,
+      "title": "Human Token",
+      "type": "string"
+    }
+  },
+  "required": [
+    "email",
+    "purpose"
+  ],
+  "title": "EmailCodeRequestV1",
+  "type": "object"
+}

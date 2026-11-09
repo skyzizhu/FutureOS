@@ -1,0 +1,77 @@
+{
+  "$defs": {
+    "IndustrySearchQueryV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "lane": {
+          "enum": [
+            "industry",
+            "market",
+            "policy",
+            "indicators",
+            "counter",
+            "analogy"
+          ],
+          "title": "Lane",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lane",
+        "query"
+      ],
+      "title": "IndustrySearchQueryV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sufficient": {
+      "title": "Sufficient",
+      "type": "boolean"
+    },
+    "gaps": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 8,
+      "title": "Gaps",
+      "type": "array"
+    },
+    "queries": {
+      "items": {
+        "$ref": "#/$defs/IndustrySearchQueryV1"
+      },
+      "maxItems": 4,
+      "title": "Queries",
+      "type": "array"
+    }
+  },
+  "required": [
+    "sufficient",
+    "gaps",
+    "queries"
+  ],
+  "title": "IndustryCoverageReviewV1",
+  "type": "object"
+}

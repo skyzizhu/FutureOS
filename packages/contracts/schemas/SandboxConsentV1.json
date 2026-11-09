@@ -1,0 +1,21 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "explicit_sandbox_consent": {
+      "const": true,
+      "title": "Explicit Sandbox Consent",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "explicit_sandbox_consent"
+  ],
+  "title": "SandboxConsentV1",
+  "type": "object"
+}

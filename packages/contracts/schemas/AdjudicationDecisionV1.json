@@ -1,0 +1,67 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "decision_id": {
+      "format": "uuid",
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "draft_id": {
+      "format": "uuid",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "finding_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Finding Ids",
+      "type": "array"
+    },
+    "rule_version": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Rule Version",
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "accept",
+        "annotate",
+        "targeted_research",
+        "block"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "rationale": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Rationale",
+      "type": "string"
+    },
+    "decided_at": {
+      "format": "date-time",
+      "title": "Decided At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "decision_id",
+    "draft_id",
+    "finding_ids",
+    "rule_version",
+    "decision",
+    "rationale",
+    "decided_at"
+  ],
+  "title": "AdjudicationDecisionV1",
+  "type": "object"
+}

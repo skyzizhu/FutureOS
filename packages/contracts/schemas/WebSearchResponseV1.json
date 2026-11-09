@@ -1,0 +1,157 @@
+{
+  "$defs": {
+    "SearchHitV1": {
+      "additionalProperties": false,
+      "description": "Unverified provider output, separate from ingested/verified SourceV1 evidence.",
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "hit_id": {
+          "format": "uuid",
+          "title": "Hit Id",
+          "type": "string"
+        },
+        "provider": {
+          "enum": [
+            "mock",
+            "deepseek"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "snippet": {
+          "title": "Snippet",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "site_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Site Name"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Published At"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "provider_rank_score": {
+          "anyOf": [
+            {
+              "maximum": 3,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Rank Score"
+        },
+        "provider_authority": {
+          "anyOf": [
+            {
+              "maximum": 4,
+              "minimum": -1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Authority"
+        },
+        "evidence_status": {
+          "const": "unverified",
+          "default": "unverified",
+          "title": "Evidence Status",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "hit_id",
+        "provider",
+        "url",
+        "title",
+        "snippet",
+        "summary",
+        "content",
+        "published_at",
+        "retrieved_at",
+        "label"
+      ],
+      "title": "SearchHitV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "results": {
+      "items": {
+        "$ref": "#/$defs/SearchHitV1"
+      },
+      "title": "Results",
+      "type": "array"
+    }
+  },
+  "required": [
+    "results"
+  ],
+  "title": "WebSearchResponseV1",
+  "type": "object"
+}

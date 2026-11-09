@@ -1,0 +1,53 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "recipient_masked": {
+      "title": "Recipient Masked",
+      "type": "string"
+    },
+    "subject": {
+      "title": "Subject",
+      "type": "string"
+    },
+    "summary": {
+      "title": "Summary",
+      "type": "string"
+    },
+    "private_link": {
+      "title": "Private Link",
+      "type": "string"
+    },
+    "transport": {
+      "const": "mock_local",
+      "default": "mock_local",
+      "title": "Transport",
+      "type": "string"
+    },
+    "external_delivery": {
+      "const": false,
+      "default": false,
+      "title": "External Delivery",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "report_version_id",
+    "recipient_masked",
+    "subject",
+    "summary",
+    "private_link"
+  ],
+  "title": "EmailPreviewV1",
+  "type": "object"
+}

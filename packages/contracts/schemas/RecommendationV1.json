@@ -1,0 +1,143 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "recommendation_id": {
+      "format": "uuid",
+      "title": "Recommendation Id",
+      "type": "string"
+    },
+    "impact_id": {
+      "format": "uuid",
+      "title": "Impact Id",
+      "type": "string"
+    },
+    "action": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Action",
+      "type": "string"
+    },
+    "rationale": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Rationale",
+      "type": "string"
+    },
+    "forecast_version_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Forecast Version Ids",
+      "type": "array"
+    },
+    "applicability": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Applicability",
+      "type": "string"
+    },
+    "suggested_start": {
+      "format": "date-time",
+      "title": "Suggested Start",
+      "type": "string"
+    },
+    "review_date": {
+      "format": "date-time",
+      "title": "Review Date",
+      "type": "string"
+    },
+    "estimated_effort_and_cost": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Estimated Effort And Cost",
+      "type": "string"
+    },
+    "tradeoffs": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Tradeoffs",
+      "type": "string"
+    },
+    "alternatives": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Alternatives",
+      "type": "array"
+    },
+    "success_metrics": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Success Metrics",
+      "type": "array"
+    },
+    "stop_or_revisit_condition": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Stop Or Revisit Condition",
+      "type": "string"
+    },
+    "priority": {
+      "enum": [
+        "prepare",
+        "observe",
+        "no_action"
+      ],
+      "title": "Priority",
+      "type": "string"
+    },
+    "personalization_assumptions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Personalization Assumptions",
+      "type": "array"
+    },
+    "suppressed_high_risk_actions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Suppressed High Risk Actions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "recommendation_id",
+    "impact_id",
+    "action",
+    "rationale",
+    "forecast_version_ids",
+    "applicability",
+    "suggested_start",
+    "review_date",
+    "estimated_effort_and_cost",
+    "tradeoffs",
+    "alternatives",
+    "success_metrics",
+    "stop_or_revisit_condition",
+    "priority",
+    "personalization_assumptions",
+    "suppressed_high_risk_actions"
+  ],
+  "title": "RecommendationV1",
+  "type": "object"
+}

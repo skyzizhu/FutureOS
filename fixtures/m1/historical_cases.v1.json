@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "label": "DEMO",
+  "cases": [
+    {
+      "case_key": "A",
+      "title": "DEMO neutral adoption case A",
+      "cutoff_at": "2020-06-01T00:00:00Z",
+      "initial_conditions": "Synthetic pilot began; adoption uncertain.",
+      "contemporaneous": {
+        "text": "DEMO tool pilot announced; reliability still uncertain.",
+        "known_at": "2020-05-01T00:00:00Z"
+      },
+      "outcome": {
+        "text": "DEMO retrospective result: success",
+        "known_at": "2021-05-01T00:00:00Z",
+        "category": "success"
+      },
+      "limitations": [
+        "Synthetic fixture; never real historical prediction evidence."
+      ]
+    },
+    {
+      "case_key": "B",
+      "title": "DEMO neutral adoption case B",
+      "cutoff_at": "2020-06-01T00:00:00Z",
+      "initial_conditions": "Synthetic pilot began; adoption uncertain.",
+      "contemporaneous": {
+        "text": "DEMO tool pilot announced; reliability still uncertain.",
+        "known_at": "2020-05-01T00:00:00Z"
+      },
+      "outcome": {
+        "text": "DEMO retrospective result: failure",
+        "known_at": "2021-05-01T00:00:00Z",
+        "category": "failure"
+      },
+      "limitations": [
+        "Synthetic fixture; never real historical prediction evidence."
+      ]
+    }
+  ]
+}

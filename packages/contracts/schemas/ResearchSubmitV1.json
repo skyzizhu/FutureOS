@@ -1,0 +1,240 @@
+{
+  "$defs": {
+    "DomainTag": {
+      "enum": [
+        "macro_finance",
+        "technology",
+        "industry",
+        "workforce",
+        "policy",
+        "consumption",
+        "housing",
+        "education",
+        "health",
+        "energy",
+        "supply_chain",
+        "society"
+      ],
+      "title": "DomainTag",
+      "type": "string"
+    },
+    "ForecastTargetV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "target_type": {
+          "enum": [
+            "binary",
+            "numeric",
+            "ordinal",
+            "milestone"
+          ],
+          "title": "Target Type",
+          "type": "string"
+        },
+        "population_scope": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Population Scope",
+          "type": "string"
+        },
+        "geography": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Geography",
+          "type": "string"
+        },
+        "metric_definition": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Metric Definition",
+          "type": "string"
+        },
+        "direction_or_threshold": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Direction Or Threshold",
+          "type": "string"
+        },
+        "baseline": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Baseline",
+          "type": "string"
+        },
+        "target_start_at": {
+          "format": "date-time",
+          "title": "Target Start At",
+          "type": "string"
+        },
+        "target_end_at": {
+          "format": "date-time",
+          "title": "Target End At",
+          "type": "string"
+        },
+        "resolution_source": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Source",
+          "type": "string"
+        },
+        "resolution_rule": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Rule",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_type",
+        "population_scope",
+        "geography",
+        "metric_definition",
+        "direction_or_threshold",
+        "baseline",
+        "target_start_at",
+        "target_end_at",
+        "resolution_source",
+        "resolution_rule"
+      ],
+      "title": "ForecastTargetV1",
+      "type": "object"
+    },
+    "LifecycleStage": {
+      "enum": [
+        "emergence",
+        "growth",
+        "maturity",
+        "inflection",
+        "decline",
+        "unknown"
+      ],
+      "title": "LifecycleStage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "scope": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Scope",
+      "type": "string"
+    },
+    "domain_tags": {
+      "items": {
+        "$ref": "#/$defs/DomainTag"
+      },
+      "maxItems": 12,
+      "minItems": 1,
+      "title": "Domain Tags",
+      "type": "array"
+    },
+    "research_as_of": {
+      "format": "date-time",
+      "title": "Research As Of",
+      "type": "string"
+    },
+    "signal_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Signal Ids",
+      "type": "array"
+    },
+    "historical_case_ids": {
+      "default": [],
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Historical Case Ids",
+      "type": "array"
+    },
+    "indicator_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Indicator Id"
+    },
+    "target": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ForecastTargetV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "lifecycle_stage": {
+      "$ref": "#/$defs/LifecycleStage",
+      "default": "unknown"
+    },
+    "recipe_id": {
+      "default": "verifiable_agent",
+      "enum": [
+        "verifiable_agent",
+        "technology_diffusion"
+      ],
+      "title": "Recipe Id",
+      "type": "string"
+    },
+    "provider": {
+      "default": "mock",
+      "enum": [
+        "mock",
+        "deepseek"
+      ],
+      "title": "Provider",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "scope",
+    "domain_tags",
+    "research_as_of",
+    "signal_ids",
+    "label"
+  ],
+  "title": "ResearchSubmitV1",
+  "type": "object"
+}

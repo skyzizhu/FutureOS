@@ -1,0 +1,54 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "synthetic",
+        "temporal_backtest",
+        "forward"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "operator": {
+      "enum": [
+        "gte",
+        "lte",
+        "eq"
+      ],
+      "title": "Operator",
+      "type": "string"
+    },
+    "threshold": {
+      "title": "Threshold",
+      "type": "number"
+    },
+    "unit": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Unit",
+      "type": "string"
+    },
+    "testset_version": {
+      "default": "manual-v1",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Testset Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "mode",
+    "operator",
+    "threshold",
+    "unit"
+  ],
+  "title": "EvaluationRegisterV1",
+  "type": "object"
+}

@@ -1,0 +1,56 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "critical_assumption_broken",
+        "resolution_source_revised",
+        "new_bottleneck_removed",
+        "material_new_counterevidence"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Claim Ids",
+      "type": "array"
+    },
+    "prior_claim_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Prior Claim Id"
+    },
+    "verification_note": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Verification Note",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "claim_ids",
+    "verification_note"
+  ],
+  "title": "ChangeAssertionV1",
+  "type": "object"
+}

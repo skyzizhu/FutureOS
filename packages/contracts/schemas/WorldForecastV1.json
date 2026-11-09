@@ -1,0 +1,76 @@
+{
+  "$defs": {
+    "LifecycleStage": {
+      "enum": [
+        "emergence",
+        "growth",
+        "maturity",
+        "inflection",
+        "decline",
+        "unknown"
+      ],
+      "title": "LifecycleStage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "forecast_id": {
+      "format": "uuid",
+      "title": "Forecast Id",
+      "type": "string"
+    },
+    "topic_id": {
+      "format": "uuid",
+      "title": "Topic Id",
+      "type": "string"
+    },
+    "stable_target_key": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Stable Target Key",
+      "type": "string"
+    },
+    "target_type": {
+      "enum": [
+        "binary",
+        "numeric",
+        "ordinal",
+        "milestone"
+      ],
+      "title": "Target Type",
+      "type": "string"
+    },
+    "lifecycle_stage": {
+      "$ref": "#/$defs/LifecycleStage"
+    },
+    "current_version_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Current Version Id"
+    }
+  },
+  "required": [
+    "forecast_id",
+    "topic_id",
+    "stable_target_key",
+    "target_type",
+    "lifecycle_stage"
+  ],
+  "title": "WorldForecastV1",
+  "type": "object"
+}

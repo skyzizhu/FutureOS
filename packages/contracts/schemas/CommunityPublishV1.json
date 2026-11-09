@@ -1,0 +1,40 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Industry Id"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "confirm_public": {
+      "const": true,
+      "title": "Confirm Public",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "industry_id",
+    "report_version_id",
+    "confirm_public"
+  ],
+  "title": "CommunityPublishV1",
+  "type": "object"
+}

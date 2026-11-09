@@ -1,0 +1,99 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "finding_id": {
+      "format": "uuid",
+      "title": "Finding Id",
+      "type": "string"
+    },
+    "draft_id": {
+      "format": "uuid",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "evidence",
+        "historical",
+        "causal",
+        "scenario",
+        "temporal_resolution"
+      ],
+      "title": "Category",
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "L0",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "verified_source_refs": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Verified Source Refs",
+      "type": "array"
+    },
+    "verification_status": {
+      "enum": [
+        "pending",
+        "verified",
+        "refuted"
+      ],
+      "title": "Verification Status",
+      "type": "string"
+    },
+    "scope": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Scope",
+      "type": "string"
+    },
+    "affected_assumption_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Affected Assumption Ids",
+      "type": "array"
+    },
+    "recommended_action": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Recommended Action",
+      "type": "string"
+    }
+  },
+  "required": [
+    "finding_id",
+    "draft_id",
+    "category",
+    "severity",
+    "statement",
+    "verified_source_refs",
+    "verification_status",
+    "scope",
+    "affected_assumption_ids",
+    "recommended_action"
+  ],
+  "title": "CriticFindingV1",
+  "type": "object"
+}

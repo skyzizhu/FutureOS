@@ -1,0 +1,170 @@
+{
+  "$defs": {
+    "CommunitySectionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "heading": {
+          "title": "Heading",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "heading",
+        "text"
+      ],
+      "title": "CommunitySectionV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Industry Id"
+    },
+    "industry_name": {
+      "title": "Industry Name",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "summary": {
+      "title": "Summary",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "sample": {
+      "title": "Sample",
+      "type": "boolean"
+    },
+    "image": {
+      "title": "Image",
+      "type": "string"
+    },
+    "sections": {
+      "items": {
+        "$ref": "#/$defs/CommunitySectionV1"
+      },
+      "title": "Sections",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "author": {
+      "title": "Author",
+      "type": "string"
+    },
+    "reason": {
+      "default": "",
+      "title": "Reason",
+      "type": "string"
+    },
+    "views_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Views Count",
+      "type": "integer"
+    },
+    "likes_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Likes Count",
+      "type": "integer"
+    },
+    "bookmarks_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Bookmarks Count",
+      "type": "integer"
+    },
+    "liked": {
+      "default": false,
+      "title": "Liked",
+      "type": "boolean"
+    },
+    "saved": {
+      "default": false,
+      "title": "Saved",
+      "type": "boolean"
+    },
+    "saved_industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Saved Industry Id"
+    },
+    "owned": {
+      "default": false,
+      "title": "Owned",
+      "type": "boolean"
+    },
+    "public": {
+      "default": true,
+      "title": "Public",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "industry_id",
+    "industry_name",
+    "title",
+    "summary",
+    "label",
+    "sample",
+    "image",
+    "sections",
+    "created_at",
+    "author"
+  ],
+  "title": "CommunityReportViewV1",
+  "type": "object"
+}

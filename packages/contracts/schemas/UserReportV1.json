@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "report_id": {
+      "format": "uuid",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "current_version_id": {
+      "format": "uuid",
+      "title": "Current Version Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "report_id",
+    "user_id",
+    "current_version_id"
+  ],
+  "title": "UserReportV1",
+  "type": "object"
+}

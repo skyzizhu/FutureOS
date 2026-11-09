@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "total": {
+      "const": 1,
+      "default": 1,
+      "title": "Total",
+      "type": "integer"
+    },
+    "available": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Available",
+      "type": "integer"
+    },
+    "reserved": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Reserved",
+      "type": "integer"
+    },
+    "consumed": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Consumed",
+      "type": "integer"
+    },
+    "paid_research_enabled": {
+      "const": false,
+      "default": false,
+      "title": "Paid Research Enabled",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "available",
+    "reserved",
+    "consumed"
+  ],
+  "title": "FreeReportEntitlementV1",
+  "type": "object"
+}

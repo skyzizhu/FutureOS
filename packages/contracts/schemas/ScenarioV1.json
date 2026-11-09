@@ -1,0 +1,77 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scenario_id": {
+      "format": "uuid",
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "kind": {
+      "const": "scenario",
+      "default": "scenario",
+      "title": "Kind",
+      "type": "string"
+    },
+    "path": {
+      "enum": [
+        "base",
+        "acceleration",
+        "friction"
+      ],
+      "title": "Path",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "conditions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Conditions",
+      "type": "array"
+    },
+    "observable_signals": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Observable Signals",
+      "type": "array"
+    },
+    "falsification_conditions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Falsification Conditions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "scenario_id",
+    "path",
+    "statement",
+    "conditions",
+    "observable_signals",
+    "falsification_conditions"
+  ],
+  "title": "ScenarioV1",
+  "type": "object"
+}

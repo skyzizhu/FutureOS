@@ -1,0 +1,68 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "indicator_id": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Indicator Id",
+      "type": "string"
+    },
+    "period_start": {
+      "format": "date-time",
+      "title": "Period Start",
+      "type": "string"
+    },
+    "period_end": {
+      "format": "date-time",
+      "title": "Period End",
+      "type": "string"
+    },
+    "value": {
+      "title": "Value",
+      "type": "number"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "available_at": {
+      "format": "date-time",
+      "title": "Available At",
+      "type": "string"
+    },
+    "vintage": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Vintage",
+      "type": "string"
+    },
+    "quality_flag": {
+      "enum": [
+        "DEMO_DATA",
+        "UNVERIFIED",
+        "VERIFIED"
+      ],
+      "title": "Quality Flag",
+      "type": "string"
+    }
+  },
+  "required": [
+    "indicator_id",
+    "period_start",
+    "period_end",
+    "value",
+    "published_at",
+    "available_at",
+    "vintage",
+    "quality_flag"
+  ],
+  "title": "IndicatorObservationVintageV1",
+  "type": "object"
+}

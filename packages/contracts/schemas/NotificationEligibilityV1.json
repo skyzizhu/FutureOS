@@ -1,0 +1,68 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "channel": {
+      "enum": [
+        "in_app",
+        "email"
+      ],
+      "title": "Channel",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "consent_snapshot_ref": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Consent Snapshot Ref"
+    },
+    "dedupe_key": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Dedupe Key",
+      "type": "string"
+    },
+    "eligible": {
+      "title": "Eligible",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "user_id",
+    "report_version_id",
+    "channel",
+    "reason",
+    "dedupe_key",
+    "eligible"
+  ],
+  "title": "NotificationEligibilityV1",
+  "type": "object"
+}

@@ -1,0 +1,172 @@
+{
+  "$defs": {
+    "DomainTag": {
+      "enum": [
+        "macro_finance",
+        "technology",
+        "industry",
+        "workforce",
+        "policy",
+        "consumption",
+        "housing",
+        "education",
+        "health",
+        "energy",
+        "supply_chain",
+        "society"
+      ],
+      "title": "DomainTag",
+      "type": "string"
+    },
+    "HistoricalEventImportV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "data_role": {
+          "enum": [
+            "contemporaneous",
+            "outcome"
+          ],
+          "title": "Data Role",
+          "type": "string"
+        },
+        "outcome_category": {
+          "anyOf": [
+            {
+              "enum": [
+                "success",
+                "failure",
+                "inconclusive"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome Category"
+        }
+      },
+      "required": [
+        "text",
+        "known_at",
+        "source_version_id",
+        "data_role"
+      ],
+      "title": "HistoricalEventImportV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "format": "uuid",
+      "title": "Case Id",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "cutoff_at": {
+      "format": "date-time",
+      "title": "Cutoff At",
+      "type": "string"
+    },
+    "as_of": {
+      "format": "date-time",
+      "title": "As Of",
+      "type": "string"
+    },
+    "domain_tags": {
+      "items": {
+        "$ref": "#/$defs/DomainTag"
+      },
+      "title": "Domain Tags",
+      "type": "array"
+    },
+    "mechanism_tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Mechanism Tags",
+      "type": "array"
+    },
+    "initial_conditions": {
+      "title": "Initial Conditions",
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    },
+    "contemporaneous": {
+      "items": {
+        "$ref": "#/$defs/HistoricalEventImportV1"
+      },
+      "title": "Contemporaneous",
+      "type": "array"
+    },
+    "outcomes": {
+      "items": {
+        "$ref": "#/$defs/HistoricalEventImportV1"
+      },
+      "title": "Outcomes",
+      "type": "array"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "case_id",
+    "title",
+    "cutoff_at",
+    "as_of",
+    "domain_tags",
+    "mechanism_tags",
+    "initial_conditions",
+    "limitations",
+    "contemporaneous",
+    "outcomes",
+    "label"
+  ],
+  "title": "HistoricalCaseViewV1",
+  "type": "object"
+}

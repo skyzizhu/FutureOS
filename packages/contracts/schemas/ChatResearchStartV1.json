@@ -1,0 +1,40 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "client_id": {
+      "format": "uuid",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "industry_id": {
+      "format": "uuid",
+      "title": "Industry Id",
+      "type": "string"
+    },
+    "horizon_days": {
+      "default": 180,
+      "maximum": 1095,
+      "minimum": 1,
+      "title": "Horizon Days",
+      "type": "integer"
+    },
+    "confirm_demo": {
+      "const": true,
+      "title": "Confirm Demo",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "client_id",
+    "industry_id",
+    "confirm_demo"
+  ],
+  "title": "ChatResearchStartV1",
+  "type": "object"
+}

@@ -1,0 +1,25 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "code": {
+      "title": "Code",
+      "type": "string"
+    },
+    "label": {
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "label"
+  ],
+  "title": "CountryOptionV1",
+  "type": "object"
+}

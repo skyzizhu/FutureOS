@@ -1,0 +1,179 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "protocol_id": {
+      "format": "uuid",
+      "title": "Protocol Id",
+      "type": "string"
+    },
+    "version_id": {
+      "format": "uuid",
+      "title": "Version Id",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "synthetic",
+        "temporal_backtest",
+        "forward"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "registered_at": {
+      "format": "date-time",
+      "title": "Registered At",
+      "type": "string"
+    },
+    "as_of": {
+      "format": "date-time",
+      "title": "As Of",
+      "type": "string"
+    },
+    "due_at": {
+      "format": "date-time",
+      "title": "Due At",
+      "type": "string"
+    },
+    "metric_definition": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Metric Definition",
+      "type": "string"
+    },
+    "geography": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Geography",
+      "type": "string"
+    },
+    "unit": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Unit",
+      "type": "string"
+    },
+    "resolution_source": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Resolution Source",
+      "type": "string"
+    },
+    "operator": {
+      "enum": [
+        "gte",
+        "lte",
+        "eq"
+      ],
+      "title": "Operator",
+      "type": "string"
+    },
+    "threshold": {
+      "title": "Threshold",
+      "type": "number"
+    },
+    "point_prediction_a": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Point Prediction A"
+    },
+    "point_prediction_b": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Point Prediction B"
+    },
+    "baseline_value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Baseline Value"
+    },
+    "source_snapshot_hash": {
+      "title": "Source Snapshot Hash",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "prompt_hash": {
+      "title": "Prompt Hash",
+      "type": "string"
+    },
+    "testset_version": {
+      "title": "Testset Version",
+      "type": "string"
+    },
+    "protocol_version": {
+      "const": "m3-resolution-v1",
+      "default": "m3-resolution-v1",
+      "title": "Protocol Version",
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "protocol_id",
+    "version_id",
+    "mode",
+    "label",
+    "registered_at",
+    "as_of",
+    "due_at",
+    "metric_definition",
+    "geography",
+    "unit",
+    "resolution_source",
+    "operator",
+    "threshold",
+    "source_snapshot_hash",
+    "model_id",
+    "prompt_hash",
+    "testset_version",
+    "limitations"
+  ],
+  "title": "EvaluationProtocolV1",
+  "type": "object"
+}

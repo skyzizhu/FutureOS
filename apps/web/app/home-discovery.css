@@ -1,0 +1,288 @@
+.consumer-home .site-header {
+  box-shadow: 0 2px 14px #1235280c;
+}
+.consumer-home .site-nav-track {
+  border-color: transparent;
+  background: transparent;
+}
+.home-discovery {
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+}
+.consumer-surface .home-chat-hero,
+.consumer-surface .home-content-panel {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+}
+.consumer-surface .home-chat-hero {
+  display: grid;
+  justify-items: center;
+  gap: clamp(16px, 2.5vw, 28px);
+  padding: clamp(20px, 4vw, 54px) 0 clamp(8px, 1vw, 16px);
+  text-align: center;
+}
+.home-chat-marker {
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 650;
+}
+.home-chat-copy h1 {
+  margin: 9px 0 0;
+  color: var(--ink);
+  font-size: clamp(27px, 4.05vw, 56px);
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.home-chat-copy h1 > span {
+  display: inline-block;
+  white-space: nowrap;
+}
+.home-chat-form {
+  width: min(100%, 680px);
+}
+.home-chat-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.home-chat-input:focus-within {
+  border-color: var(--forest);
+}
+.consumer-surface .home-chat-input input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 8px 9px;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.consumer-surface .home-chat-input button {
+  flex: none;
+  min-height: 43px;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+.home-industry-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 4vw, 50px);
+}
+.home-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.home-panel-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+.home-panel-heading > a {
+  flex: none;
+  font-size: 12px;
+}
+.home-industries .industry-banner {
+  position: relative;
+  margin: 0;
+}
+.home-industries .industry-banner-controls {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+}
+.consumer-surface .home-industries .industry-banner .industry-banner-arrow {
+  border: 0;
+  background: #112b23bd;
+  color: #fff;
+}
+.consumer-surface .home-industries .industry-banner .industry-banner-arrow:hover:not(:disabled) {
+  background: #285845;
+  color: #fff;
+}
+.consumer-surface .home-industries .industry-banner :is(.industry-banner-arrow, .home-industry-add):focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.home-industries .industry-banner-rail {
+  grid-auto-columns: 100%;
+  gap: 0;
+  border-radius: 16px;
+}
+.home-industries .industry-banner-slide {
+  min-height: clamp(220px, 25vw, 300px);
+  padding: 56px 16px 16px;
+  border-radius: 16px;
+}
+.home-industries .industry-banner-copy h2 {
+  margin-top: 0;
+  font-size: clamp(23px, 2.9vw, 35px);
+}
+.home-industries .industry-banner-copy p {
+  font-size: 13px;
+  -webkit-line-clamp: 2;
+}
+.consumer-surface .industry-banner-copy .home-industry-add {
+  min-height: 40px;
+  margin-top: 12px;
+  padding: 7px 12px;
+  border: 1px solid #f1fff675;
+  background: #15372ce8;
+  color: #f7fff9;
+  font-size: 13px;
+}
+.consumer-surface .industry-banner-copy .home-industry-add:hover:not(:disabled) {
+  background: #285845;
+  color: #fff;
+}
+.home-industry-skeleton {
+  min-height: clamp(220px, 25vw, 300px);
+}
+.home-industry-reports,
+.home-standalone {
+  scroll-margin-top: 104px;
+}
+.home-feed-empty {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding-block: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.home-feed-empty h3,
+.home-feed-empty p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+.home-feed-loading {
+  display: grid;
+  gap: 8px;
+}
+.home-feed-loading > div {
+  height: 65px;
+}
+.home-content-panel .report-feed-compact {
+  display: grid;
+}
+.home-content-panel .report-feed-compact .report-row {
+  min-height: 0;
+  margin: 0;
+  padding: 12px 0;
+}
+.home-content-panel .report-feed-compact .report-hover-arrow {
+  display: none;
+}
+.home-content-panel .report-feed-compact h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.home-content-panel .report-feed-compact p {
+  margin: 4px 0 7px;
+  color: var(--muted);
+  font-size: 13px;
+  -webkit-line-clamp: 1;
+}
+.home-content-panel .report-feed-compact .report-meta {
+  gap: 4px 10px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.report-feed-compact .report-counts {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-inline-start: auto;
+  order: 1;
+}
+.home-standalone .report-feed-compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 24px;
+}
+.home-report-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.home-report-search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+  min-width: min(160px, 100%);
+  max-width: 280px;
+  padding-inline: 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--muted);
+}
+.consumer-surface .home-report-search input {
+  min-width: 0;
+  min-height: 38px;
+  margin: 0;
+  padding: 4px 0;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+  font-size: 13px;
+}
+.home-report-search:focus-within {
+  border-color: var(--forest);
+}
+.home-report-tools button,
+.home-load-more {
+  min-height: 38px;
+}
+.home-load-more {
+  margin-top: 12px;
+}
+.consumer-surface.consumer-home .site-footer {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px 24px;
+  padding-block: 18px;
+}
+.consumer-home .site-footer > div {
+  grid-column: auto;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 0;
+}
+@media (max-width: 860px) {
+  .home-industry-grid,
+  .home-standalone .report-feed-compact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 550px) {
+  .home-industry-reports,
+  .home-standalone {
+    scroll-margin-top: 83px;
+  }
+}
+@media (max-width: 360px) {
+  .consumer-surface.consumer-home .site-footer {
+    grid-template-columns: 1fr;
+  }
+}

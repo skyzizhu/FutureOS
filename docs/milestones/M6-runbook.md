@@ -1,0 +1,21 @@
+# M6 本地沙盒运行与故障处理
+
+- `make up` 启动原生 PostgreSQL/Redis/API/worker/scheduler/Web；`make down` 停止本项目管理的服务。
+- `SANDBOX_COMMERCE_ENABLED` 默认 false；本机此次明确设置 true 供验收。`LIVE_PAYMENTS_ENABLED` 始终 false，真实收款 Provider 未实现。
+- `/billing` 购买/确认 Mock 套餐、查看额度、订阅与流水、未使用退款；`/research` 引导新主题与周期授权；`/admin/costs` 查看复用/阶段计量。
+- 先注册独立账号并填写两级行业。静态演示 token/管理员身份不能代替本人读取套餐/私有报告。
+- 演示配置 `infra/billing_plans.json`：研究包3份/30天、演示金额1000分；月度10份/30天、演示金额2900分、默认7天周期。金额均不是正式定价。
+- checkout 30分钟有效，quote 15分钟有效，研究预留最多1小时且不能超出额度批次有效期。
+- 用户/订单/主题/研究请求幂等。相同请求键换输入返回409；失败后要创建新确认/请求键重试，不能重写旧审计。
+- `COMMERCE_DISABLED` 检查沙盒开关；`PAYMENT_SIGNATURE_INVALID` 不入账；`PAYMENT_ORDER_MISMATCH` 核对冻结订单，不能用客户端改金额。
+- Mock 回调的签名密钥由私有 profile key 派生，不写入日志/客户端/配置示例。M0公开测试签名密钥不能开通M6额度。
+- `RESEARCH_CREDITS_REQUIRED` 没有可用额度，原主题免费更新仍可用；不得将失败请求重复扣费。
+- `RESEARCH_QUOTE_EXPIRED` 重新检查范围；`REAL_CUSTOM_RESEARCH_NOT_ENABLED` 表示真实定制未启用，任务失败归还，不会隐式调用付费供应商。
+- `SHARED_REVIEW_IN_PROGRESS` 保留共享复查的租约，由原任务处理；当前套餐研究失败归还，稍后以新请求重试，不抢占或伪造完成。
+- `PAID_RESEARCH_ENGINE_CHANGED` 冻结输入对应旧代码，核对工件后重新提交；不要篡改原请求hash。
+- 周期研究需另行授权。按固定周期slot排队，额度不足延后1小时检查；关闭邮件不影响研究，暂停主题才停止后续周期任务。
+- 取消订阅表示到期不续订，当前已购有效期内服务继续。本沙盒不自动续费/扣款；额度到期撤销，周期研究停止。
+- 未使用整单退款会取消待完成研究、释放预留并撤销额度。`REFUND_REQUIRES_UNUSED_ORDER` 不做已使用/部分退款，需人工方案与真实服务商接入后再实现。
+- 查看 `jobs.status/error_code`、`commerce_ledger`、`paid_research_reservations` 与 `/admin/costs`。守恒式：总发放=可用+预留+已消费+已失效撤销。
+- 成本是逻辑调用数/usage/阶段耗时。未知真实价格保持未知，不将Mock零外部调用当生产成本；阶段耗时含嵌套工作，不能直接相加当端到端时延。
+- `0010_m6` 支持空审计实例升级/回退；存在支付事件或套餐研究请求时拒绝降级删除审计，需备份并前向修复。备份数据库时同时保存私有 profile key。

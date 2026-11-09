@@ -1,0 +1,75 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "queued",
+        "existing_report"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "job_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Job Id"
+    },
+    "report_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Report Id"
+    },
+    "user_topic_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "User Topic Id"
+    },
+    "reserved_units": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Reserved Units",
+      "type": "integer"
+    },
+    "deduplicated": {
+      "default": false,
+      "title": "Deduplicated",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "action",
+    "reserved_units"
+  ],
+  "title": "PaidResearchAcceptedV1",
+  "type": "object"
+}

@@ -1,0 +1,87 @@
+{
+  "$defs": {
+    "DomainTag": {
+      "enum": [
+        "macro_finance",
+        "technology",
+        "industry",
+        "workforce",
+        "policy",
+        "consumption",
+        "housing",
+        "education",
+        "health",
+        "energy",
+        "supply_chain",
+        "society"
+      ],
+      "title": "DomainTag",
+      "type": "string"
+    },
+    "LifecycleStage": {
+      "enum": [
+        "emergence",
+        "growth",
+        "maturity",
+        "inflection",
+        "decline",
+        "unknown"
+      ],
+      "title": "LifecycleStage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "headline": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Headline",
+      "type": "string"
+    },
+    "claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Claim Ids",
+      "type": "array"
+    },
+    "lifecycle_stage": {
+      "$ref": "#/$defs/LifecycleStage",
+      "default": "unknown"
+    },
+    "mechanism_tags": {
+      "default": [],
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Mechanism Tags",
+      "type": "array"
+    },
+    "domain_tags": {
+      "items": {
+        "$ref": "#/$defs/DomainTag"
+      },
+      "minItems": 1,
+      "title": "Domain Tags",
+      "type": "array"
+    }
+  },
+  "required": [
+    "headline",
+    "claim_ids",
+    "domain_tags"
+  ],
+  "title": "SignalImportV1",
+  "type": "object"
+}

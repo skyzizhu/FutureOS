@@ -1,0 +1,418 @@
+{
+  "$defs": {
+    "DemoResearchResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "label": {
+          "const": "DEMO",
+          "default": "DEMO",
+          "title": "Label",
+          "type": "string"
+        },
+        "kind": {
+          "const": "hypothesis",
+          "default": "hypothesis",
+          "title": "Kind",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        },
+        "research_as_of": {
+          "format": "date-time",
+          "title": "Research As Of",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Limitations",
+          "type": "array"
+        },
+        "model_id": {
+          "const": "mock-llm-v1",
+          "default": "mock-llm-v1",
+          "title": "Model Id",
+          "type": "string"
+        },
+        "prompt_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Prompt Hash",
+          "type": "string"
+        },
+        "cost_units": {
+          "const": 0,
+          "default": 0,
+          "title": "Cost Units",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "statement",
+        "research_as_of",
+        "source_ids",
+        "limitations",
+        "prompt_hash"
+      ],
+      "title": "DemoResearchResultV1",
+      "type": "object"
+    },
+    "JobStatus": {
+      "enum": [
+        "queued",
+        "running",
+        "succeeded",
+        "failed_retryable",
+        "failed_terminal",
+        "cancelled"
+      ],
+      "title": "JobStatus",
+      "type": "string"
+    },
+    "M2ResearchResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "draft_id": {
+          "format": "uuid",
+          "title": "Draft Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "internal_draft_ready",
+          "default": "internal_draft_ready",
+          "title": "Status",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "hypothesis",
+            "draft_forecast"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "publication_allowed": {
+          "const": false,
+          "default": false,
+          "title": "Publication Allowed",
+          "type": "boolean"
+        },
+        "input_hash": {
+          "title": "Input Hash",
+          "type": "string"
+        },
+        "draft_hash": {
+          "title": "Draft Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "draft_id",
+        "label",
+        "kind",
+        "input_hash",
+        "draft_hash"
+      ],
+      "title": "M2ResearchResultV1",
+      "type": "object"
+    },
+    "MailDeliveryResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "delivery_id": {
+          "format": "uuid",
+          "title": "Delivery Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "delivered_local",
+            "suppressed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "external_delivery": {
+          "const": false,
+          "default": false,
+          "title": "External Delivery",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "delivery_id",
+        "status"
+      ],
+      "title": "MailDeliveryResultV1",
+      "type": "object"
+    },
+    "MonitorResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "monitor_run_id": {
+          "format": "uuid",
+          "title": "Monitor Run Id",
+          "type": "string"
+        },
+        "forecast_id": {
+          "format": "uuid",
+          "title": "Forecast Id",
+          "type": "string"
+        },
+        "old_version_id": {
+          "format": "uuid",
+          "title": "Old Version Id",
+          "type": "string"
+        },
+        "new_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "New Version Id"
+        },
+        "level": {
+          "enum": [
+            "T0",
+            "T1",
+            "T2",
+            "T3"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "outcome": {
+          "enum": [
+            "archived",
+            "observed",
+            "retained",
+            "published",
+            "review_blocked"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "changed_fields": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Changed Fields",
+          "type": "array"
+        },
+        "refreshed_reports": {
+          "title": "Refreshed Reports",
+          "type": "integer"
+        },
+        "external_model_calls": {
+          "const": 0,
+          "default": 0,
+          "title": "External Model Calls",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "monitor_run_id",
+        "forecast_id",
+        "old_version_id",
+        "level",
+        "outcome",
+        "reason",
+        "changed_fields",
+        "refreshed_reports"
+      ],
+      "title": "MonitorResultV1",
+      "type": "object"
+    },
+    "UserReportResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "report_id": {
+          "format": "uuid",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "report_version_id": {
+          "format": "uuid",
+          "title": "Report Version Id",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "status": {
+          "const": "private_report_ready",
+          "default": "private_report_ready",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "report_id",
+        "report_version_id",
+        "label"
+      ],
+      "title": "UserReportResultV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "job_id": {
+      "format": "uuid",
+      "title": "Job Id",
+      "type": "string"
+    },
+    "request_id": {
+      "format": "uuid",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "trace_id": {
+      "format": "uuid",
+      "title": "Trace Id",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/JobStatus"
+    },
+    "attempts": {
+      "title": "Attempts",
+      "type": "integer"
+    },
+    "label": {
+      "default": "DEMO",
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "result": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DemoResearchResultV1"
+        },
+        {
+          "$ref": "#/$defs/M2ResearchResultV1"
+        },
+        {
+          "$ref": "#/$defs/UserReportResultV1"
+        },
+        {
+          "$ref": "#/$defs/MonitorResultV1"
+        },
+        {
+          "$ref": "#/$defs/MailDeliveryResultV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result"
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Code"
+    }
+  },
+  "required": [
+    "job_id",
+    "request_id",
+    "trace_id",
+    "status",
+    "attempts"
+  ],
+  "title": "JobV1",
+  "type": "object"
+}

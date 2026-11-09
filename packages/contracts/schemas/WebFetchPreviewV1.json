@@ -1,0 +1,63 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "url": {
+      "title": "Url",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "excerpt": {
+      "title": "Excerpt",
+      "type": "string"
+    },
+    "full_content_hash": {
+      "title": "Full Content Hash",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "format": "date-time",
+      "title": "Retrieved At",
+      "type": "string"
+    },
+    "published_at": {
+      "default": null,
+      "title": "Published At",
+      "type": "null"
+    },
+    "label": {
+      "const": "REAL",
+      "default": "REAL",
+      "title": "Label",
+      "type": "string"
+    },
+    "evidence_status": {
+      "const": "unverified",
+      "default": "unverified",
+      "title": "Evidence Status",
+      "type": "string"
+    },
+    "retained_characters": {
+      "title": "Retained Characters",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "url",
+    "title",
+    "excerpt",
+    "full_content_hash",
+    "retrieved_at",
+    "retained_characters"
+  ],
+  "title": "WebFetchPreviewV1",
+  "type": "object"
+}

@@ -1,0 +1,117 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "user_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "User Id"
+    },
+    "request_id": {
+      "format": "uuid",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "login",
+        "register"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "outcome": {
+      "enum": [
+        "succeeded",
+        "rejected"
+      ],
+      "title": "Outcome",
+      "type": "string"
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Reason"
+    },
+    "fingerprint": {
+      "title": "Fingerprint",
+      "type": "string"
+    },
+    "fingerprint_kind": {
+      "enum": [
+        "browser",
+        "client_headers"
+      ],
+      "title": "Fingerprint Kind",
+      "type": "string"
+    },
+    "peer_ip": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Peer Ip"
+    },
+    "device": {
+      "title": "Device",
+      "type": "string"
+    },
+    "user_agent": {
+      "title": "User Agent",
+      "type": "string"
+    },
+    "accept_language": {
+      "title": "Accept Language",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "user_id",
+    "request_id",
+    "action",
+    "outcome",
+    "reason",
+    "fingerprint",
+    "fingerprint_kind",
+    "peer_ip",
+    "device",
+    "user_agent",
+    "accept_language",
+    "created_at"
+  ],
+  "title": "AuthAccessEventViewV1",
+  "type": "object"
+}

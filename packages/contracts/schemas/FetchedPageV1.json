@@ -1,0 +1,76 @@
+{
+  "additionalProperties": false,
+  "description": "Untrusted Markdown; fetch time is never a substitute for publication time.",
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "provider": {
+      "enum": [
+        "mock",
+        "deepseek"
+      ],
+      "title": "Provider",
+      "type": "string"
+    },
+    "url": {
+      "maxLength": 8192,
+      "minLength": 1,
+      "title": "Url",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "content": {
+      "maxLength": 2000000,
+      "minLength": 1,
+      "title": "Content",
+      "type": "string"
+    },
+    "content_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Content Hash",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "format": "date-time",
+      "title": "Retrieved At",
+      "type": "string"
+    },
+    "published_at": {
+      "default": null,
+      "title": "Published At",
+      "type": "null"
+    },
+    "evidence_status": {
+      "const": "unverified",
+      "default": "unverified",
+      "title": "Evidence Status",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "provider",
+    "url",
+    "title",
+    "content",
+    "content_hash",
+    "retrieved_at",
+    "label"
+  ],
+  "title": "FetchedPageV1",
+  "type": "object"
+}

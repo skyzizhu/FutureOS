@@ -1,0 +1,44 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 60,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "maxLength": 300,
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "domain": {
+      "enum": [
+        "technology",
+        "energy",
+        "healthcare",
+        "manufacturing",
+        "education",
+        "finance",
+        "services",
+        "society"
+      ],
+      "title": "Domain",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "domain"
+  ],
+  "title": "CommunityIndustryInputV1",
+  "type": "object"
+}

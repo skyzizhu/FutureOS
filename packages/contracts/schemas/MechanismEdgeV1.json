@@ -1,0 +1,82 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "from_node": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "From Node",
+      "type": "string"
+    },
+    "to_node": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "To Node",
+      "type": "string"
+    },
+    "relationship": {
+      "enum": [
+        "enables",
+        "constrains",
+        "counteracts"
+      ],
+      "title": "Relationship",
+      "type": "string"
+    },
+    "sign": {
+      "enum": [
+        "positive",
+        "negative"
+      ],
+      "title": "Sign",
+      "type": "string"
+    },
+    "lag_range": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Lag Range",
+      "type": "string"
+    },
+    "conditions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Conditions",
+      "type": "array"
+    },
+    "evidence_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Evidence Claim Ids",
+      "type": "array"
+    },
+    "uncertainty": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Uncertainty",
+      "type": "string"
+    }
+  },
+  "required": [
+    "from_node",
+    "to_node",
+    "relationship",
+    "sign",
+    "lag_range",
+    "conditions",
+    "evidence_claim_ids",
+    "uncertainty"
+  ],
+  "title": "MechanismEdgeV1",
+  "type": "object"
+}

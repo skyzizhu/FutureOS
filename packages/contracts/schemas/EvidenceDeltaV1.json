@@ -1,0 +1,60 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "added_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Added Claim Ids",
+      "type": "array"
+    },
+    "independent_groups": {
+      "title": "Independent Groups",
+      "type": "integer"
+    },
+    "duplicate_claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Duplicate Claim Ids",
+      "type": "array"
+    },
+    "changed_observation_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Changed Observation Ids",
+      "type": "array"
+    },
+    "reasons": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Reasons",
+      "type": "array"
+    },
+    "fingerprint": {
+      "title": "Fingerprint",
+      "type": "string"
+    }
+  },
+  "required": [
+    "added_claim_ids",
+    "independent_groups",
+    "duplicate_claim_ids",
+    "changed_observation_ids",
+    "reasons",
+    "fingerprint"
+  ],
+  "title": "EvidenceDeltaV1",
+  "type": "object"
+}

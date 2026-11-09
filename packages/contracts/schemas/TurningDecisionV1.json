@@ -1,0 +1,116 @@
+{
+  "$defs": {
+    "EvidenceDeltaV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "added_claim_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Added Claim Ids",
+          "type": "array"
+        },
+        "independent_groups": {
+          "title": "Independent Groups",
+          "type": "integer"
+        },
+        "duplicate_claim_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Duplicate Claim Ids",
+          "type": "array"
+        },
+        "changed_observation_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Changed Observation Ids",
+          "type": "array"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        },
+        "fingerprint": {
+          "title": "Fingerprint",
+          "type": "string"
+        }
+      },
+      "required": [
+        "added_claim_ids",
+        "independent_groups",
+        "duplicate_claim_ids",
+        "changed_observation_ids",
+        "reasons",
+        "fingerprint"
+      ],
+      "title": "EvidenceDeltaV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "level": {
+      "enum": [
+        "T0",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "archive",
+        "observe",
+        "targeted_research",
+        "block_pending_review"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "delta": {
+      "$ref": "#/$defs/EvidenceDeltaV1"
+    },
+    "rationale": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Rationale",
+      "type": "string"
+    },
+    "rules_version": {
+      "const": "m5-turning-v1",
+      "default": "m5-turning-v1",
+      "title": "Rules Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "level",
+    "action",
+    "delta",
+    "rationale"
+  ],
+  "title": "TurningDecisionV1",
+  "type": "object"
+}

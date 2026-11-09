@@ -1,0 +1,85 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "code": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Code",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "provider": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Provider",
+      "type": "string"
+    },
+    "geo_scope": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Geo Scope",
+      "type": "string"
+    },
+    "unit": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Unit",
+      "type": "string"
+    },
+    "frequency": {
+      "enum": [
+        "day",
+        "week",
+        "month",
+        "quarter",
+        "year",
+        "irregular"
+      ],
+      "title": "Frequency",
+      "type": "string"
+    },
+    "definition_version": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Definition Version",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "indicator_id": {
+      "format": "uuid",
+      "title": "Indicator Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "name",
+    "provider",
+    "geo_scope",
+    "unit",
+    "frequency",
+    "definition_version",
+    "label",
+    "indicator_id"
+  ],
+  "title": "IndicatorDefinitionV1",
+  "type": "object"
+}

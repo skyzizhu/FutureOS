@@ -1,0 +1,253 @@
+{
+  "$defs": {
+    "DomainTag": {
+      "enum": [
+        "macro_finance",
+        "technology",
+        "industry",
+        "workforce",
+        "policy",
+        "consumption",
+        "housing",
+        "education",
+        "health",
+        "energy",
+        "supply_chain",
+        "society"
+      ],
+      "title": "DomainTag",
+      "type": "string"
+    },
+    "SourceVersionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_group_id": {
+          "format": "uuid",
+          "title": "Source Group Id",
+          "type": "string"
+        },
+        "source_type": {
+          "title": "Source Type",
+          "type": "string"
+        },
+        "original_language": {
+          "title": "Original Language",
+          "type": "string"
+        },
+        "region": {
+          "title": "Region",
+          "type": "string"
+        },
+        "dedup_method": {
+          "title": "Dedup Method",
+          "type": "string"
+        },
+        "original_source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Source Url"
+        },
+        "version_label": {
+          "title": "Version Label",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "publisher": {
+          "title": "Publisher",
+          "type": "string"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Published At"
+        },
+        "event_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Event At"
+        },
+        "available_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Available At"
+        },
+        "ingested_at": {
+          "format": "date-time",
+          "title": "Ingested At",
+          "type": "string"
+        },
+        "revised_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Revised At"
+        },
+        "availability_basis": {
+          "title": "Availability Basis",
+          "type": "string"
+        },
+        "availability_note": {
+          "title": "Availability Note",
+          "type": "string"
+        },
+        "content_hash": {
+          "title": "Content Hash",
+          "type": "string"
+        },
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "usage_permission": {
+          "title": "Usage Permission",
+          "type": "string"
+        },
+        "license_note": {
+          "title": "License Note",
+          "type": "string"
+        },
+        "access_method": {
+          "title": "Access Method",
+          "type": "string"
+        },
+        "reliability_note": {
+          "title": "Reliability Note",
+          "type": "string"
+        },
+        "domain_tags": {
+          "items": {
+            "$ref": "#/$defs/DomainTag"
+          },
+          "title": "Domain Tags",
+          "type": "array"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_version_id",
+        "source_id",
+        "source_group_id",
+        "source_type",
+        "original_language",
+        "region",
+        "dedup_method",
+        "version_label",
+        "url",
+        "title",
+        "publisher",
+        "published_at",
+        "event_at",
+        "available_at",
+        "ingested_at",
+        "revised_at",
+        "availability_basis",
+        "availability_note",
+        "content_hash",
+        "content",
+        "usage_permission",
+        "license_note",
+        "access_method",
+        "reliability_note",
+        "domain_tags",
+        "label"
+      ],
+      "title": "SourceVersionV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "version": {
+      "$ref": "#/$defs/SourceVersionV1"
+    },
+    "claim_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Claim Ids",
+      "type": "array"
+    },
+    "duplicate": {
+      "title": "Duplicate",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "version",
+    "claim_ids",
+    "duplicate"
+  ],
+  "title": "SourceIngestedV1",
+  "type": "object"
+}

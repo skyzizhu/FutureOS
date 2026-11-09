@@ -1,0 +1,29 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "challenge_token": {
+      "maxLength": 128,
+      "minLength": 32,
+      "title": "Challenge Token",
+      "type": "string"
+    },
+    "code": {
+      "maxLength": 64,
+      "minLength": 6,
+      "title": "Code",
+      "type": "string"
+    }
+  },
+  "required": [
+    "challenge_token",
+    "code"
+  ],
+  "title": "AdminSecondFactorV1",
+  "type": "object"
+}

@@ -1,0 +1,47 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "subscription_status": {
+      "enum": [
+        "free",
+        "active",
+        "cancelled",
+        "expired"
+      ],
+      "title": "Subscription Status",
+      "type": "string"
+    },
+    "paid_periodic_research_enabled": {
+      "title": "Paid Periodic Research Enabled",
+      "type": "boolean"
+    },
+    "email_digest_opt_in": {
+      "default": false,
+      "title": "Email Digest Opt In",
+      "type": "boolean"
+    },
+    "email_alert_opt_in": {
+      "default": false,
+      "title": "Email Alert Opt In",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "user_id",
+    "subscription_status",
+    "paid_periodic_research_enabled"
+  ],
+  "title": "EntitlementV1",
+  "type": "object"
+}

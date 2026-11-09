@@ -1,0 +1,54 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "notification_id": {
+      "format": "uuid",
+      "title": "Notification Id",
+      "type": "string"
+    },
+    "report_id": {
+      "format": "uuid",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "summary": {
+      "title": "Summary",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "read": {
+      "title": "Read",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "notification_id",
+    "report_id",
+    "report_version_id",
+    "title",
+    "summary",
+    "created_at",
+    "read"
+  ],
+  "title": "InAppNotificationV1",
+  "type": "object"
+}

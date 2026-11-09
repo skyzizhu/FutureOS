@@ -1,0 +1,27 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "quote_id": {
+      "format": "uuid",
+      "title": "Quote Id",
+      "type": "string"
+    },
+    "accept_usage_rules": {
+      "const": true,
+      "title": "Accept Usage Rules",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "quote_id",
+    "accept_usage_rules"
+  ],
+  "title": "PaidResearchSubmitV1",
+  "type": "object"
+}

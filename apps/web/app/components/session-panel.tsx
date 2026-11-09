@@ -1,0 +1,12 @@
+"use client";
+import {Button,TextInput} from "./ui/controls";
+
+import {useEffect,useState} from "react";
+type LoginSession={session_id:string;kind:string;device_label:string;created_at:string;expires_at:string;current:boolean};
+export default function SessionPanel({admin=false}:{admin?:boolean}){const[items,setItems]=useState<LoginSession[]>([]);const[error,setError]=useState("");const[password,setPassword]=useState("");const[busy,setBusy]=useState(false);
+ const base=admin?"/api/admin/auth":"/api/account/me/sessions";
+ async function reload(){const r=await fetch(admin?`${base}/sessions`:base,{cache:"no-store"});if(!r.ok)throw new Error("请登录后查看会话");setItems(await r.json());}
+ useEffect(()=>{let active=true;fetch(admin?"/api/admin/auth/sessions":"/api/account/me/sessions",{cache:"no-store"}).then(async r=>{if(!r.ok)throw new Error("请登录后查看会话");const d=await r.json();if(active)setItems(d);}).catch(e=>{if(active)setError(e.message);});return()=>{active=false;};},[admin]);
+ async function revoke(item?:LoginSession){setBusy(true);setError("");try{const path=item?(admin?`${base}/revoke-session`:`${base}/${item.session_id}`):`${base}/revoke-all`;const r=await fetch(path,{method:admin||!item?"POST":"DELETE",headers:{"Content-Type":"application/json"},body:admin||!item?JSON.stringify(item?{session_id:item.session_id}:{password}):undefined});const d=await r.json();if(!r.ok)throw new Error(d.message||d.code);setPassword("");if(!item||item.current){if(item)await fetch(admin?`${base}/logout`:"/api/account/auth",{method:admin?"POST":"DELETE"});window.location.assign(admin?"/admin/login":"/auth/login");}else await reload();}catch(e){setError(e instanceof Error?e.message:"操作失败");}finally{setBusy(false);}}
+ return <section><h2>登录会话</h2><p>可以撤销其他会话；注销全部会话需要重新输入密码。</p>{items.map(item=><article key={item.session_id}><p>{item.kind==="admin"?"管理会话":"用户会话"} · {item.device_label} · {item.current?"当前会话":"其他会话"}</p><p>创建 {new Date(item.created_at).toLocaleString("zh-CN")} · 到期 {new Date(item.expires_at).toLocaleString("zh-CN")}</p><Button disabled={busy} onClick={()=>revoke(item)}>注销此会话</Button></article>)}<form onSubmit={e=>{e.preventDefault();revoke();}}><label htmlFor="session-password">当前密码</label><TextInput id="session-password" type="password" autoComplete="current-password" minLength={12} maxLength={128} required value={password} onChange={e=>setPassword(e.target.value)}/><Button disabled={busy}>注销全部会话</Button></form>{error&&<p role="alert">{error}</p>}</section>;
+}

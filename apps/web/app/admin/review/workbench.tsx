@@ -1,0 +1,33 @@
+"use client";
+import {useEffect,useState} from "react";
+import type {ReviewViewV1,RevisionViewV1,PublishedForecastV1,EvaluationProtocolV1} from "@futureos/contracts";
+type Draft={draft_id:string;draft_sequence:string;label:string;statement:string;draft_hash:string};
+type Scoreboard={strata:{mode:string;count:number;statuses:Record<string,number>}[];records:{protocol:EvaluationProtocolV1;latest_resolution:{status:string;reason:string}|null}[]};
+export default function ReviewConsole(){
+ const[drafts,setDrafts]=useState<Draft[]>([]);const[selected,setSelected]=useState("");
+ const[review,setReview]=useState<ReviewViewV1|null>(null);const[revision,setRevision]=useState<RevisionViewV1|null>(null);
+ const[version,setVersion]=useState<PublishedForecastV1|null>(null);const[versions,setVersions]=useState<PublishedForecastV1[]>([]);
+ const[score,setScore]=useState<Scoreboard|null>(null);const[busy,setBusy]=useState(false);const[error,setError]=useState("");const[notice,setNotice]=useState("");
+ const[operator,setOperator]=useState("gte");const[threshold,setThreshold]=useState("70");const[unit,setUnit]=useState("completed_tasks_per_100_trials");const[mode,setMode]=useState("synthetic");
+ async function api(path:string,body?:unknown){const response=await fetch(`/api/admin/review/${path}`,{method:body?"POST":"GET",headers:{"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});const data=await response.json();if(!response.ok)throw new Error(`${data.code||"ERROR"}：${data.message||"请求失败"}`);return data;}
+ async function reload(){const[d,v,s]=await Promise.all([api("drafts"),api("versions"),api("scoreboard")]);setDrafts(d);setVersions(v);setScore(s);}
+ useEffect(()=>{reload().catch(()=>setError("加载失败，请重新登录或刷新"));},[]);
+ async function action(fn:()=>Promise<void>){setBusy(true);setError("");setNotice("");try{await fn();}catch(e){setError(e instanceof Error?e.message:"请求失败");}finally{setBusy(false);}}
+ const current=drafts.find(d=>d.draft_id===selected);
+ return <><section><h2>选择冻结草稿</h2><p>先在研究工作台创建草稿。审查只读，不会覆写原稿；DEMO 发布仅用于合成评估，不代表真实世界预测。</p><label htmlFor="review-draft">待审草稿</label><select id="review-draft" value={selected} onChange={e=>{setSelected(e.target.value);setReview(null);setRevision(null);setVersion(null);}}><option value="">请选择</option>{drafts.map(d=><option key={d.draft_id} value={d.draft_id}>{d.label} · {d.draft_sequence} · {d.statement.slice(0,60)} · {d.draft_id.slice(0,8)}</option>)}</select>
+ {current&&<p>{current.statement}</p>}<button disabled={busy||!selected} onClick={()=>action(async()=>{setReview(await api(`drafts/${selected}/check`,{}));})}>运行独立审查</button><button disabled={busy} onClick={()=>action(reload)}>刷新记录</button></section>
+ <div aria-live="polite">{error&&<p role="alert">{error}</p>}{notice&&<p role="status">{notice}</p>}</div>
+ {review&&<section><h2>审查与裁决</h2><p className="badge">{review.decision.decision} · {review.decision.publication_allowed?"允许进入发布":"禁止发布"}</p><p>{review.decision.rationale}</p><p>已运行：{review.report.checkers_completed.join(" / ")} · 外部模型调用 {review.report.model_calls} 次</p>
+ {review.report.findings.map(f=><article key={f.finding_id}><h3>{f.severity} · {f.checker}</h3><p>{f.statement}</p><small>{f.code} · {f.verification_status}</small></article>)}
+ <p>{review.report.limitations.join("；")}</p>
+ {!review.decision.publication_allowed&&["block","targeted_research"].includes(review.decision.decision)&&<button disabled={busy} onClick={()=>action(async()=>{const r:RevisionViewV1=await api(`drafts/${selected}/revise`,{review_id:review.report.critic_run_id,confirmed_finding_ids:review.report.findings.filter(f=>["L2","L3"].includes(f.severity)&&f.verification_status==="verified").map(f=>f.finding_id)});setRevision(r);await reload();setSelected(r.draft_id);setReview(null);setNotice(`${r.draft_sequence} 已冻结，请对新草稿重新审查。`);})}>确认已核实问题并生成定向复核稿</button>}
+ <button disabled={busy||!review.decision.publication_allowed} onClick={()=>action(async()=>{const v:PublishedForecastV1=await api(`drafts/${selected}/publish`,{review_id:review.report.critic_run_id,change_reason:"管理员确认独立审查结果后发布"});setVersion(v);await reload();setNotice(`${v.label} 版本 v${v.version_num} 已冻结。`);})}>发布通过审查的版本</button></section>}
+ {revision&&<section><h2>{revision.draft_sequence} 与原稿差分</h2><p>原稿 {revision.parent_draft_id} 保留；输入及修改后草稿已冻结。</p><pre className="json-input">{JSON.stringify(revision.changes,null,2)}</pre></section>}
+ <section><h2>已发布版本与评估预登记</h2><p>协议阈值和单位必须匹配冻结目标。真实前瞻必须使用 REAL 资料，在目标窗口开始前登记；不能把历史 DEMO 称为前瞻成绩。</p><label htmlFor="published-version">发布版本</label><select id="published-version" value={version?.version_id||""} onChange={e=>setVersion(versions.find(v=>v.version_id===e.target.value)||null)}><option value="">请选择</option>{versions.map(v=><option key={v.version_id} value={v.version_id}>{v.label} · v{v.version_num} · {v.version_id.slice(0,8)}</option>)}</select>
+ {version&&<><p>{version.body.target?.metric_definition} · {version.body.target?.direction_or_threshold} · {version.body.target?.target_end_at}</p><small>版本 hash：{version.version_hash}</small></>}
+ <label htmlFor="eval-mode">评估类型</label><select id="eval-mode" value={mode} onChange={e=>setMode(e.target.value)}><option value="synthetic">合成测试</option><option value="temporal_backtest">历史截断</option><option value="forward">真实前瞻</option></select>
+ <label htmlFor="eval-operator">判断方向</label><select id="eval-operator" value={operator} onChange={e=>setOperator(e.target.value)}><option value="gte">大于等于</option><option value="lte">小于等于</option><option value="eq">等于</option></select>
+ <label htmlFor="eval-threshold">冻结目标阈值</label><input id="eval-threshold" type="number" value={threshold} onChange={e=>setThreshold(e.target.value)}/><label htmlFor="eval-unit">指标单位</label><input id="eval-unit" value={unit} onChange={e=>setUnit(e.target.value)}/>
+ <button disabled={busy||!version} onClick={()=>action(async()=>{await api(`versions/${version!.version_id}/register`,{mode,operator,threshold:Number(threshold),unit});await reload();setNotice("评估协议已冻结，未取得合规结果时不会默认判对。");})}>冻结评估协议</button></section>
+ <section><h2>内部成绩单</h2><p>合成、历史与真实前瞻分别统计；尚无真实前瞻准确率。</p>{score?.strata.map(s=><article key={s.mode}><h3>{s.mode} · {s.count} 项</h3><p>{Object.entries(s.statuses).map(([k,v])=>`${k}：${v}`).join(" / ")}</p></article>)}{score?.records.map(r=><article key={r.protocol.protocol_id}><p>{r.protocol.label} / {r.protocol.mode} · {r.protocol.metric_definition}</p><p>状态：{r.latest_resolution?.status||"未评估"} · {r.latest_resolution?.reason}</p><button disabled={busy} onClick={()=>action(async()=>{await api(`protocols/${r.protocol.protocol_id}/resolve`,{unavailable_reason:"管理员核对后暂未取得符合预登记来源与口径的观测"});await reload();})}>检查到期，缺数据时登记待验证</button></article>)}</section></>;
+}

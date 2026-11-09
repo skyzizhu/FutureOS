@@ -1,0 +1,78 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "decision_id": {
+      "format": "uuid",
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "critic_run_id": {
+      "format": "uuid",
+      "title": "Critic Run Id",
+      "type": "string"
+    },
+    "draft_id": {
+      "format": "uuid",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "accept",
+        "annotate",
+        "targeted_research",
+        "block",
+        "research_only"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "publication_allowed": {
+      "title": "Publication Allowed",
+      "type": "boolean"
+    },
+    "verified_finding_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Verified Finding Ids",
+      "type": "array"
+    },
+    "rule_version": {
+      "const": "m3-adjudication-v1",
+      "default": "m3-adjudication-v1",
+      "title": "Rule Version",
+      "type": "string"
+    },
+    "rationale": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Rationale",
+      "type": "string"
+    },
+    "decided_at": {
+      "format": "date-time",
+      "title": "Decided At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "decision_id",
+    "critic_run_id",
+    "draft_id",
+    "decision",
+    "publication_allowed",
+    "verified_finding_ids",
+    "rationale",
+    "decided_at"
+  ],
+  "title": "ReviewDecisionV1",
+  "type": "object"
+}

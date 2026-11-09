@@ -1,0 +1,86 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "method": {
+      "enum": [
+        "last_value",
+        "not_applicable"
+      ],
+      "title": "Method",
+      "type": "string"
+    },
+    "sample_count": {
+      "minimum": 0,
+      "title": "Sample Count",
+      "type": "integer"
+    },
+    "observation_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Observation Ids",
+      "type": "array"
+    },
+    "last_observed_value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Observed Value"
+    },
+    "projected_value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Projected Value"
+    },
+    "unit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Unit"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "method",
+    "sample_count",
+    "observation_ids",
+    "limitations"
+  ],
+  "title": "BaselineV1",
+  "type": "object"
+}

@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "erasure_id": {
+      "format": "uuid",
+      "title": "Erasure Id",
+      "type": "string"
+    },
+    "erased_at": {
+      "format": "date-time",
+      "title": "Erased At",
+      "type": "string"
+    },
+    "cleared_records": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Cleared Records",
+      "type": "object"
+    },
+    "retained": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Retained",
+      "type": "array"
+    },
+    "backup_notice": {
+      "title": "Backup Notice",
+      "type": "string"
+    }
+  },
+  "required": [
+    "erasure_id",
+    "erased_at",
+    "cleared_records",
+    "retained",
+    "backup_notice"
+  ],
+  "title": "PersonalDataErasedV1",
+  "type": "object"
+}

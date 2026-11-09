@@ -1,0 +1,308 @@
+{
+  "$defs": {
+    "ClaimImportV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "claim_text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Claim Text",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "source_locator": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Source Locator",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "supports",
+            "contradicts",
+            "context"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "claim_kind": {
+          "enum": [
+            "fact",
+            "opinion",
+            "hypothesis"
+          ],
+          "title": "Claim Kind",
+          "type": "string"
+        },
+        "verification_status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "verified"
+          ],
+          "title": "Verification Status",
+          "type": "string"
+        },
+        "verification_note": {
+          "default": "",
+          "title": "Verification Note",
+          "type": "string"
+        },
+        "scope": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Scope",
+          "type": "string"
+        },
+        "caveat": {
+          "default": "",
+          "title": "Caveat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_text",
+        "quote",
+        "source_locator",
+        "relation",
+        "claim_kind",
+        "scope"
+      ],
+      "title": "ClaimImportV1",
+      "type": "object"
+    },
+    "DomainTag": {
+      "enum": [
+        "macro_finance",
+        "technology",
+        "industry",
+        "workforce",
+        "policy",
+        "consumption",
+        "housing",
+        "education",
+        "health",
+        "energy",
+        "supply_chain",
+        "society"
+      ],
+      "title": "DomainTag",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "url": {
+      "maxLength": 8192,
+      "minLength": 1,
+      "title": "Url",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "publisher": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Publisher",
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "official",
+        "paper",
+        "licensed_data",
+        "news",
+        "community",
+        "manual"
+      ],
+      "title": "Source Type",
+      "type": "string"
+    },
+    "original_language": {
+      "default": "zh",
+      "title": "Original Language",
+      "type": "string"
+    },
+    "region": {
+      "default": "unspecified",
+      "title": "Region",
+      "type": "string"
+    },
+    "published_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Published At"
+    },
+    "event_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Event At"
+    },
+    "available_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Available At"
+    },
+    "availability_basis": {
+      "enum": [
+        "observed_now",
+        "verified_archive",
+        "verified_release",
+        "unknown"
+      ],
+      "title": "Availability Basis",
+      "type": "string"
+    },
+    "availability_note": {
+      "default": "",
+      "title": "Availability Note",
+      "type": "string"
+    },
+    "revised_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revised At"
+    },
+    "content": {
+      "default": "",
+      "maxLength": 100000,
+      "title": "Content",
+      "type": "string"
+    },
+    "usage_permission": {
+      "enum": [
+        "metadata_only",
+        "excerpt",
+        "authorized_full"
+      ],
+      "title": "Usage Permission",
+      "type": "string"
+    },
+    "license_note": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "License Note",
+      "type": "string"
+    },
+    "access_method": {
+      "default": "manual",
+      "enum": [
+        "manual",
+        "deepseek",
+        "archive",
+        "licensed_api"
+      ],
+      "title": "Access Method",
+      "type": "string"
+    },
+    "reliability_note": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Reliability Note",
+      "type": "string"
+    },
+    "original_source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Original Source Url"
+    },
+    "domain_tags": {
+      "items": {
+        "$ref": "#/$defs/DomainTag"
+      },
+      "minItems": 1,
+      "title": "Domain Tags",
+      "type": "array"
+    },
+    "claims": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ClaimImportV1"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "url",
+    "title",
+    "publisher",
+    "source_type",
+    "availability_basis",
+    "usage_permission",
+    "license_note",
+    "reliability_note",
+    "domain_tags",
+    "label"
+  ],
+  "title": "SourceImportV1",
+  "type": "object"
+}

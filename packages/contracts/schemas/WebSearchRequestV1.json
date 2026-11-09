@@ -1,0 +1,30 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "query": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Query",
+      "type": "string"
+    },
+    "count": {
+      "default": 5,
+      "maximum": 10,
+      "minimum": 1,
+      "title": "Count",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "title": "WebSearchRequestV1",
+  "type": "object"
+}

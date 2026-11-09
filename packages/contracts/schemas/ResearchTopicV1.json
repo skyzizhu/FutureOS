@@ -1,0 +1,64 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "topic_id": {
+      "format": "uuid",
+      "title": "Topic Id",
+      "type": "string"
+    },
+    "owner_user_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Owner User Id"
+    },
+    "title": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "scope": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Scope",
+      "type": "string"
+    },
+    "domain_tags": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Domain Tags",
+      "type": "array"
+    },
+    "version": {
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "topic_id",
+    "title",
+    "scope",
+    "domain_tags",
+    "version"
+  ],
+  "title": "ResearchTopicV1",
+  "type": "object"
+}

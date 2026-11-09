@@ -1,0 +1,113 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "impact_id": {
+      "format": "uuid",
+      "title": "Impact Id",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "profile_snapshot_id": {
+      "format": "uuid",
+      "title": "Profile Snapshot Id",
+      "type": "string"
+    },
+    "forecast_version_id": {
+      "format": "uuid",
+      "title": "Forecast Version Id",
+      "type": "string"
+    },
+    "affected_area": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Affected Area",
+      "type": "string"
+    },
+    "mechanism_path": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Mechanism Path",
+      "type": "array"
+    },
+    "relevance_reason": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Relevance Reason",
+      "type": "string"
+    },
+    "positive_impacts": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Positive Impacts",
+      "type": "array"
+    },
+    "negative_impacts": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Negative Impacts",
+      "type": "array"
+    },
+    "time_horizon": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Time Horizon",
+      "type": "string"
+    },
+    "applicable_conditions": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Applicable Conditions",
+      "type": "array"
+    },
+    "uncertainty": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Uncertainty",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "impact_id",
+    "user_id",
+    "profile_snapshot_id",
+    "forecast_version_id",
+    "affected_area",
+    "mechanism_path",
+    "relevance_reason",
+    "positive_impacts",
+    "negative_impacts",
+    "time_horizon",
+    "applicable_conditions",
+    "uncertainty",
+    "updated_at"
+  ],
+  "title": "PersonalImpactV1",
+  "type": "object"
+}

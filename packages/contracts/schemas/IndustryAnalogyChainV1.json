@@ -1,0 +1,111 @@
+{
+  "$defs": {
+    "IndustryAnalogyMilestoneV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "period": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Period",
+          "type": "string"
+        },
+        "observed_change": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Observed Change",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 500,
+          "minLength": 12,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "period",
+        "observed_change",
+        "source_id",
+        "quote"
+      ],
+      "title": "IndustryAnalogyMilestoneV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Case Id",
+      "type": "string"
+    },
+    "industry": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Industry",
+      "type": "string"
+    },
+    "context": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Context",
+      "type": "string"
+    },
+    "milestones": {
+      "items": {
+        "$ref": "#/$defs/IndustryAnalogyMilestoneV1"
+      },
+      "maxItems": 8,
+      "minItems": 2,
+      "title": "Milestones",
+      "type": "array"
+    },
+    "mechanism": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Mechanism",
+      "type": "string"
+    },
+    "comparable_conditions": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Comparable Conditions",
+      "type": "string"
+    },
+    "key_difference": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Key Difference",
+      "type": "string"
+    }
+  },
+  "required": [
+    "case_id",
+    "industry",
+    "context",
+    "milestones",
+    "mechanism",
+    "comparable_conditions",
+    "key_difference"
+  ],
+  "title": "IndustryAnalogyChainV1",
+  "type": "object"
+}

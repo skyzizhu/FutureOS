@@ -1,0 +1,77 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "domain": {
+      "title": "Domain",
+      "type": "string"
+    },
+    "public": {
+      "title": "Public",
+      "type": "boolean"
+    },
+    "owned": {
+      "default": false,
+      "title": "Owned",
+      "type": "boolean"
+    },
+    "added": {
+      "default": false,
+      "title": "Added",
+      "type": "boolean"
+    },
+    "personal_industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Personal Industry Id"
+    },
+    "source_industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Industry Id"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "domain",
+    "public"
+  ],
+  "title": "CommunityIndustryViewV1",
+  "type": "object"
+}

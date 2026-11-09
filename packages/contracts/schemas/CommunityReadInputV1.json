@@ -1,0 +1,21 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "visitor_id": {
+      "format": "uuid",
+      "title": "Visitor Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "visitor_id"
+  ],
+  "title": "CommunityReadInputV1",
+  "type": "object"
+}

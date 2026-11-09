@@ -1,0 +1,74 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "provider": {
+      "const": "mock",
+      "default": "mock",
+      "title": "Provider",
+      "type": "string"
+    },
+    "label": {
+      "const": "DEMO",
+      "default": "DEMO",
+      "title": "Label",
+      "type": "string"
+    },
+    "event_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Event Id",
+      "type": "string"
+    },
+    "checkout_id": {
+      "format": "uuid",
+      "title": "Checkout Id",
+      "type": "string"
+    },
+    "provider_reference": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Provider Reference",
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "checkout.paid",
+        "checkout.refunded"
+      ],
+      "title": "Event Type",
+      "type": "string"
+    },
+    "amount_minor": {
+      "exclusiveMinimum": 0,
+      "title": "Amount Minor",
+      "type": "integer"
+    },
+    "currency": {
+      "const": "CNY",
+      "title": "Currency",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "checkout_id",
+    "provider_reference",
+    "event_type",
+    "amount_minor",
+    "currency",
+    "occurred_at"
+  ],
+  "title": "PaymentEventV1",
+  "type": "object"
+}

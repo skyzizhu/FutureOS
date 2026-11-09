@@ -1,0 +1,102 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "impact_id": {
+      "format": "uuid",
+      "title": "Impact Id",
+      "type": "string"
+    },
+    "relevance": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "title": "Relevance",
+      "type": "string"
+    },
+    "impact_window": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Impact Window",
+      "type": "string"
+    },
+    "actionability": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Actionability",
+      "type": "string"
+    },
+    "reversibility": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "title": "Reversibility",
+      "type": "string"
+    },
+    "cost_note": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Cost Note",
+      "type": "string"
+    },
+    "decision_priority": {
+      "enum": [
+        "prepare",
+        "observe",
+        "no_action"
+      ],
+      "title": "Decision Priority",
+      "type": "string"
+    },
+    "reasons": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Reasons",
+      "type": "array"
+    },
+    "unknowns": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Unknowns",
+      "type": "array"
+    },
+    "reevaluate_if": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Reevaluate If",
+      "type": "array"
+    }
+  },
+  "required": [
+    "impact_id",
+    "relevance",
+    "impact_window",
+    "actionability",
+    "reversibility",
+    "cost_note",
+    "decision_priority",
+    "reasons",
+    "unknowns",
+    "reevaluate_if"
+  ],
+  "title": "DecisionValueV1",
+  "type": "object"
+}

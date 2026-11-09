@@ -1,0 +1,45 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "industry": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Industry",
+      "type": "string"
+    },
+    "region": {
+      "default": "global",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Region",
+      "type": "string"
+    },
+    "horizon_days": {
+      "default": 180,
+      "maximum": 1095,
+      "minimum": 1,
+      "title": "Horizon Days",
+      "type": "integer"
+    },
+    "label": {
+      "default": "DEMO",
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "industry"
+  ],
+  "title": "IndustryResearchScopeV1",
+  "type": "object"
+}

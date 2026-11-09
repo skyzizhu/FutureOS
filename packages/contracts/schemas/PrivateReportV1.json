@@ -1,0 +1,515 @@
+{
+  "$defs": {
+    "DecisionValueV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "impact_id": {
+          "format": "uuid",
+          "title": "Impact Id",
+          "type": "string"
+        },
+        "relevance": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Relevance",
+          "type": "string"
+        },
+        "impact_window": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Impact Window",
+          "type": "string"
+        },
+        "actionability": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Actionability",
+          "type": "string"
+        },
+        "reversibility": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Reversibility",
+          "type": "string"
+        },
+        "cost_note": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Cost Note",
+          "type": "string"
+        },
+        "decision_priority": {
+          "enum": [
+            "prepare",
+            "observe",
+            "no_action"
+          ],
+          "title": "Decision Priority",
+          "type": "string"
+        },
+        "reasons": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        },
+        "unknowns": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Unknowns",
+          "type": "array"
+        },
+        "reevaluate_if": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Reevaluate If",
+          "type": "array"
+        }
+      },
+      "required": [
+        "impact_id",
+        "relevance",
+        "impact_window",
+        "actionability",
+        "reversibility",
+        "cost_note",
+        "decision_priority",
+        "reasons",
+        "unknowns",
+        "reevaluate_if"
+      ],
+      "title": "DecisionValueV1",
+      "type": "object"
+    },
+    "PersonalAssessmentV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "impact_id": {
+          "format": "uuid",
+          "title": "Impact Id",
+          "type": "string"
+        },
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "profile_snapshot_id": {
+          "format": "uuid",
+          "title": "Profile Snapshot Id",
+          "type": "string"
+        },
+        "forecast_version_id": {
+          "format": "uuid",
+          "title": "Forecast Version Id",
+          "type": "string"
+        },
+        "relevance": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Relevance",
+          "type": "string"
+        },
+        "mechanism_path": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Mechanism Path",
+          "type": "array"
+        },
+        "relevance_reason": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Relevance Reason",
+          "type": "string"
+        },
+        "positive_impacts": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Positive Impacts",
+          "type": "array"
+        },
+        "negative_impacts": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Negative Impacts",
+          "type": "array"
+        },
+        "applicable_conditions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Applicable Conditions",
+          "type": "array"
+        },
+        "uncertainty": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Uncertainty",
+          "type": "string"
+        },
+        "matched_domains": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Matched Domains",
+          "type": "array"
+        },
+        "decision": {
+          "$ref": "#/$defs/DecisionValueV1"
+        }
+      },
+      "required": [
+        "impact_id",
+        "user_id",
+        "profile_snapshot_id",
+        "forecast_version_id",
+        "relevance",
+        "mechanism_path",
+        "relevance_reason",
+        "positive_impacts",
+        "negative_impacts",
+        "applicable_conditions",
+        "uncertainty",
+        "matched_domains",
+        "decision"
+      ],
+      "title": "PersonalAssessmentV1",
+      "type": "object"
+    },
+    "RecommendationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "recommendation_id": {
+          "format": "uuid",
+          "title": "Recommendation Id",
+          "type": "string"
+        },
+        "impact_id": {
+          "format": "uuid",
+          "title": "Impact Id",
+          "type": "string"
+        },
+        "action": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Action",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "forecast_version_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Forecast Version Ids",
+          "type": "array"
+        },
+        "applicability": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Applicability",
+          "type": "string"
+        },
+        "suggested_start": {
+          "format": "date-time",
+          "title": "Suggested Start",
+          "type": "string"
+        },
+        "review_date": {
+          "format": "date-time",
+          "title": "Review Date",
+          "type": "string"
+        },
+        "estimated_effort_and_cost": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Estimated Effort And Cost",
+          "type": "string"
+        },
+        "tradeoffs": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Tradeoffs",
+          "type": "string"
+        },
+        "alternatives": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "success_metrics": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Success Metrics",
+          "type": "array"
+        },
+        "stop_or_revisit_condition": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Stop Or Revisit Condition",
+          "type": "string"
+        },
+        "priority": {
+          "enum": [
+            "prepare",
+            "observe",
+            "no_action"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "personalization_assumptions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Personalization Assumptions",
+          "type": "array"
+        },
+        "suppressed_high_risk_actions": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Suppressed High Risk Actions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "recommendation_id",
+        "impact_id",
+        "action",
+        "rationale",
+        "forecast_version_ids",
+        "applicability",
+        "suggested_start",
+        "review_date",
+        "estimated_effort_and_cost",
+        "tradeoffs",
+        "alternatives",
+        "success_metrics",
+        "stop_or_revisit_condition",
+        "priority",
+        "personalization_assumptions",
+        "suppressed_high_risk_actions"
+      ],
+      "title": "RecommendationV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "report_id": {
+      "format": "uuid",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "report_version_id": {
+      "format": "uuid",
+      "title": "Report Version Id",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "version_num": {
+      "minimum": 1,
+      "title": "Version Num",
+      "type": "integer"
+    },
+    "profile_snapshot_id": {
+      "format": "uuid",
+      "title": "Profile Snapshot Id",
+      "type": "string"
+    },
+    "profile_revision": {
+      "title": "Profile Revision",
+      "type": "integer"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "forecast_version_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Forecast Version Ids",
+      "type": "array"
+    },
+    "primary_impacts": {
+      "items": {
+        "$ref": "#/$defs/PersonalAssessmentV1"
+      },
+      "title": "Primary Impacts",
+      "type": "array"
+    },
+    "observation_only": {
+      "items": {
+        "$ref": "#/$defs/PersonalAssessmentV1"
+      },
+      "title": "Observation Only",
+      "type": "array"
+    },
+    "recommendations": {
+      "items": {
+        "$ref": "#/$defs/RecommendationV1"
+      },
+      "title": "Recommendations",
+      "type": "array"
+    },
+    "evidence_gaps": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Evidence Gaps",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    },
+    "algorithm_version": {
+      "const": "m4-personal-v1",
+      "default": "m4-personal-v1",
+      "title": "Algorithm Version",
+      "type": "string"
+    },
+    "previous_report_version_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Previous Report Version Id"
+    },
+    "change_summary": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Change Summary",
+      "type": "array"
+    }
+  },
+  "required": [
+    "report_id",
+    "report_version_id",
+    "user_id",
+    "version_num",
+    "profile_snapshot_id",
+    "profile_revision",
+    "label",
+    "title",
+    "created_at",
+    "forecast_version_ids",
+    "primary_impacts",
+    "observation_only",
+    "recommendations",
+    "evidence_gaps",
+    "limitations"
+  ],
+  "title": "PrivateReportV1",
+  "type": "object"
+}

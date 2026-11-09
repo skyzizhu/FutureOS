@@ -1,0 +1,51 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "industry_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Industry Id"
+    },
+    "question": {
+      "maxLength": 1000,
+      "minLength": 2,
+      "title": "Question",
+      "type": "string"
+    },
+    "client_id": {
+      "format": "uuid",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "use_model": {
+      "default": false,
+      "title": "Use Model",
+      "type": "boolean"
+    },
+    "include_memory": {
+      "default": false,
+      "title": "Include Memory",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "question",
+    "client_id"
+  ],
+  "title": "ConversationCreateV1",
+  "type": "object"
+}

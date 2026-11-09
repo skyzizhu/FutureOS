@@ -1,0 +1,79 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "label": {
+      "const": "DEMO",
+      "default": "DEMO",
+      "title": "Label",
+      "type": "string"
+    },
+    "kind": {
+      "const": "hypothesis",
+      "default": "hypothesis",
+      "title": "Kind",
+      "type": "string"
+    },
+    "statement": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Statement",
+      "type": "string"
+    },
+    "research_as_of": {
+      "format": "date-time",
+      "title": "Research As Of",
+      "type": "string"
+    },
+    "source_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Source Ids",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Limitations",
+      "type": "array"
+    },
+    "model_id": {
+      "const": "mock-llm-v1",
+      "default": "mock-llm-v1",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "prompt_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Prompt Hash",
+      "type": "string"
+    },
+    "cost_units": {
+      "const": 0,
+      "default": 0,
+      "title": "Cost Units",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "statement",
+    "research_as_of",
+    "source_ids",
+    "limitations",
+    "prompt_hash"
+  ],
+  "title": "DemoResearchResultV1",
+  "type": "object"
+}

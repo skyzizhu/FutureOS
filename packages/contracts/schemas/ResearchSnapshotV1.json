@@ -1,0 +1,1064 @@
+{
+  "$defs": {
+    "DomainTag": {
+      "enum": [
+        "macro_finance",
+        "technology",
+        "industry",
+        "workforce",
+        "policy",
+        "consumption",
+        "housing",
+        "education",
+        "health",
+        "energy",
+        "supply_chain",
+        "society"
+      ],
+      "title": "DomainTag",
+      "type": "string"
+    },
+    "EvidenceClaimV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "claim_id": {
+          "format": "uuid",
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "source_group_id": {
+          "format": "uuid",
+          "title": "Source Group Id",
+          "type": "string"
+        },
+        "claim_text": {
+          "title": "Claim Text",
+          "type": "string"
+        },
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "source_locator": {
+          "title": "Source Locator",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "supports",
+            "contradicts",
+            "context"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "claim_kind": {
+          "enum": [
+            "fact",
+            "opinion",
+            "hypothesis"
+          ],
+          "title": "Claim Kind",
+          "type": "string"
+        },
+        "known_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Known At"
+        },
+        "verification_status": {
+          "enum": [
+            "unverified",
+            "verified"
+          ],
+          "title": "Verification Status",
+          "type": "string"
+        },
+        "verification_note": {
+          "title": "Verification Note",
+          "type": "string"
+        },
+        "scope": {
+          "title": "Scope",
+          "type": "string"
+        },
+        "caveat": {
+          "title": "Caveat",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_id",
+        "source_version_id",
+        "source_group_id",
+        "claim_text",
+        "quote",
+        "source_locator",
+        "relation",
+        "claim_kind",
+        "known_at",
+        "verification_status",
+        "verification_note",
+        "scope",
+        "caveat",
+        "label"
+      ],
+      "title": "EvidenceClaimV1",
+      "type": "object"
+    },
+    "ForecastTargetV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "target_type": {
+          "enum": [
+            "binary",
+            "numeric",
+            "ordinal",
+            "milestone"
+          ],
+          "title": "Target Type",
+          "type": "string"
+        },
+        "population_scope": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Population Scope",
+          "type": "string"
+        },
+        "geography": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Geography",
+          "type": "string"
+        },
+        "metric_definition": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Metric Definition",
+          "type": "string"
+        },
+        "direction_or_threshold": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Direction Or Threshold",
+          "type": "string"
+        },
+        "baseline": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Baseline",
+          "type": "string"
+        },
+        "target_start_at": {
+          "format": "date-time",
+          "title": "Target Start At",
+          "type": "string"
+        },
+        "target_end_at": {
+          "format": "date-time",
+          "title": "Target End At",
+          "type": "string"
+        },
+        "resolution_source": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Source",
+          "type": "string"
+        },
+        "resolution_rule": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Resolution Rule",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_type",
+        "population_scope",
+        "geography",
+        "metric_definition",
+        "direction_or_threshold",
+        "baseline",
+        "target_start_at",
+        "target_end_at",
+        "resolution_source",
+        "resolution_rule"
+      ],
+      "title": "ForecastTargetV1",
+      "type": "object"
+    },
+    "HistoricalCaseViewV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "case_id": {
+          "format": "uuid",
+          "title": "Case Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "cutoff_at": {
+          "format": "date-time",
+          "title": "Cutoff At",
+          "type": "string"
+        },
+        "as_of": {
+          "format": "date-time",
+          "title": "As Of",
+          "type": "string"
+        },
+        "domain_tags": {
+          "items": {
+            "$ref": "#/$defs/DomainTag"
+          },
+          "title": "Domain Tags",
+          "type": "array"
+        },
+        "mechanism_tags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mechanism Tags",
+          "type": "array"
+        },
+        "initial_conditions": {
+          "title": "Initial Conditions",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "contemporaneous": {
+          "items": {
+            "$ref": "#/$defs/HistoricalEventImportV1"
+          },
+          "title": "Contemporaneous",
+          "type": "array"
+        },
+        "outcomes": {
+          "items": {
+            "$ref": "#/$defs/HistoricalEventImportV1"
+          },
+          "title": "Outcomes",
+          "type": "array"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "case_id",
+        "title",
+        "cutoff_at",
+        "as_of",
+        "domain_tags",
+        "mechanism_tags",
+        "initial_conditions",
+        "limitations",
+        "contemporaneous",
+        "outcomes",
+        "label"
+      ],
+      "title": "HistoricalCaseViewV1",
+      "type": "object"
+    },
+    "HistoricalEventImportV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "data_role": {
+          "enum": [
+            "contemporaneous",
+            "outcome"
+          ],
+          "title": "Data Role",
+          "type": "string"
+        },
+        "outcome_category": {
+          "anyOf": [
+            {
+              "enum": [
+                "success",
+                "failure",
+                "inconclusive"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome Category"
+        }
+      },
+      "required": [
+        "text",
+        "known_at",
+        "source_version_id",
+        "data_role"
+      ],
+      "title": "HistoricalEventImportV1",
+      "type": "object"
+    },
+    "IndicatorDefinitionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "provider": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Provider",
+          "type": "string"
+        },
+        "geo_scope": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Geo Scope",
+          "type": "string"
+        },
+        "unit": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        },
+        "frequency": {
+          "enum": [
+            "day",
+            "week",
+            "month",
+            "quarter",
+            "year",
+            "irregular"
+          ],
+          "title": "Frequency",
+          "type": "string"
+        },
+        "definition_version": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Definition Version",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "indicator_id": {
+          "format": "uuid",
+          "title": "Indicator Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "name",
+        "provider",
+        "geo_scope",
+        "unit",
+        "frequency",
+        "definition_version",
+        "label",
+        "indicator_id"
+      ],
+      "title": "IndicatorDefinitionV1",
+      "type": "object"
+    },
+    "LifecycleStage": {
+      "enum": [
+        "emergence",
+        "growth",
+        "maturity",
+        "inflection",
+        "decline",
+        "unknown"
+      ],
+      "title": "LifecycleStage",
+      "type": "string"
+    },
+    "ObservationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "period_start": {
+          "format": "date-time",
+          "title": "Period Start",
+          "type": "string"
+        },
+        "period_end": {
+          "format": "date-time",
+          "title": "Period End",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "published_at": {
+          "format": "date-time",
+          "title": "Published At",
+          "type": "string"
+        },
+        "available_at": {
+          "format": "date-time",
+          "title": "Available At",
+          "type": "string"
+        },
+        "revision_number": {
+          "minimum": 1,
+          "title": "Revision Number",
+          "type": "integer"
+        },
+        "quality_flag": {
+          "enum": [
+            "DEMO_DATA",
+            "UNVERIFIED",
+            "VERIFIED"
+          ],
+          "title": "Quality Flag",
+          "type": "string"
+        },
+        "definition_note": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Definition Note",
+          "type": "string"
+        },
+        "observation_id": {
+          "format": "uuid",
+          "title": "Observation Id",
+          "type": "string"
+        },
+        "indicator_id": {
+          "format": "uuid",
+          "title": "Indicator Id",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_version_id",
+        "period_start",
+        "period_end",
+        "value",
+        "published_at",
+        "available_at",
+        "revision_number",
+        "quality_flag",
+        "definition_note",
+        "observation_id",
+        "indicator_id",
+        "label"
+      ],
+      "title": "ObservationV1",
+      "type": "object"
+    },
+    "ResearchSubmitV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "scope": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Scope",
+          "type": "string"
+        },
+        "domain_tags": {
+          "items": {
+            "$ref": "#/$defs/DomainTag"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Domain Tags",
+          "type": "array"
+        },
+        "research_as_of": {
+          "format": "date-time",
+          "title": "Research As Of",
+          "type": "string"
+        },
+        "signal_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Signal Ids",
+          "type": "array"
+        },
+        "historical_case_ids": {
+          "default": [],
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Historical Case Ids",
+          "type": "array"
+        },
+        "indicator_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Indicator Id"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ForecastTargetV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "lifecycle_stage": {
+          "$ref": "#/$defs/LifecycleStage",
+          "default": "unknown"
+        },
+        "recipe_id": {
+          "default": "verifiable_agent",
+          "enum": [
+            "verifiable_agent",
+            "technology_diffusion"
+          ],
+          "title": "Recipe Id",
+          "type": "string"
+        },
+        "provider": {
+          "default": "mock",
+          "enum": [
+            "mock",
+            "deepseek"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "scope",
+        "domain_tags",
+        "research_as_of",
+        "signal_ids",
+        "label"
+      ],
+      "title": "ResearchSubmitV1",
+      "type": "object"
+    },
+    "SignalV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "signal_id": {
+          "format": "uuid",
+          "title": "Signal Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "signal",
+          "default": "signal",
+          "title": "Kind",
+          "type": "string"
+        },
+        "status": {
+          "const": "candidate",
+          "default": "candidate",
+          "title": "Status",
+          "type": "string"
+        },
+        "headline": {
+          "title": "Headline",
+          "type": "string"
+        },
+        "lifecycle_stage": {
+          "$ref": "#/$defs/LifecycleStage"
+        },
+        "claim_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Claim Ids",
+          "type": "array"
+        },
+        "source_group_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Source Group Ids",
+          "type": "array"
+        },
+        "independent_source_count": {
+          "minimum": 1,
+          "title": "Independent Source Count",
+          "type": "integer"
+        },
+        "mechanism_tags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Mechanism Tags",
+          "type": "array"
+        },
+        "domain_tags": {
+          "items": {
+            "$ref": "#/$defs/DomainTag"
+          },
+          "title": "Domain Tags",
+          "type": "array"
+        },
+        "detected_at": {
+          "format": "date-time",
+          "title": "Detected At",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "signal_id",
+        "headline",
+        "lifecycle_stage",
+        "claim_ids",
+        "source_group_ids",
+        "independent_source_count",
+        "mechanism_tags",
+        "domain_tags",
+        "detected_at",
+        "label"
+      ],
+      "title": "SignalV1",
+      "type": "object"
+    },
+    "SourceVersionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_group_id": {
+          "format": "uuid",
+          "title": "Source Group Id",
+          "type": "string"
+        },
+        "source_type": {
+          "title": "Source Type",
+          "type": "string"
+        },
+        "original_language": {
+          "title": "Original Language",
+          "type": "string"
+        },
+        "region": {
+          "title": "Region",
+          "type": "string"
+        },
+        "dedup_method": {
+          "title": "Dedup Method",
+          "type": "string"
+        },
+        "original_source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Source Url"
+        },
+        "version_label": {
+          "title": "Version Label",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "publisher": {
+          "title": "Publisher",
+          "type": "string"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Published At"
+        },
+        "event_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Event At"
+        },
+        "available_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Available At"
+        },
+        "ingested_at": {
+          "format": "date-time",
+          "title": "Ingested At",
+          "type": "string"
+        },
+        "revised_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Revised At"
+        },
+        "availability_basis": {
+          "title": "Availability Basis",
+          "type": "string"
+        },
+        "availability_note": {
+          "title": "Availability Note",
+          "type": "string"
+        },
+        "content_hash": {
+          "title": "Content Hash",
+          "type": "string"
+        },
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "usage_permission": {
+          "title": "Usage Permission",
+          "type": "string"
+        },
+        "license_note": {
+          "title": "License Note",
+          "type": "string"
+        },
+        "access_method": {
+          "title": "Access Method",
+          "type": "string"
+        },
+        "reliability_note": {
+          "title": "Reliability Note",
+          "type": "string"
+        },
+        "domain_tags": {
+          "items": {
+            "$ref": "#/$defs/DomainTag"
+          },
+          "title": "Domain Tags",
+          "type": "array"
+        },
+        "label": {
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_version_id",
+        "source_id",
+        "source_group_id",
+        "source_type",
+        "original_language",
+        "region",
+        "dedup_method",
+        "version_label",
+        "url",
+        "title",
+        "publisher",
+        "published_at",
+        "event_at",
+        "available_at",
+        "ingested_at",
+        "revised_at",
+        "availability_basis",
+        "availability_note",
+        "content_hash",
+        "content",
+        "usage_permission",
+        "license_note",
+        "access_method",
+        "reliability_note",
+        "domain_tags",
+        "label"
+      ],
+      "title": "SourceVersionV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request": {
+      "$ref": "#/$defs/ResearchSubmitV1"
+    },
+    "signals": {
+      "items": {
+        "$ref": "#/$defs/SignalV1"
+      },
+      "title": "Signals",
+      "type": "array"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/EvidenceClaimV1"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceVersionV1"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/HistoricalCaseViewV1"
+      },
+      "title": "Cases",
+      "type": "array"
+    },
+    "indicator": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/IndicatorDefinitionV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "observations": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ObservationV1"
+      },
+      "title": "Observations",
+      "type": "array"
+    },
+    "engine_code_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Engine Code Hash",
+      "type": "string"
+    },
+    "rules_version": {
+      "const": "m2-rules-v1",
+      "default": "m2-rules-v1",
+      "title": "Rules Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request",
+    "signals",
+    "claims",
+    "sources",
+    "cases",
+    "engine_code_hash"
+  ],
+  "title": "ResearchSnapshotV1",
+  "type": "object"
+}

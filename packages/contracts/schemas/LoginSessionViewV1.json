@@ -1,0 +1,53 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "session_id": {
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "user",
+        "admin"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "device_label": {
+      "maxLength": 80,
+      "title": "Device Label",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "title": "Expires At",
+      "type": "string"
+    },
+    "current": {
+      "title": "Current",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "session_id",
+    "kind",
+    "device_label",
+    "created_at",
+    "expires_at",
+    "current"
+  ],
+  "title": "LoginSessionViewV1",
+  "type": "object"
+}

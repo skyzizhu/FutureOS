@@ -1,0 +1,198 @@
+{
+  "$defs": {
+    "ProfileInputV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "industry_l1_code": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Industry L1 Code",
+          "type": "string"
+        },
+        "industry_l2_code": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Industry L2 Code",
+          "type": "string"
+        },
+        "industry_detail": {
+          "default": "",
+          "maxLength": 120,
+          "title": "Industry Detail",
+          "type": "string"
+        },
+        "occupation_text": {
+          "default": "",
+          "maxLength": 300,
+          "title": "Occupation Text",
+          "type": "string"
+        },
+        "country_code": {
+          "default": "",
+          "maxLength": 2,
+          "title": "Country Code",
+          "type": "string"
+        },
+        "subdivision": {
+          "default": "",
+          "maxLength": 100,
+          "title": "Subdivision",
+          "type": "string"
+        },
+        "gender": {
+          "anyOf": [
+            {
+              "enum": [
+                "female",
+                "male",
+                "other"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gender"
+        },
+        "age": {
+          "anyOf": [
+            {
+              "maximum": 120,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Age"
+        },
+        "region": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Region",
+          "type": "string"
+        },
+        "goals": {
+          "default": [],
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "title": "Goals",
+          "type": "array"
+        },
+        "tasks": {
+          "default": [],
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Tasks",
+          "type": "array"
+        },
+        "available_minutes_per_week": {
+          "anyOf": [
+            {
+              "maximum": 10080,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Available Minutes Per Week"
+        },
+        "allow_low_cost_experiments": {
+          "default": false,
+          "title": "Allow Low Cost Experiments",
+          "type": "boolean"
+        },
+        "use_optional_fields": {
+          "default": false,
+          "title": "Use Optional Fields",
+          "type": "boolean"
+        },
+        "locale": {
+          "default": "zh-CN",
+          "enum": [
+            "zh-CN",
+            "en"
+          ],
+          "title": "Locale",
+          "type": "string"
+        },
+        "timezone": {
+          "default": "Asia/Shanghai",
+          "enum": [
+            "Asia/Shanghai",
+            "UTC"
+          ],
+          "title": "Timezone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "industry_l1_code",
+        "industry_l2_code"
+      ],
+      "title": "ProfileInputV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "user_id": {
+      "format": "uuid",
+      "title": "User Id",
+      "type": "string"
+    },
+    "profile": {
+      "$ref": "#/$defs/ProfileInputV1"
+    },
+    "revision": {
+      "minimum": 1,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "taxonomy_version": {
+      "title": "Taxonomy Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "user_id",
+    "profile",
+    "revision",
+    "updated_at",
+    "taxonomy_version"
+  ],
+  "title": "ProfileViewV1",
+  "type": "object"
+}

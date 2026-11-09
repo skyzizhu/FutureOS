@@ -1,0 +1,58 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "challenge_token": {
+      "title": "Challenge Token",
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "enroll",
+        "verify"
+      ],
+      "title": "Stage",
+      "type": "string"
+    },
+    "expires_in": {
+      "default": 300,
+      "title": "Expires In",
+      "type": "integer"
+    },
+    "secret": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Secret"
+    },
+    "provisioning_uri": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Provisioning Uri"
+    }
+  },
+  "required": [
+    "challenge_token",
+    "stage"
+  ],
+  "title": "AdminChallengeV1",
+  "type": "object"
+}

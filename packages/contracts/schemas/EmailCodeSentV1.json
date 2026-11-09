@@ -1,0 +1,41 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "challenge_id": {
+      "format": "uuid",
+      "title": "Challenge Id",
+      "type": "string"
+    },
+    "expires_in": {
+      "default": 300,
+      "title": "Expires In",
+      "type": "integer"
+    },
+    "resend_after": {
+      "default": 60,
+      "title": "Resend After",
+      "type": "integer"
+    },
+    "delivery_mode": {
+      "enum": [
+        "local_preview",
+        "smtp",
+        "disabled"
+      ],
+      "title": "Delivery Mode",
+      "type": "string"
+    }
+  },
+  "required": [
+    "challenge_id",
+    "delivery_mode"
+  ],
+  "title": "EmailCodeSentV1",
+  "type": "object"
+}

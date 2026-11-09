@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "ResearchScopeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "domain": {
+          "enum": [
+            "technology",
+            "manufacturing",
+            "healthcare",
+            "education",
+            "finance",
+            "services",
+            "logistics",
+            "energy",
+            "society"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "focus": {
+          "enum": [
+            "workflow_adoption",
+            "integration_constraints"
+          ],
+          "title": "Focus",
+          "type": "string"
+        },
+        "population": {
+          "enum": [
+            "small_teams",
+            "large_organizations"
+          ],
+          "title": "Population",
+          "type": "string"
+        },
+        "geography": {
+          "default": "global",
+          "enum": [
+            "global",
+            "CN"
+          ],
+          "title": "Geography",
+          "type": "string"
+        },
+        "label": {
+          "default": "DEMO",
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "domain",
+        "focus",
+        "population"
+      ],
+      "title": "ResearchScopeV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "quote_id": {
+      "format": "uuid",
+      "title": "Quote Id",
+      "type": "string"
+    },
+    "scope": {
+      "$ref": "#/$defs/ResearchScopeV1"
+    },
+    "scope_fingerprint": {
+      "title": "Scope Fingerprint",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "new_topic",
+        "existing_topic"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "units_required": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Units Required",
+      "type": "integer"
+    },
+    "existing_report_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Existing Report Id"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "title": "Expires At",
+      "type": "string"
+    },
+    "rules": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Rules",
+      "type": "array"
+    }
+  },
+  "required": [
+    "quote_id",
+    "scope",
+    "scope_fingerprint",
+    "kind",
+    "units_required",
+    "existing_report_id",
+    "expires_at",
+    "rules"
+  ],
+  "title": "ResearchQuoteV1",
+  "type": "object"
+}

@@ -1,0 +1,80 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "code": {
+      "pattern": "^[a-z][a-z0-9_]{2,39}$",
+      "title": "Code",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "amount_minor": {
+      "exclusiveMinimum": 0,
+      "maximum": 10000000,
+      "title": "Amount Minor",
+      "type": "integer"
+    },
+    "currency": {
+      "const": "CNY",
+      "default": "CNY",
+      "title": "Currency",
+      "type": "string"
+    },
+    "units": {
+      "maximum": 1000,
+      "minimum": 1,
+      "title": "Units",
+      "type": "integer"
+    },
+    "valid_days": {
+      "maximum": 366,
+      "minimum": 1,
+      "title": "Valid Days",
+      "type": "integer"
+    },
+    "recurring": {
+      "title": "Recurring",
+      "type": "boolean"
+    },
+    "cadence_days": {
+      "anyOf": [
+        {
+          "maximum": 30,
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Cadence Days"
+    },
+    "label": {
+      "const": "DEMO",
+      "default": "DEMO",
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "name",
+    "amount_minor",
+    "units",
+    "valid_days",
+    "recurring"
+  ],
+  "title": "BillingPlanV1",
+  "type": "object"
+}

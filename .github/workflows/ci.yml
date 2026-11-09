@@ -1,0 +1,72 @@
+name: Foundation and M7 acceptance
+on: [push, pull_request]
+jobs:
+  contracts-and-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16.11-bookworm
+        env:
+          POSTGRES_USER: futureos
+          POSTGRES_PASSWORD: demo-local-only
+          POSTGRES_DB: futureos_test
+        ports: [5432:5432]
+        options: --health-cmd "pg_isready -U futureos -d futureos_test" --health-interval 3s --health-retries 20
+      redis:
+        image: redis:7.4.7-bookworm
+        ports: [6379:6379]
+        options: --health-cmd "redis-cli ping" --health-interval 3s --health-retries 20
+    env:
+      DEMO_MODE: "true"
+      DEMO_ADMIN_ENABLED: "true"
+      AUTH_MAIL_TRANSPORT: local_preview
+      APP_ENV: test
+      LIVE_WEB_ENABLED: "false"
+      LIVE_RESEARCH_ENABLED: "false"
+      SANDBOX_COMMERCE_ENABLED: "true"
+      LIVE_PAYMENTS_ENABLED: "false"
+      DATABASE_URL: postgresql+psycopg://futureos:demo-local-only@127.0.0.1:5432/futureos_test
+      TEST_DATABASE_URL: postgresql+psycopg://futureos:demo-local-only@127.0.0.1:5432/futureos_test
+      FUTUREOS_API_PORT: "8100"
+      FUTUREOS_WEB_PORT: "3100"
+      PORT: "3100"
+      API_INTERNAL_URL: http://127.0.0.1:8100
+      BROWSER_TEST_URL: http://127.0.0.1:3100
+      REQUIRE_REDIS: "true"
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.9.5"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: make install
+      - run: make contracts
+      - run: git diff --exit-code -- packages/contracts
+      - run: make check
+      - run: uv run python -m scripts.reset_e2e_database
+      - run: make migrate seed build
+      - run: npx playwright install --with-deps chromium
+      - name: Start API, worker, scheduler and Web
+        run: |
+          uv run uvicorn apps.api.main:app --host 127.0.0.1 --port 8100 --no-access-log --no-proxy-headers > /tmp/api.log 2>&1 &
+          uv run python -m workers.research.main > /tmp/worker.log 2>&1 &
+          uv run python -m workers.scheduler.main > /tmp/scheduler.log 2>&1 &
+          npm run start --workspace @futureos/web > /tmp/web.log 2>&1 &
+          for i in $(seq 1 40); do if curl -fsS http://127.0.0.1:3100 > /dev/null; then exit 0; fi; sleep 1; done
+          exit 1
+      - run: make smoke
+      - run: npm run e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: milestone-evidence
+          path: |
+            docs/milestones/evidence/
+            /tmp/api.log
+            /tmp/worker.log
+            /tmp/scheduler.log
+            /tmp/web.log

@@ -1,0 +1,57 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_id": {
+      "format": "uuid",
+      "title": "Source Id",
+      "type": "string"
+    },
+    "url": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Url",
+      "type": "string"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "provenance": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Provenance",
+      "type": "string"
+    },
+    "snippet": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Snippet",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_id",
+    "url",
+    "published_at",
+    "provenance",
+    "snippet",
+    "label"
+  ],
+  "title": "SourceV1",
+  "type": "object"
+}

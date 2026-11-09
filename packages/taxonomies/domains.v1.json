@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "domains": [
+    {
+      "code": "macro_finance",
+      "label_zh": "宏观经济与金融"
+    },
+    {
+      "code": "technology",
+      "label_zh": "科技与创新"
+    },
+    {
+      "code": "industry",
+      "label_zh": "产业与商业"
+    },
+    {
+      "code": "workforce",
+      "label_zh": "职业与劳动力"
+    },
+    {
+      "code": "policy",
+      "label_zh": "政策与制度"
+    },
+    {
+      "code": "consumption",
+      "label_zh": "消费与生活成本"
+    },
+    {
+      "code": "housing",
+      "label_zh": "房地产与城市"
+    },
+    {
+      "code": "education",
+      "label_zh": "教育与学习"
+    },
+    {
+      "code": "health",
+      "label_zh": "健康与医疗"
+    },
+    {
+      "code": "energy",
+      "label_zh": "能源与环境"
+    },
+    {
+      "code": "supply_chain",
+      "label_zh": "全球化与供应链"
+    },
+    {
+      "code": "society",
+      "label_zh": "社会与生活方式"
+    }
+  ]
+}

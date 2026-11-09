@@ -1,0 +1,36 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "delivery_id": {
+      "format": "uuid",
+      "title": "Delivery Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "delivered_local",
+        "suppressed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "external_delivery": {
+      "const": false,
+      "default": false,
+      "title": "External Delivery",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "delivery_id",
+    "status"
+  ],
+  "title": "MailDeliveryResultV1",
+  "type": "object"
+}

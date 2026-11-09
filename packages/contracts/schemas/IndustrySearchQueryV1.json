@@ -1,0 +1,35 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "lane": {
+      "enum": [
+        "industry",
+        "market",
+        "policy",
+        "indicators",
+        "counter",
+        "analogy"
+      ],
+      "title": "Lane",
+      "type": "string"
+    },
+    "query": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Query",
+      "type": "string"
+    }
+  },
+  "required": [
+    "lane",
+    "query"
+  ],
+  "title": "IndustrySearchQueryV1",
+  "type": "object"
+}

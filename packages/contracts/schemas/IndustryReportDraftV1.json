@@ -1,0 +1,219 @@
+{
+  "$defs": {
+    "IndustryActionDraftV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "forecast_index": {
+          "description": "Zero-based forecast position",
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Forecast Index",
+          "type": "integer"
+        },
+        "domain": {
+          "enum": [
+            "career",
+            "work",
+            "learning",
+            "spending",
+            "finance",
+            "life",
+            "health"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "action": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Action",
+          "type": "string"
+        },
+        "trigger": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Trigger",
+          "type": "string"
+        },
+        "check_after_days": {
+          "maximum": 365,
+          "minimum": 1,
+          "title": "Check After Days",
+          "type": "integer"
+        },
+        "time_minutes": {
+          "maximum": 480,
+          "minimum": 1,
+          "title": "Time Minutes",
+          "type": "integer"
+        },
+        "success_check": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Success Check",
+          "type": "string"
+        },
+        "stop_condition": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Stop Condition",
+          "type": "string"
+        }
+      },
+      "required": [
+        "forecast_index",
+        "domain",
+        "action",
+        "trigger",
+        "check_after_days",
+        "time_minutes",
+        "success_check",
+        "stop_condition"
+      ],
+      "title": "IndustryActionDraftV1",
+      "type": "object"
+    },
+    "IndustryForecastDraftV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        },
+        "mechanism": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Mechanism",
+          "type": "string"
+        },
+        "expected_signal": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Expected Signal",
+          "type": "string"
+        },
+        "falsifier": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Falsifier",
+          "type": "string"
+        },
+        "uncertainty": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Uncertainty",
+          "type": "string"
+        },
+        "alternatives": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "supporting_source_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Supporting Source Ids",
+          "type": "array"
+        },
+        "counter_source_ids": {
+          "default": [],
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Counter Source Ids",
+          "type": "array"
+        },
+        "basis": {
+          "default": "direct",
+          "enum": [
+            "direct",
+            "analogy"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "analogy_case_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Analogy Case Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "statement",
+        "mechanism",
+        "expected_signal",
+        "falsifier",
+        "uncertainty",
+        "alternatives",
+        "supporting_source_ids"
+      ],
+      "title": "IndustryForecastDraftV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "forecasts": {
+      "items": {
+        "$ref": "#/$defs/IndustryForecastDraftV1"
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "title": "Forecasts",
+      "type": "array"
+    },
+    "actions": {
+      "items": {
+        "$ref": "#/$defs/IndustryActionDraftV1"
+      },
+      "maxItems": 8,
+      "minItems": 1,
+      "title": "Actions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "forecasts",
+    "actions"
+  ],
+  "title": "IndustryReportDraftV1",
+  "type": "object"
+}

@@ -1,0 +1,22 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "question": {
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Question",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question"
+  ],
+  "title": "DemoResearchInputV1",
+  "type": "object"
+}

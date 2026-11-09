@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "public": {
+      "title": "Public",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "public"
+  ],
+  "title": "CommunityVisibilityV1",
+  "type": "object"
+}

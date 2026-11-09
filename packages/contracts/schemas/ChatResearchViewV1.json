@@ -1,0 +1,825 @@
+{
+  "$defs": {
+    "ChatResearchStageViewV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stage": {
+          "enum": [
+            "search",
+            "analysis",
+            "report"
+          ],
+          "title": "Stage",
+          "type": "string"
+        },
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stage",
+        "started_at"
+      ],
+      "title": "ChatResearchStageViewV1",
+      "type": "object"
+    },
+    "IndustryActionDraftV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "forecast_index": {
+          "description": "Zero-based forecast position",
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Forecast Index",
+          "type": "integer"
+        },
+        "domain": {
+          "enum": [
+            "career",
+            "work",
+            "learning",
+            "spending",
+            "finance",
+            "life",
+            "health"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "action": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Action",
+          "type": "string"
+        },
+        "trigger": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Trigger",
+          "type": "string"
+        },
+        "check_after_days": {
+          "maximum": 365,
+          "minimum": 1,
+          "title": "Check After Days",
+          "type": "integer"
+        },
+        "time_minutes": {
+          "maximum": 480,
+          "minimum": 1,
+          "title": "Time Minutes",
+          "type": "integer"
+        },
+        "success_check": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Success Check",
+          "type": "string"
+        },
+        "stop_condition": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Stop Condition",
+          "type": "string"
+        }
+      },
+      "required": [
+        "forecast_index",
+        "domain",
+        "action",
+        "trigger",
+        "check_after_days",
+        "time_minutes",
+        "success_check",
+        "stop_condition"
+      ],
+      "title": "IndustryActionDraftV1",
+      "type": "object"
+    },
+    "IndustryAnalogyChainV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "case_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Case Id",
+          "type": "string"
+        },
+        "industry": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Industry",
+          "type": "string"
+        },
+        "context": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Context",
+          "type": "string"
+        },
+        "milestones": {
+          "items": {
+            "$ref": "#/$defs/IndustryAnalogyMilestoneV1"
+          },
+          "maxItems": 8,
+          "minItems": 2,
+          "title": "Milestones",
+          "type": "array"
+        },
+        "mechanism": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Mechanism",
+          "type": "string"
+        },
+        "comparable_conditions": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Comparable Conditions",
+          "type": "string"
+        },
+        "key_difference": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Key Difference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "case_id",
+        "industry",
+        "context",
+        "milestones",
+        "mechanism",
+        "comparable_conditions",
+        "key_difference"
+      ],
+      "title": "IndustryAnalogyChainV1",
+      "type": "object"
+    },
+    "IndustryAnalogyMilestoneV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "period": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Period",
+          "type": "string"
+        },
+        "observed_change": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Observed Change",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 500,
+          "minLength": 12,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "period",
+        "observed_change",
+        "source_id",
+        "quote"
+      ],
+      "title": "IndustryAnalogyMilestoneV1",
+      "type": "object"
+    },
+    "IndustryEvidenceV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "direct",
+            "indicator",
+            "counter",
+            "analogy"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 500,
+          "minLength": 12,
+          "title": "Quote",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "comparable_conditions": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Comparable Conditions"
+        },
+        "key_difference": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Key Difference"
+        },
+        "indicator_name": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Indicator Name"
+        },
+        "indicator_period": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Indicator Period"
+        },
+        "indicator_value": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Indicator Value"
+        }
+      },
+      "required": [
+        "source_id",
+        "kind",
+        "quote",
+        "interpretation"
+      ],
+      "title": "IndustryEvidenceV1",
+      "type": "object"
+    },
+    "IndustryForecastDraftV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        },
+        "mechanism": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Mechanism",
+          "type": "string"
+        },
+        "expected_signal": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Expected Signal",
+          "type": "string"
+        },
+        "falsifier": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Falsifier",
+          "type": "string"
+        },
+        "uncertainty": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Uncertainty",
+          "type": "string"
+        },
+        "alternatives": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "supporting_source_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Supporting Source Ids",
+          "type": "array"
+        },
+        "counter_source_ids": {
+          "default": [],
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Counter Source Ids",
+          "type": "array"
+        },
+        "basis": {
+          "default": "direct",
+          "enum": [
+            "direct",
+            "analogy"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "analogy_case_ids": {
+          "default": [],
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Analogy Case Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "statement",
+        "mechanism",
+        "expected_signal",
+        "falsifier",
+        "uncertainty",
+        "alternatives",
+        "supporting_source_ids"
+      ],
+      "title": "IndustryForecastDraftV1",
+      "type": "object"
+    },
+    "IndustryReportDraftV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "forecasts": {
+          "items": {
+            "$ref": "#/$defs/IndustryForecastDraftV1"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Forecasts",
+          "type": "array"
+        },
+        "actions": {
+          "items": {
+            "$ref": "#/$defs/IndustryActionDraftV1"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Actions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "forecasts",
+        "actions"
+      ],
+      "title": "IndustryReportDraftV1",
+      "type": "object"
+    },
+    "IndustryResearchRunV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/IndustryResearchScopeV1"
+        },
+        "as_of": {
+          "format": "date-time",
+          "title": "As Of",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "evidence_limited"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "searched": {
+          "items": {
+            "$ref": "#/$defs/IndustrySearchQueryV1"
+          },
+          "title": "Searched",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/IndustrySourceExcerptV1"
+          },
+          "title": "Sources",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/IndustryEvidenceV1"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "analogy_chains": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/IndustryAnalogyChainV1"
+          },
+          "title": "Analogy Chains",
+          "type": "array"
+        },
+        "gaps": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Gaps",
+          "type": "array"
+        },
+        "report": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IndustryReportDraftV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "personal_actions": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/IndustryActionDraftV1"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Personal Actions"
+        },
+        "fetch_calls": {
+          "minimum": 0,
+          "title": "Fetch Calls",
+          "type": "integer"
+        },
+        "model_calls": {
+          "minimum": 0,
+          "title": "Model Calls",
+          "type": "integer"
+        },
+        "provider_failures": {
+          "minimum": 0,
+          "title": "Provider Failures",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "scope",
+        "as_of",
+        "status",
+        "searched",
+        "sources",
+        "evidence",
+        "gaps",
+        "fetch_calls",
+        "model_calls",
+        "provider_failures"
+      ],
+      "title": "IndustryResearchRunV1",
+      "type": "object"
+    },
+    "IndustryResearchScopeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "industry": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Industry",
+          "type": "string"
+        },
+        "region": {
+          "default": "global",
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Region",
+          "type": "string"
+        },
+        "horizon_days": {
+          "default": 180,
+          "maximum": 1095,
+          "minimum": 1,
+          "title": "Horizon Days",
+          "type": "integer"
+        },
+        "label": {
+          "default": "DEMO",
+          "enum": [
+            "DEMO",
+            "REAL"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "industry"
+      ],
+      "title": "IndustryResearchScopeV1",
+      "type": "object"
+    },
+    "IndustrySearchQueryV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "lane": {
+          "enum": [
+            "industry",
+            "market",
+            "policy",
+            "indicators",
+            "counter",
+            "analogy"
+          ],
+          "title": "Lane",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lane",
+        "query"
+      ],
+      "title": "IndustrySearchQueryV1",
+      "type": "object"
+    },
+    "IndustrySourceExcerptV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 250,
+          "title": "Title",
+          "type": "string"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Published At"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        },
+        "excerpt": {
+          "maxLength": 1400,
+          "minLength": 1,
+          "title": "Excerpt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "url",
+        "title",
+        "published_at",
+        "retrieved_at",
+        "content_hash",
+        "excerpt"
+      ],
+      "title": "IndustrySourceExcerptV1",
+      "type": "object"
+    },
+    "JobStatus": {
+      "enum": [
+        "queued",
+        "running",
+        "succeeded",
+        "failed_retryable",
+        "failed_terminal",
+        "cancelled"
+      ],
+      "title": "JobStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "industry": {
+      "title": "Industry",
+      "type": "string"
+    },
+    "horizon_days": {
+      "title": "Horizon Days",
+      "type": "integer"
+    },
+    "status": {
+      "$ref": "#/$defs/JobStatus"
+    },
+    "stages": {
+      "items": {
+        "$ref": "#/$defs/ChatResearchStageViewV1"
+      },
+      "title": "Stages",
+      "type": "array"
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Error Code"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "result": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/IndustryResearchRunV1"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "id",
+    "industry",
+    "horizon_days",
+    "status",
+    "stages",
+    "error_code",
+    "created_at"
+  ],
+  "title": "ChatResearchViewV1",
+  "type": "object"
+}

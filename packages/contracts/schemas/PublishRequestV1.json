@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "review_id": {
+      "format": "uuid",
+      "title": "Review Id",
+      "type": "string"
+    },
+    "change_reason": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Change Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "review_id",
+    "change_reason"
+  ],
+  "title": "PublishRequestV1",
+  "type": "object"
+}

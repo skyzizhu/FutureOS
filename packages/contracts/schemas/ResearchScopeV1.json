@@ -1,0 +1,67 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "domain": {
+      "enum": [
+        "technology",
+        "manufacturing",
+        "healthcare",
+        "education",
+        "finance",
+        "services",
+        "logistics",
+        "energy",
+        "society"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "focus": {
+      "enum": [
+        "workflow_adoption",
+        "integration_constraints"
+      ],
+      "title": "Focus",
+      "type": "string"
+    },
+    "population": {
+      "enum": [
+        "small_teams",
+        "large_organizations"
+      ],
+      "title": "Population",
+      "type": "string"
+    },
+    "geography": {
+      "default": "global",
+      "enum": [
+        "global",
+        "CN"
+      ],
+      "title": "Geography",
+      "type": "string"
+    },
+    "label": {
+      "default": "DEMO",
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "domain",
+    "focus",
+    "population"
+  ],
+  "title": "ResearchScopeV1",
+  "type": "object"
+}

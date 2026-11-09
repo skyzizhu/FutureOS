@@ -1,0 +1,56 @@
+{
+  "$defs": {
+    "CountryOptionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "label"
+      ],
+      "title": "CountryOptionV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "entries": {
+      "items": {
+        "$ref": "#/$defs/CountryOptionV1"
+      },
+      "title": "Entries",
+      "type": "array"
+    },
+    "source": {
+      "const": "Unicode CLDR",
+      "default": "Unicode CLDR",
+      "title": "Source",
+      "type": "string"
+    }
+  },
+  "required": [
+    "entries"
+  ],
+  "title": "CountryCatalogV1",
+  "type": "object"
+}

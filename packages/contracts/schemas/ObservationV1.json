@@ -1,0 +1,94 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_version_id": {
+      "format": "uuid",
+      "title": "Source Version Id",
+      "type": "string"
+    },
+    "period_start": {
+      "format": "date-time",
+      "title": "Period Start",
+      "type": "string"
+    },
+    "period_end": {
+      "format": "date-time",
+      "title": "Period End",
+      "type": "string"
+    },
+    "value": {
+      "title": "Value",
+      "type": "number"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "available_at": {
+      "format": "date-time",
+      "title": "Available At",
+      "type": "string"
+    },
+    "revision_number": {
+      "minimum": 1,
+      "title": "Revision Number",
+      "type": "integer"
+    },
+    "quality_flag": {
+      "enum": [
+        "DEMO_DATA",
+        "UNVERIFIED",
+        "VERIFIED"
+      ],
+      "title": "Quality Flag",
+      "type": "string"
+    },
+    "definition_note": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Definition Note",
+      "type": "string"
+    },
+    "observation_id": {
+      "format": "uuid",
+      "title": "Observation Id",
+      "type": "string"
+    },
+    "indicator_id": {
+      "format": "uuid",
+      "title": "Indicator Id",
+      "type": "string"
+    },
+    "label": {
+      "enum": [
+        "DEMO",
+        "REAL"
+      ],
+      "title": "Label",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_version_id",
+    "period_start",
+    "period_end",
+    "value",
+    "published_at",
+    "available_at",
+    "revision_number",
+    "quality_flag",
+    "definition_note",
+    "observation_id",
+    "indicator_id",
+    "label"
+  ],
+  "title": "ObservationV1",
+  "type": "object"
+}

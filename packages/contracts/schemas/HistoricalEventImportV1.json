@@ -1,0 +1,60 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "text": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    },
+    "known_at": {
+      "format": "date-time",
+      "title": "Known At",
+      "type": "string"
+    },
+    "source_version_id": {
+      "format": "uuid",
+      "title": "Source Version Id",
+      "type": "string"
+    },
+    "data_role": {
+      "enum": [
+        "contemporaneous",
+        "outcome"
+      ],
+      "title": "Data Role",
+      "type": "string"
+    },
+    "outcome_category": {
+      "anyOf": [
+        {
+          "enum": [
+            "success",
+            "failure",
+            "inconclusive"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Outcome Category"
+    }
+  },
+  "required": [
+    "text",
+    "known_at",
+    "source_version_id",
+    "data_role"
+  ],
+  "title": "HistoricalEventImportV1",
+  "type": "object"
+}

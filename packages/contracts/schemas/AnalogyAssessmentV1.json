@@ -1,0 +1,139 @@
+{
+  "$defs": {
+    "HistoricalEventImportV1": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "source_version_id": {
+          "format": "uuid",
+          "title": "Source Version Id",
+          "type": "string"
+        },
+        "data_role": {
+          "enum": [
+            "contemporaneous",
+            "outcome"
+          ],
+          "title": "Data Role",
+          "type": "string"
+        },
+        "outcome_category": {
+          "anyOf": [
+            {
+              "enum": [
+                "success",
+                "failure",
+                "inconclusive"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome Category"
+        }
+      },
+      "required": [
+        "text",
+        "known_at",
+        "source_version_id",
+        "data_role"
+      ],
+      "title": "HistoricalEventImportV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "format": "uuid",
+      "title": "Case Id",
+      "type": "string"
+    },
+    "mechanism_overlap": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Mechanism Overlap",
+      "type": "array"
+    },
+    "similarities": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Similarities",
+      "type": "array"
+    },
+    "key_differences": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Key Differences",
+      "type": "array"
+    },
+    "non_transferable": {
+      "items": {
+        "maxLength": 4000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Non Transferable",
+      "type": "array"
+    },
+    "known_outcomes": {
+      "items": {
+        "$ref": "#/$defs/HistoricalEventImportV1"
+      },
+      "title": "Known Outcomes",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "case_id",
+    "mechanism_overlap",
+    "similarities",
+    "key_differences",
+    "non_transferable",
+    "known_outcomes",
+    "limitations"
+  ],
+  "title": "AnalogyAssessmentV1",
+  "type": "object"
+}

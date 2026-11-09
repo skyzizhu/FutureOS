@@ -1,0 +1,31 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "purpose": {
+      "default": "first_report",
+      "enum": [
+        "first_report",
+        "alert",
+        "digest"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "explicit_consent": {
+      "const": true,
+      "title": "Explicit Consent",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "explicit_consent"
+  ],
+  "title": "EmailQueueRequestV1",
+  "type": "object"
+}

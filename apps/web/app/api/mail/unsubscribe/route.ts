@@ -1,0 +1,4 @@
+import {NextRequest,NextResponse} from "next/server";
+import {backend} from "../../backend";
+import {sameLocalOrigin} from "../../admin/origin";
+export async function POST(request:NextRequest){const headers={"Cache-Control":"no-store"};if(!sameLocalOrigin(request))return NextResponse.json({code:"FORBIDDEN"},{status:403,headers});try{const body=await request.text();if(body.length>512)return NextResponse.json({code:"PAYLOAD_TOO_LARGE"},{status:413,headers});const response=await fetch(`${backend}/api/v1/mail/unsubscribe`,{method:"POST",headers:{"Content-Type":"application/json"},body,cache:"no-store",signal:AbortSignal.timeout(10000)});return NextResponse.json(await response.json(),{status:response.status,headers});}catch{return NextResponse.json({code:"API_UNAVAILABLE"},{status:503,headers});}}

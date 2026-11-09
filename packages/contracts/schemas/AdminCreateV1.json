@@ -1,0 +1,41 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "email": {
+      "maxLength": 254,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9.!#$%&*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+      "title": "Email",
+      "type": "string"
+    },
+    "password": {
+      "maxLength": 128,
+      "minLength": 12,
+      "title": "Password",
+      "type": "string"
+    },
+    "permission_group": {
+      "enum": [
+        "owner",
+        "reviewer",
+        "operator",
+        "viewer"
+      ],
+      "title": "Permission Group",
+      "type": "string"
+    }
+  },
+  "required": [
+    "email",
+    "password",
+    "permission_group"
+  ],
+  "title": "AdminCreateV1",
+  "type": "object"
+}
